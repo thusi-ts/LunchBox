@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -11,7 +13,6 @@ namespace Lunchbox.shared
     public class User
     {
 
-        [Key]
         public int Id { get; set; }
 
         [Required]
@@ -65,5 +66,13 @@ namespace Lunchbox.shared
         public string Token { get; set; }
 
         public ICollection<Order> Orders { get; set; }
+    }
+
+    public class UserImageEntityTypeConfiguration : IEntityTypeConfiguration<User>
+    {
+        public void Configure(EntityTypeBuilder<User> builder)
+        {
+            builder.HasKey(d => d.Id);
+        }
     }
 }

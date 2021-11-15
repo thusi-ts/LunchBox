@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Lunchbox.shared
 {
-    public class TempCart
+    public class CartTemp
     {
         public int TempCartId { get; set; }
 
@@ -31,7 +31,7 @@ namespace Lunchbox.shared
         [Column(TypeName = "ntext")]
         public int Comments { get; set; }
 
-        public ICollection<TempCartExtraItem> TempCartExtraItems { get; set; }
+        public ICollection<CartTempExtraItem> TempCartExtraItems { get; set; }
         
     }
 }

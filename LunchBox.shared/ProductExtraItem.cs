@@ -126,7 +126,7 @@ namespace Lunchbox.shared
         public decimal ItemPrice20 { get; set; }
 
         public ICollection<OrderExtraItem> OrderExtraItems { get; set; }
-        public ICollection<TempCartExtraItem> TempCartExtraItems { get; set; }
+        public ICollection<CartTempExtraItem> TempCartExtraItems { get; set; }
         public ICollection<Product> Products1 { get; set; }
         public ICollection<Product> Products2 { get; set; }
         public ICollection<Product> Products3 { get; set; }

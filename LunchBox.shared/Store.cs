@@ -120,7 +120,7 @@ namespace Lunchbox.shared
         public ICollection<ProductExtraItem> ProductExtraItems { get; set; }
         public ICollection<ProductStoreLocation> ProductStoreLocations { get; set; }
         public ICollection<StoresPaymentDetail> StoresPaymentDetails { get; set; }
-        public ICollection<TempCart> TempCarts { get; set; }
+        public ICollection<CartTemp> TempCarts { get; set; }
 
         
 

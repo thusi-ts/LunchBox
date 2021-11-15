@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Lunchbox.shared
 {
-    public class TempCartExtraItem
+    public class CartTempExtraItem
     {
         [Key]
         public int TempCartId { get; set; }
