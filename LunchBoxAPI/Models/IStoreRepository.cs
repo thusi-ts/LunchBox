@@ -1,9 +1,10 @@
-﻿using System;
+﻿using Lunchbox.shared;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace ts_store.Models
+namespace LunchBox.API
 {
     public interface IStoreRepository
     {
