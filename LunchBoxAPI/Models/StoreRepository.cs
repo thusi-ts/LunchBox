@@ -1,4 +1,5 @@
 ﻿using Lunchbox.shared;
+using LunchBox.Shared;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -10,9 +11,9 @@ namespace LunchBox.API
     public class StoreRepository : IStoreRepository
     {
 
-        private readonly StoreDBContext appDBContext;
+        private readonly LbDbContext appDBContext;
 
-        public StoreRepository(StoreDBContext appDBContext)
+        public StoreRepository(LbDbContext appDBContext)
         {
             this.appDBContext = appDBContext;
         }

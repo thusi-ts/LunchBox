@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -10,16 +12,23 @@ namespace Lunchbox.shared
 {
     public class ProductCategory
     {
-        [Key]
         public int Id { get; set; }
 
-        [Column(TypeName = "nvarchar(100)")]
-        [Required]
         public String CategoryName { get; set; }
 
-        [Column(TypeName = "nvarchar(200)")]
         public String ImageFolder { get; set; }
 
         public ICollection<Product> Products { get; set; }
+    }
+
+
+    public class ProductCategoryImageEntityTypeConfiguration : IEntityTypeConfiguration<ProductCategory>
+    {
+        public void Configure(EntityTypeBuilder<ProductCategory> builder)
+        {
+            builder.HasKey(p => p.Id);
+            builder.Property(p => p.CategoryName).HasMaxLength(100).IsRequired();
+            builder.Property(p => p.ImageFolder).HasMaxLength(200);
+        }
     }
 }

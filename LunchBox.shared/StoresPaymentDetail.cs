@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -12,22 +14,29 @@ namespace Lunchbox.shared
     {
         public Store Store { get; set; }
 
-        [Key]
         public int StoreId { get; set; }
 
-        [Column(TypeName = "nvarchar(150)")]
         public String MerchantId { get; set; }
 
-        [Column(TypeName = "nvarchar(150)")]
         public String AgreementId { get; set; }
 
-        [Column(TypeName = "nvarchar(150)")]
         public String Currency { get; set; }
 
-        [Column(TypeName = "nvarchar(250)")]
         public String PaymentWindowApiKey { get; set; }
 
-        [Column(TypeName = "nvarchar(250)")]
         public String AccountPrivateKey { get; set; }
+    }
+
+    public class StoresPaymentDetailImageEntityTypeConfiguration : IEntityTypeConfiguration<StoresPaymentDetail>
+    {
+        public void Configure(EntityTypeBuilder<StoresPaymentDetail> builder)
+        {
+            builder.HasKey(p => p.StoreId);
+            builder.Property(p => p.MerchantId).HasMaxLength(100).IsRequired();
+            builder.Property(p => p.AgreementId).HasMaxLength(200);
+            builder.Property(p => p.Currency).HasMaxLength(200);
+            builder.Property(p => p.PaymentWindowApiKey).HasMaxLength(200);
+            builder.Property(p => p.AccountPrivateKey).HasMaxLength(200);
+        }
     }
 }

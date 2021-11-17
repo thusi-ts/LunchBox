@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Lunchbox.shared;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
 using Microsoft.Extensions.Configuration;
 using System;
@@ -10,33 +11,34 @@ using System.Threading.Tasks;
 
 namespace LunchBox.Shared
 {
-    class LbDbContext : DbContext
+    public class LbDbContext : DbContext
     {
         public LbDbContext(DbContextOptions<LbDbContext> options)
             : base(options)
         { 
         
         }
-        //public DbSet<Blog> Blogs { get; set; }
+        public DbSet<User> Users { get; set; }
+        public DbSet<Store> Stores { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
         }
+    }
 
-
-        public class LbDbContextFactory : IDesignTimeDbContextFactory<LbDbContext>
+    public class LbDbContextFactory : IDesignTimeDbContextFactory<LbDbContext>
+    {
+        public LbDbContext CreateDbContext(string[]? args = null)
         {
-            public LbDbContext CreateDbContext(string[]? args = null)
-            {
-                var configuration = new ConfigurationBuilder().AddJsonFile("appsettings.json").Build();
+            var configuration = new ConfigurationBuilder().AddJsonFile("appsettings.json").Build();
 
-                var optionsBuilder = new DbContextOptionsBuilder<LbDbContext>();
-                optionsBuilder.UseSqlServer(configuration["ConnectionStrings:DefaultConnection"]);
+            var optionsBuilder = new DbContextOptionsBuilder<LbDbContext>();
+            optionsBuilder
+                //.UseLoggerFactory(LoggerFactory.Create(builder => builder.AddConsole()))
+                .UseSqlServer(configuration["ConnectionStrings:DefaultConnection"]);
 
-                return new LbDbContext(optionsBuilder.Options);
-            }
+            return new LbDbContext(optionsBuilder.Options);
         }
-
     }
 }

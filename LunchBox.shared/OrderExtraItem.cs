@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -18,7 +20,6 @@ namespace Lunchbox.shared
 
         public int ProductId { get; set; }
 
-        [Column(TypeName = "nvarchar(200)")]
         public String ProductName { get; set; }
         
         public int Quantity { get; set; }
@@ -33,14 +34,21 @@ namespace Lunchbox.shared
 
         public int? ProductExtraitemId { get; set; }
         
-        [Column(TypeName = "nvarchar(200)")]
         public String ProductExtraitemName { get; set; }
 
-        [Column(TypeName = "nvarchar(200)")]
         public String ProductExtraitemValue { get; set; }
 
         public decimal ProductExtraitemPrice { get; set; }
     }
 
-    
+    public class OrderExtraItemImageEntityTypeConfiguration : IEntityTypeConfiguration<OrderExtraItem>
+    {
+        public void Configure(EntityTypeBuilder<OrderExtraItem> builder)
+        {
+            builder.Property(p => p.ProductName).HasMaxLength(200);
+            builder.Property(p => p.ProductExtraitemName).HasMaxLength(200);
+            builder.Property(p => p.ProductExtraitemValue).HasMaxLength(200);
+        }
+    }
+
 }

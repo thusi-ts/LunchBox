@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -10,23 +12,28 @@ namespace Lunchbox.shared
 {
     public class LocationsDelivery
     {
-        
         public Location Location { get; set; }
 
-        [Key]
         public int LocationId { get; set; }
 
         public Store Store { get; set; }
 
-        [Key]
         public int StoreId { get; set; }
 
-        [Column(TypeName = "nvarchar(200)")]
         public String DeliveryTime { get; set; }
 
-        [Column(TypeName = "nvarchar(200)")]
         public String OrderClosingTime { get; set; }
 
         public int Active { get; set; }
+    }
+
+    public class LocationsDeliveryImageEntityTypeConfiguration : IEntityTypeConfiguration<LocationsDelivery>
+    {
+        public void Configure(EntityTypeBuilder<LocationsDelivery> builder)
+        {
+            builder.HasKey(p => new { p.LocationId, p.StoreId });
+            builder.Property(p => p.DeliveryTime).HasMaxLength(200);
+            builder.Property(p => p.OrderClosingTime).HasMaxLength(200);
+        }
     }
 }

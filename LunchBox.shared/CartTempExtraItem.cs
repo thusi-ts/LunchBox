@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -10,17 +12,25 @@ namespace Lunchbox.shared
 {
     public class CartTempExtraItem
     {
-        [Key]
         public int TempCartId { get; set; }
         
         public ProductExtraItem ProductExtraItem { get; set; }
 
         public int ProductExtraItemId { get; set; }
         
-        [Column(TypeName = "nvarchar(250)")]
         public String ProductExtraItemName { get; set; }
 
-        [Column(TypeName = "nvarchar(250)")]
         public String ProductExtraItemValue { get; set; }
     }
+
+    public class CartTempExtraItemImageEntityTypeConfiguration : IEntityTypeConfiguration<CartTempExtraItem>
+    {
+        public void Configure(EntityTypeBuilder<CartTempExtraItem> builder)
+        {
+            builder.HasKey(p => p.TempCartId);
+            builder.Property(p => p.ProductExtraItemName).HasMaxLength(250);
+            builder.Property(p => p.ProductExtraItemValue).HasMaxLength(250);
+        }
+    }
 }
+

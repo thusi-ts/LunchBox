@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -10,11 +12,8 @@ namespace Lunchbox.shared
 {
     public class Product
     {
-        [Key]
         public int Id { get; set; }
 
-        [Column(TypeName = "nvarchar(100)")]
-        [Required]
         public String ProductName { get; set; }
 
         public ProductCategory ProductCategory { get; set; }
@@ -29,12 +28,10 @@ namespace Lunchbox.shared
         
         public decimal Discount { get; set; }
 
-        [Column(TypeName = "nvarchar(200)")]
         public String Picture { get; set; }
 
         public int Active { get; set; } = 1;
 
-        [Column(TypeName = "ntext")]
         public String ActiveOffMes { get; set; }
         
         public ProductExtraItem ProductExtraItem1 { get; set; }
@@ -100,5 +97,16 @@ namespace Lunchbox.shared
         public ICollection<OrderExtraItem> OrderExtraItems { get; set; }
         public ICollection<ProductStoreLocation> ProductStoreLocations { get; set; }
         public ICollection<CartTemp> TempCarts { get; set; }
+    }
+
+    public class ProductImageEntityTypeConfiguration : IEntityTypeConfiguration<Product>
+    {
+        public void Configure(EntityTypeBuilder<Product> builder)
+        {
+            builder.HasKey(p => p.Id);
+            builder.Property(p => p.ProductName).HasMaxLength(100).IsRequired();
+            builder.Property(p => p.Picture).HasMaxLength(200);
+            builder.Property(p => p.ActiveOffMes).HasColumnType("nvarchar(max)");
+        }
     }
 }
