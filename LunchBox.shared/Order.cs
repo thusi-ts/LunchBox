@@ -32,7 +32,7 @@ namespace Lunchbox.shared
 
         public DateTime ShippedTime { get; set; }
 
-        public Store Strore { get; set; }
+        public Store Store { get; set; }
 
         public int StoreId { get; set; }
 
@@ -46,12 +46,16 @@ namespace Lunchbox.shared
         public void Configure(EntityTypeBuilder<Order> builder)
         {
             builder.HasKey(p => p.Id);
-            builder.Property(p => p.User).IsRequired();
             builder.Property(p => p.UserOrderNumber).HasMaxLength(100);
             builder.Property(p => p.UserOrderNumberName).HasMaxLength(100);
             builder.Property(p => p.OrderStatus).HasConversion<string>();
             builder.Property(p => p.OrderMethod).HasConversion<string>();
             builder.Property(p => p.Comments).HasColumnType("nvarchar(max)");
+
+            builder.HasOne(p => p.User).WithMany(p => p.Orders)
+            .HasForeignKey(p => p.UserId).OnDelete(DeleteBehavior.Restrict).IsRequired(false);
+            builder.HasOne(p => p.Store).WithMany(p => p.Orders)
+            .HasForeignKey(p => p.StoreId).OnDelete(DeleteBehavior.Restrict).IsRequired(false);
         }
     }
 

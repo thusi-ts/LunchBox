@@ -31,6 +31,14 @@ namespace Lunchbox.shared
         public void Configure(EntityTypeBuilder<ProductStoreLocation> builder)
         {
             builder.HasKey(p => new { p.StoreId, p.LocationId, p.ProductId });
+            builder.Property(p => p.Price).HasColumnType("decimal(10,2)");
+
+            builder.HasOne(p => p.Store).WithMany(p => p.ProductStoreLocations)
+            .HasForeignKey(p => p.StoreId).OnDelete(DeleteBehavior.Restrict).IsRequired(false);
+            builder.HasOne(o => o.Location).WithMany(p => p.ProductStoreLocations)
+            .HasForeignKey(p => p.LocationId).OnDelete(DeleteBehavior.Restrict).IsRequired(false);
+            builder.HasOne(o => o.Product).WithMany(p => p.ProductStoreLocations)
+            .HasForeignKey(p => p.ProductId).OnDelete(DeleteBehavior.Restrict).IsRequired(false);
         }
     }
 }

@@ -45,9 +45,17 @@ namespace Lunchbox.shared
     {
         public void Configure(EntityTypeBuilder<OrderExtraItem> builder)
         {
+            builder.HasKey(p => new { p.OrderId, p.ProductId });
             builder.Property(p => p.ProductName).HasMaxLength(200);
             builder.Property(p => p.ProductExtraitemName).HasMaxLength(200);
             builder.Property(p => p.ProductExtraitemValue).HasMaxLength(200);
+
+            builder.HasOne(o => o.Order).WithMany(o => o.OrderExtraItems)
+            .HasForeignKey(p => p.OrderId).OnDelete(DeleteBehavior.Restrict).IsRequired(false);
+            builder.HasOne(o => o.Product).WithMany(p => p.OrderExtraItems)
+            .HasForeignKey(p => p.ProductId).OnDelete(DeleteBehavior.Restrict).IsRequired(false);
+            builder.HasOne(o => o.ProductExtraItem).WithMany(px => px.OrderExtraItems)
+            .HasForeignKey(p => p.ProductId).OnDelete(DeleteBehavior.Restrict).IsRequired(false);
         }
     }
 

@@ -107,6 +107,34 @@ namespace Lunchbox.shared
             builder.Property(p => p.ProductName).HasMaxLength(100).IsRequired();
             builder.Property(p => p.Picture).HasMaxLength(200);
             builder.Property(p => p.ActiveOffMes).HasColumnType("nvarchar(max)");
+            builder.Property(p => p.Discount).HasColumnType("decimal(10,2)");
+            builder.Property(p => p.Price).HasColumnType("decimal(10,2)");
+
+            builder.HasOne(p => p.ProductExtraItem1).WithMany(pe => pe.Products1)
+           .HasForeignKey(p => p.ProductExtraitem1Id).OnDelete(DeleteBehavior.Restrict).IsRequired(false);
+            builder.HasOne(p => p.ProductExtraItem3).WithMany(pe => pe.Products2)
+           .HasForeignKey(p => p.ProductExtraitem3Id).OnDelete(DeleteBehavior.Restrict).IsRequired(false);
+            builder.HasOne(p => p.ProductExtraItem4).WithMany(pe => pe.Products3)
+           .HasForeignKey(p => p.ProductExtraitem4Id).OnDelete(DeleteBehavior.Restrict).IsRequired(false);
+            builder.HasOne(p => p.ProductExtraItem5).WithMany(pe => pe.Products4)
+           .HasForeignKey(p => p.ProductExtraitem5Id).OnDelete(DeleteBehavior.Restrict).IsRequired(false);
+            builder.HasOne(p => p.ProductExtraItem6).WithMany(pe => pe.Products5)
+           .HasForeignKey(p => p.ProductExtraitem6Id).OnDelete(DeleteBehavior.Restrict).IsRequired(false);
+            builder.HasOne(p => p.ProductExtraItem7).WithMany(pe => pe.Products6)
+           .HasForeignKey(p => p.ProductExtraitem7Id).OnDelete(DeleteBehavior.Restrict).IsRequired(false);
+            builder.HasOne(p => p.ProductExtraItem8).WithMany(pe => pe.Products7)
+           .HasForeignKey(p => p.ProductExtraitem8Id).OnDelete(DeleteBehavior.Restrict).IsRequired(false);
+            builder.HasOne(p => p.ProductExtraItem9).WithMany(pe => pe.Products8)
+           .HasForeignKey(p => p.ProductExtraitem9Id).OnDelete(DeleteBehavior.Restrict).IsRequired(false);
+            builder.HasOne(p => p.ProductExtraItem10).WithMany(pe => pe.Products10)
+           .HasForeignKey(p => p.ProductExtraitem10Id).OnDelete(DeleteBehavior.Restrict).IsRequired(false);
+
+
+            builder.HasOne(p => p.Store).WithMany(s => s.Products)
+           .HasForeignKey(p => p.StoreId).OnDelete(DeleteBehavior.Restrict).IsRequired(false);
+
+            builder.HasOne(p => p.ProductCategory).WithMany(pc => pc.Products)
+           .HasForeignKey(p => p.ProductCategoryId).OnDelete(DeleteBehavior.Restrict).IsRequired(false);
         }
     }
 }

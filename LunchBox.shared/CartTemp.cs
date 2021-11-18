@@ -12,7 +12,7 @@ namespace Lunchbox.shared
 {
     public class CartTemp
     {
-        public int TempCartId { get; set; }
+        public int Id { get; set; }
 
         public String SessionId { get; set; }
 
@@ -37,8 +37,14 @@ namespace Lunchbox.shared
     {
         public void Configure(EntityTypeBuilder<CartTemp> builder)
         {
+            builder.HasKey(p => p.Id);
             builder.Property(p => p.SessionId).HasMaxLength(250);
             builder.Property(p => p.Comments).HasColumnType("nvarchar(max)");
+
+            builder.HasOne(p => p.Store).WithMany(p => p.TempCarts)
+            .HasForeignKey(p => p.StoreId).OnDelete(DeleteBehavior.Restrict).IsRequired(false);
+            builder.HasOne(p => p.Product).WithMany(p => p.TempCarts)
+            .HasForeignKey(p => p.ProductId).OnDelete(DeleteBehavior.Restrict).IsRequired(false);
         }        
     }
 }

@@ -34,6 +34,11 @@ namespace Lunchbox.shared
             builder.HasKey(p => new { p.LocationId, p.StoreId });
             builder.Property(p => p.DeliveryTime).HasMaxLength(200);
             builder.Property(p => p.OrderClosingTime).HasMaxLength(200);
+
+            builder.HasOne(p => p.Location).WithMany(p => p.LocationsDeliverys)
+            .HasForeignKey(p => p.LocationId).OnDelete(DeleteBehavior.Restrict).IsRequired(false);
+            builder.HasOne(o => o.Store).WithMany(p => p.LocationsDeliverys)
+            .HasForeignKey(p => p.StoreId).OnDelete(DeleteBehavior.Restrict).IsRequired(false);
         }
     }
 }

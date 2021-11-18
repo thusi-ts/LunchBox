@@ -30,6 +30,9 @@ namespace Lunchbox.shared
             builder.HasKey(p => p.TempCartId);
             builder.Property(p => p.ProductExtraItemName).HasMaxLength(250);
             builder.Property(p => p.ProductExtraItemValue).HasMaxLength(250);
+
+            builder.HasOne(p => p.ProductExtraItem).WithMany(p => p.TempCartExtraItems)
+            .HasForeignKey(p => p.ProductExtraItemId).OnDelete(DeleteBehavior.Restrict).IsRequired(false);
         }
     }
 }

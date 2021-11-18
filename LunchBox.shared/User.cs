@@ -66,6 +66,9 @@ namespace Lunchbox.shared
             builder.Property(p => p.Password).HasMaxLength(50);
             builder.Property(p => p.PrimaryStoreIds).HasMaxLength(75);
             builder.Property(p => p.Token).HasMaxLength(500);
+
+            builder.HasOne(p => p.Location).WithMany(p => p.Users)
+            .HasForeignKey(p => p.LocationId).OnDelete(DeleteBehavior.Restrict).IsRequired(false);
         }
     }
 }

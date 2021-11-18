@@ -21,7 +21,6 @@ namespace Lunchbox.shared
         public ICollection<Product> Products { get; set; }
     }
 
-
     public class ProductCategoryImageEntityTypeConfiguration : IEntityTypeConfiguration<ProductCategory>
     {
         public void Configure(EntityTypeBuilder<ProductCategory> builder)

@@ -37,6 +37,9 @@ namespace Lunchbox.shared
             builder.Property(p => p.Currency).HasMaxLength(200);
             builder.Property(p => p.PaymentWindowApiKey).HasMaxLength(200);
             builder.Property(p => p.AccountPrivateKey).HasMaxLength(200);
+
+            builder.HasOne(p => p.Store).WithMany(p => p.StoresPaymentDetails)
+            .HasForeignKey(p => p.StoreId).OnDelete(DeleteBehavior.Restrict).IsRequired(false);
         }
     }
 }

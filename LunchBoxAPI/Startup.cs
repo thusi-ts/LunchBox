@@ -22,7 +22,6 @@ namespace LunchBoxAPI
             Configuration = configuration;
         }
 
-        // foriegnkey 
         // Start MVC
         // lav api kun der er nødvendig
 
