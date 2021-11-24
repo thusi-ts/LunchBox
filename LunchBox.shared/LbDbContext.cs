@@ -1,4 +1,4 @@
-﻿using Lunchbox.shared;
+﻿using LunchBox.Shared;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
 using Microsoft.Extensions.Configuration;

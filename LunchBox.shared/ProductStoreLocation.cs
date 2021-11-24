@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Lunchbox.shared
+namespace LunchBox.Shared
 {
     public class ProductStoreLocation
     {
