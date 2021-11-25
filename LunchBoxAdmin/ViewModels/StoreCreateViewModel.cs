@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace LunchBox.Admin.ViewModels
+namespace LunchBoxAdmin.ViewModels
 {
     public class StoreCreateViewModel
     {

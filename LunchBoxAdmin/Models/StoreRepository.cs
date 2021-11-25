@@ -1,5 +1,4 @@
-﻿using Lunchbox.shared;
-using LunchBox.Shared;
+﻿using LunchBox.Shared;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
