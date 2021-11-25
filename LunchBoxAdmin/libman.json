@@ -6,7 +6,6 @@
       "library": "bootswatch@5.1.3",
       "destination": "wwwroot/lib/bootswatch-lumen/",
       "files": [
-        "cerulean/bootstrap.min.css",
         "lumen/bootstrap.css",
         "lumen/bootstrap.min.css"
       ]

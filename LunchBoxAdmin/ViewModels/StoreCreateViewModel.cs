@@ -8,9 +8,8 @@ namespace LunchBoxAdmin.ViewModels
 {
     public class StoreCreateViewModel
     {
-        public int Id { get; set; }
-
         [Required]
+        [Display(Name = "Store")]
         public String StoreName { get; set; }
 
         public String Phone { get; set; }
@@ -67,6 +66,7 @@ namespace LunchBoxAdmin.ViewModels
         public String OpenSat { get; set; } = "11-20";
 
         public String OpenSun { get; set; } = "11-20";
+
         /*
         public ICollection<LocationsDelivery> LocationsDeliverys { get; set; }
         public ICollection<Order> Orders { get; set; }

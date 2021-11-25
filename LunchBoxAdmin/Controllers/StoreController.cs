@@ -1,4 +1,5 @@
 ﻿using LunchBoxAdmin.Models;
+using LunchBoxAdmin.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -22,6 +23,11 @@ namespace LunchBox.Admin.Controllers
         }
 
         public ViewResult Create()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ViewResult Create(StoreCreateViewModel store)
         {
             return View();
         }

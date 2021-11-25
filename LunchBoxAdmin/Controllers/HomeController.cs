@@ -1,4 +1,5 @@
 ﻿using LunchBoxAdmin.Models;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
@@ -21,6 +22,30 @@ namespace LunchBoxAdmin.Controllers
         public IActionResult Index()
         {
             return View();
+        }
+
+        [Route("login")]
+        [HttpPost]
+        public IActionResult Login(string username, string password)
+        {
+            if (username != null && password != null && username.Equals("admin") && password.Equals("admin"))
+            {
+                HttpContext.Session.SetString("username", username);
+                return View("Success");
+            }
+            else
+            {
+                ViewBag.error = "Invalid Account";
+                return View("Index");
+            }
+        }
+
+        [Route("logout")]
+        [HttpGet]
+        public IActionResult Logout()
+        {
+            HttpContext.Session.Remove("username");
+            return RedirectToAction("Index");
         }
 
         public IActionResult Privacy()

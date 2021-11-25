@@ -2,7 +2,69 @@
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div data-role="page" class="index-page main-page" id="index" data-url="index">
+    <div data-role="main" class="ui-content ui-content-cbox screen-width index">
+        <div class="page-container index-container">
+            <div class="text-center">
+                <h1>Velkommen til lunchbox</h1>
+                <div class="header-resume" style="padding-top: 0px;">Har du eller dit firma har brug for noget rigtig lækkert til frokost, som er godt for krop og sjæl, er du kommer til det helt rigtig sted. Vælg fra listen neden under hvor du gerne ville have det fra.</div>
+            </div>
+            <!--<div class="main-title"><i class="fa fa-newspaper"></i> Nyheder</div>-->
+            <div class="bs-docs-section">
+                <div class="news">
+                    <div class="news-items">
+                        <div class="news-item active">
+                            <div class="news-infobox">
+                                <div class="news-headline">Live på vores nye side endeligt</div>
+                                <div class="news-subtitle">Hvis du har svært ved bruge systemet, må du gerne skrive til os. info@lunchbox.dk. tak</div>
+                            </div>
+                            <div class="news-bg" style="background-image: url('/images/newsSlider/slide1.png');"></div>
+                        </div>
+                        <div class="news-item">
+                            <div class="news-infobox">
+                                <div class="news-headline">Sund frokost</div>
+                                <div class="news-subtitle">Er godt for alle :)</div>
+                            </div>
+                            <div class="news-bg" style="background-image: url('/images/newsSlider/slide2.jpg');"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-2"></div>
+                <div class="col-lg-8">
+                    <div class="bs-docs-section">
+                        <form method="post" asp-controller="Home" asp-action="login">
+                            <fieldset>
+                                <legend>Login Page</legend>
+
+                                @if (@ViewBag.error != null)
+                                {
+                                    <div class="alert alert-dismissible alert-warning">
+                                        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                                        <h4 class="alert-heading">Fejl</h4>
+                                        <p class="mb-0">@ViewBag.error</p>
+                                    </div>
+                                }
+
+                                <div class="form-group">
+                                    <label for="usermame" class="form-label mt-4">User name</label>
+                                    <input type="text" class="form-control" name="usermame" placeholder="Enter username">
+                                </div>
+                                <div class="form-group">
+                                    <label for="password" class="form-label mt-4">Password</label>
+                                    <input type="password" name="password" class="form-control" placeholder="Password">
+                                </div>
+                                <div class="form-group">
+                                    <label for="password" class="form-label mt-4"></label>
+                                    <button type="submit" class="btn btn-primary">Login</button>
+                                </div>
+                            </fieldset>
+                        </form>
+                    </div>
+                </div>
+                <div class="col-lg-2"></div>
+            </div>
+        </div>
+     </div>
 </div>
