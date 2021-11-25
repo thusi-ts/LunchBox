@@ -1,3 +1,4 @@
+using LunchBox.Admin.Middleware;
 using LunchBox.Shared;
 using LunchBoxAdmin.Models;
 using Microsoft.AspNetCore.Builder;
@@ -49,6 +50,7 @@ namespace LunchBoxAdmin
                 app.UseExceptionHandler("/Home/Error");
             }
             app.UseSession();
+            app.UseMiddleware<AuthenticationMiddleware>();
 
             app.UseStaticFiles();
 
