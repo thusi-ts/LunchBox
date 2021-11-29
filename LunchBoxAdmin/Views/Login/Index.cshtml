@@ -1,0 +1,35 @@
+﻿<div class="row">
+    <div class="col-lg-2"></div>
+    <div class="col-lg-8">
+        <div class="bs-docs-section">
+            <form method="post" asp-controller="Login" asp-action="login">
+                <fieldset>
+                    <legend>Login Page</legend>
+
+                    @if (@ViewBag.error != null)
+                    {
+                        <div class="alert alert-dismissible alert-warning">
+                            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                            <h4 class="alert-heading">Fejl</h4>
+                            <p class="mb-0">@ViewBag.error</p>
+                        </div>
+                    }
+
+                    <div class="form-group">
+                        <label for="usermame" class="form-label mt-4">User name</label>
+                        <input type="text" class="form-control" name="username" placeholder="Enter username">
+                    </div>
+                    <div class="form-group">
+                        <label for="password" class="form-label mt-4">Password</label>
+                        <input type="password" name="password" class="form-control" placeholder="Password">
+                    </div>
+                    <div class="form-group">
+                        <label for="password" class="form-label mt-4"></label>
+                        <button type="submit" class="btn btn-primary">Login</button>
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+    </div>
+    <div class="col-lg-2"></div>
+</div>

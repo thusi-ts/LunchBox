@@ -18,11 +18,14 @@ namespace LunchBox.Admin.Middleware
 
         public Task Invoke(HttpContext httpContext)
         {
-            if (httpContext.Session.GetString("username") == null)
+            var path = httpContext.Request.Path;
+            if (path.HasValue && path.Value.StartsWith("/admin"))
             {
-                return View("Index");
+                if (httpContext.Session.GetString("username") == null)
+                {
+                    httpContext.Response.Redirect("/login/index");
+                }
             }
-            
             return _next(httpContext);
         }
     }
