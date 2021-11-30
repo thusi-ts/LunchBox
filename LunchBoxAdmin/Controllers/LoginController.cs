@@ -7,7 +7,6 @@ using System.Threading.Tasks;
 
 namespace LunchBox.Admin.Controllers
 {
-    [Route("Login")]
     public class LoginController : Controller
     {
         public IActionResult Index()
@@ -30,7 +29,6 @@ namespace LunchBox.Admin.Controllers
             }
         }
 
-        [Route("logout")]
         [HttpGet]
         public IActionResult Logout()
         {

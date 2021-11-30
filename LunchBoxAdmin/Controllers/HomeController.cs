@@ -10,7 +10,6 @@ using System.Threading.Tasks;
 
 namespace LunchBoxAdmin.Controllers
 {
-    [Route("Home")]
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
@@ -20,9 +19,6 @@ namespace LunchBoxAdmin.Controllers
             _logger = logger;
         }
 
-        [Route("")]
-        [Route("index")]
-        [Route("~/")]
         public IActionResult Index()
         {
             return View();
