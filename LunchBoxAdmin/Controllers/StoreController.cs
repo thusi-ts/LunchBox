@@ -27,8 +27,32 @@ namespace LunchBox.Admin.Controllers
             return View();
         }
         [HttpPost]
-        public ViewResult Create(StoreCreateViewModel store)
+        public ViewResult Create(StoreCreateViewModel ModelState)
         {
+            /*
+            if (ModelState.IsValid)
+            {
+                IdentityRole identityRole = new IdentityRole
+                {
+                    Name = model.RoleName
+                };
+
+                IdentityResult result = await roleManager.CreateAsync(identityRole);
+
+                if (result.Succeeded)
+                {
+                    return RedirectToAction("ListRoles", "Administration");
+                }
+
+                foreach (IdentityError error in result.Errors)
+                {
+                    ModelState.AddModelError("", error.Description);
+                }
+            }
+
+            return View(model); ModelState
+            */
+            storeRepository.AddStore(store);
             return View();
         }
     }

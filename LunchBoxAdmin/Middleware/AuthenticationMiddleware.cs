@@ -19,7 +19,7 @@ namespace LunchBox.Admin.Middleware
         public Task Invoke(HttpContext httpContext)
         {
             var path = httpContext.Request.Path;
-            if (!path.Equals('/') && path.Value.StartsWith("/Login") == false)
+            if (path.Value.Equals("/") == false && path.Value.StartsWith("/Login") == false)
             {
                 if (httpContext.Session.GetString("username") == null)
                 {

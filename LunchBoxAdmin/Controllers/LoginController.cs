@@ -20,7 +20,7 @@ namespace LunchBox.Admin.Controllers
             if (username != null && password != null && username.Equals("admin") && password.Equals("admin"))
             {
                 HttpContext.Session.SetString("username", username);
-                return View("Success");
+                return View("MySite");
             }
             else
             {
@@ -29,11 +29,16 @@ namespace LunchBox.Admin.Controllers
             }
         }
 
+        public IActionResult MySite()
+        {
+            return View("MySite");
+        }
+
         [HttpGet]
         public IActionResult Logout()
         {
             HttpContext.Session.Remove("username");
-            return RedirectToAction("Index");
+            return RedirectToAction("Index", "Home");
         }
     }
 }
