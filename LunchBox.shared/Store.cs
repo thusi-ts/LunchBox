@@ -19,6 +19,8 @@ namespace LunchBox.Shared
 
         public String Phone { get; set; }
 
+        [RegularExpression(@"^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$", ErrorMessage = "Invalid Email Format")]
+        [Display(Name = "Office Email")]
         public String Email { get; set; }
 
         public String Street { get; set; }

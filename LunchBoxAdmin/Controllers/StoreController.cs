@@ -1,8 +1,11 @@
-﻿using LunchBoxAdmin.Models;
+﻿using LunchBox.Shared;
+using LunchBoxAdmin.Models;
 using LunchBoxAdmin.ViewModels;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -11,10 +14,12 @@ namespace LunchBox.Admin.Controllers
     public class StoreController : Controller
     {
         private readonly IStoreRepository storeRepository;
+        private readonly IHostingEnvironment hostingEnvironment;
 
-        public StoreController(IStoreRepository storeRepository )
+        public StoreController(IStoreRepository storeRepository, IHostingEnvironment hostingEnvironment)
         {
             this.storeRepository = storeRepository;
+            this.hostingEnvironment = hostingEnvironment;
         }
         public IActionResult Index()
         {
@@ -22,37 +27,74 @@ namespace LunchBox.Admin.Controllers
             return View(model);
         }
 
+        public ViewResult Details(int id)
+        {
+            return View();
+        }
+
         public ViewResult Create()
         {
             return View();
         }
         [HttpPost]
-        public ViewResult Create(StoreCreateViewModel ModelState)
+        public IActionResult Create(StoreCreateViewModel model)
         {
-            /*
+            // validate
             if (ModelState.IsValid)
             {
-                IdentityRole identityRole = new IdentityRole
-                {
-                    Name = model.RoleName
-                };
+                // upload logo
+                // upload picture
+                String logo = null;
+                String picture = null;
 
-                IdentityResult result = await roleManager.CreateAsync(identityRole);
+                if(model.Logo != null) {
+                    String LogoPathFolder = Path.Combine(hostingEnvironment.WebRootPath, "images/upload");
+                    String uniqueFileName = Guid.NewGuid().ToString() + "_" + model.Logo.FileName;
+                    String filePath = Path.Combine(LogoPathFolder, uniqueFileName);
 
-                if (result.Succeeded)
-                {
-                    return RedirectToAction("ListRoles", "Administration");
+                    model.Logo.CopyTo(new FileStream(filePath, FileMode.Create));
                 }
 
-                foreach (IdentityError error in result.Errors)
+                Store store = new Store
                 {
-                    ModelState.AddModelError("", error.Description);
-                }
+                    Active = model.Active,
+                    ActiveOffMes = model.ActiveOffMes,
+                    ChainId = model.ChainId,
+                    City = model.City,
+                    Cvr = model.Cvr,
+                    ContactPersonEmail = model.ContactPersonEmail,
+                    ContactPersonName = model.ContactPersonName,
+                    Created = DateTime.Now,
+                    DeliveryOption = model.DeliveryOption,
+                    Description = model.Description,
+                    Discount = model.Discount,
+                    Email = model.Email,
+                    Pickup = model.Pickup,
+                    PickupTime = model.PickupTime,
+                    Logo = logo,
+                    Picture = picture,
+                    Map = model.Map,
+                    OpenFre = model.OpenFre,
+                    OpenMan = model.OpenMan,
+                    OpenSat = model.OpenSat,
+                    OpenSun = model.OpenSun,
+                    OpenThu = model.OpenThu,
+                    OpenTue = model.OpenTue,
+                    OpenWed = model.OpenWed,
+                    Phone = model.Phone,
+                    StoreName = model.StoreName,
+                    Street = model.Street,
+                    ZipCode = model.ZipCode,
+            };
+
+                storeRepository.AddStore(store);
+                //return RedirectToAction("Details", new { id = store.Id });
+                return RedirectToAction("Index");
             }
 
-            return View(model); ModelState
-            */
-            storeRepository.AddStore(store);
+            
+            
+            //
             return View();
         }
     }

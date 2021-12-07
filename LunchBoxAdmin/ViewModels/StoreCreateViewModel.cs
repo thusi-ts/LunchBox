@@ -1,6 +1,8 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Http;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -12,6 +14,7 @@ namespace LunchBoxAdmin.ViewModels
         [Display(Name = "Store")]
         public String StoreName { get; set; }
 
+        [Required]
         public String Phone { get; set; }
 
         [Required]
@@ -21,9 +24,9 @@ namespace LunchBoxAdmin.ViewModels
 
         public String City { get; set; }
 
-        public String Logo { get; set; }
+        public IFormFile Logo { get; set; }
 
-        public String Picture { get; set; }
+        public IFormFile Picture { get; set; }
 
         public String ZipCode { get; set; }
 
@@ -35,6 +38,8 @@ namespace LunchBoxAdmin.ViewModels
 
         public String ContactPersonEmail { get; set; }
 
+        [Range(0, 99.99)]
+        [Column(TypeName = "decimal(18, 2)")]
         public Decimal Discount { get; set; }
 
         public String Description { get; set; }
@@ -51,8 +56,6 @@ namespace LunchBoxAdmin.ViewModels
 
         public String PickupTime { get; set; }
 
-        public DateTime Created { get; set; } = DateTime.Now;
-
         public String OpenMan { get; set; } = "11-20";
 
         public String OpenTue { get; set; } = "11-20";
@@ -66,15 +69,5 @@ namespace LunchBoxAdmin.ViewModels
         public String OpenSat { get; set; } = "11-20";
 
         public String OpenSun { get; set; } = "11-20";
-
-        /*
-        public ICollection<LocationsDelivery> LocationsDeliverys { get; set; }
-        public ICollection<Order> Orders { get; set; }
-        public ICollection<Product> Products { get; set; }
-        public ICollection<ProductExtraItem> ProductExtraItems { get; set; }
-        public ICollection<ProductStoreLocation> ProductStoreLocations { get; set; }
-        public ICollection<StoresPaymentDetail> StoresPaymentDetails { get; set; }
-        public ICollection<CartTemp> TempCarts { get; set; }
-        */
     }
 }
