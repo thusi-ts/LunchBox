@@ -14,22 +14,24 @@ namespace LunchBox.Admin.Controllers
     public class StoreController : Controller
     {
         private readonly IStoreRepository storeRepository;
-        private readonly IHostingEnvironment hostingEnvironment;
+        private readonly IWebHostEnvironment webHostEnvironment;
 
-        public StoreController(IStoreRepository storeRepository, IHostingEnvironment hostingEnvironment)
+        public StoreController(IStoreRepository storeRepository, IWebHostEnvironment webHostEnvironment)
         {
             this.storeRepository = storeRepository;
-            this.hostingEnvironment = hostingEnvironment;
+            this.webHostEnvironment = webHostEnvironment;
         }
-        public IActionResult Index()
+        public ViewResult Index()
         {
-            var model = storeRepository.GetStores();
+            var model = storeRepository.GetStores().Result;
+
             return View(model);
         }
 
         public ViewResult Details(int id)
         {
-            return View();
+            var model = storeRepository.GetStore(id).Result;
+            return View(model);
         }
 
         public ViewResult Create()
@@ -45,10 +47,9 @@ namespace LunchBox.Admin.Controllers
                 // upload logo
                 // upload picture
                 String logo = null;
-                String picture = null;
 
-                if(model.Logo != null) {
-                    String LogoPathFolder = Path.Combine(hostingEnvironment.WebRootPath, "images/upload");
+                if(model.Logo.FileName != null && model.Logo.Length > 0) {
+                    String LogoPathFolder = Path.Combine(webHostEnvironment.WebRootPath, "images/upload");
                     String uniqueFileName = Guid.NewGuid().ToString() + "_" + model.Logo.FileName;
                     String filePath = Path.Combine(LogoPathFolder, uniqueFileName);
 
@@ -72,7 +73,6 @@ namespace LunchBox.Admin.Controllers
                     Pickup = model.Pickup,
                     PickupTime = model.PickupTime,
                     Logo = logo,
-                    Picture = picture,
                     Map = model.Map,
                     OpenFre = model.OpenFre,
                     OpenMan = model.OpenMan,

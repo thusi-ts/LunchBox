@@ -61,7 +61,6 @@ namespace LunchBoxAdmin.Models
                 result.OpenTue = store.OpenTue;
                 result.OpenWed = store.OpenWed;
                 result.Phone = store.Phone;
-                result.Picture = store.Picture;
                 result.StoreName = store.StoreName;
                 result.Street = store.Street;
                 result.ZipCode = store.ZipCode;

@@ -29,8 +29,6 @@ namespace LunchBox.Shared
 
         public String Logo { get; set; }
 
-        public String Picture { get; set; }
-
         public String ZipCode { get; set; }
 
         public String Cvr { get; set; }

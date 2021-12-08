@@ -26,8 +26,6 @@ namespace LunchBoxAdmin.ViewModels
 
         public IFormFile Logo { get; set; }
 
-        public IFormFile Picture { get; set; }
-
         public String ZipCode { get; set; }
 
         public String Cvr { get; set; }
