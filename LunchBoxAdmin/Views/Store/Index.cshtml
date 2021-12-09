@@ -1,8 +1,5 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
-}
+﻿@model IEnumerable<LunchBox.Shared.Store>
+
 <div class="bs-docs-section">
     <div class="row">
         <div class="col-lg-12">
@@ -17,25 +14,30 @@
                 <table class="table table-hover">
                     <thead>
                         <tr>
-                            <th>Type</th>
-                            <th scope="col">Column heading</th>
-                            <th scope="col">Column heading</th>
-                            <th scope="col">Column heading</th>
+                            <th scope="col">Name</th>
+                            <th scope="col">Street</th>
+                            <th scope="col">City</th>
+                            <th scope="col">Phone</th>
+                            <th scope="col">Email</th>
+                            <th scope="col">Details</th>
+                            <th scope="col">Edit</th>
+                            <th scope="col">Delete</th>
                         </tr>
                     </thead>
                     <tbody>
+                        @foreach (var store  in Model)
+                        {
                         <tr>
-                            <td>Default</td>
-                            <td>Column content</td>
-                            <td>Column content</td>
-                            <td>Column content</td>
+                            <td>@store.StoreName</td>
+                            <td>@store.Street</td>
+                            <td>@store.City</td>
+                            <td>@store.Phone</td>
+                            <td>@store.Email</td>
+                            <td><a asp-route-id="@store.Id" class="navbar-brand" asp-action="Details" asp-controller="Store"><span class="btn btn-success btn-sm">Details</span></a></td>
+                            <td><a asp-route-id="@store.Id" class="navbar-brand" asp-action="Edit" asp-controller="Store"><span class="btn btn-info btn-sm">Edit</span></a></td>
+                            <td><a asp-route-id="@store.Id" class="navbar-brand" asp-action="Delete" asp-controller="Store"><span class="btn btn-danger btn-sm">Delete</span></a></td>
                         </tr>
-                        <tr>
-                            <td>Default</td>
-                            <td>Column content</td>
-                            <td>Column content</td>
-                            <td>Column content</td>
-                        </tr>
+                        }
                     </tbody>
                 </table>
             </div>

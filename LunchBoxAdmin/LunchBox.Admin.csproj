@@ -20,4 +20,8 @@
     <ProjectReference Include="..\LunchBox.shared\LunchBox.Shared.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="wwwroot\images\upload\" />
+  </ItemGroup>
+
 </Project>
