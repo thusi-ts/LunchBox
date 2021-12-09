@@ -1,4 +1,5 @@
-﻿using LunchBoxAdmin.Models;
+﻿using LunchBox.Shared;
+using LunchBoxAdmin.Models;
 using LunchBoxAdmin.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -10,15 +11,15 @@ namespace LunchBox.Admin.Controllers
 {
     public class StoreController : Controller
     {
-        private readonly IStoreRepository storeRepository;
+        private readonly IStoreRepository _storeRepository;
 
         public StoreController(IStoreRepository storeRepository )
         {
-            this.storeRepository = storeRepository;
+            this._storeRepository = storeRepository;
         }
-        public IActionResult Index()
+        public ViewResult Index()
         {
-            var model = storeRepository.GetStores();
+            var model = _storeRepository.GetStores();
             return View(model);
         }
 
@@ -27,11 +28,23 @@ namespace LunchBox.Admin.Controllers
             return View();
         }
         [HttpPost]
-        public ViewResult Create(StoreCreateViewModel ModelState)
+        public IActionResult Create(StoreCreateViewModel model)
         {
-            /*
+            
             if (ModelState.IsValid)
             {
+                Store newStore = new Store
+                {
+                    StoreName = model.StoreName,
+                    
+                };
+
+                _storeRepository.AddStore(newStore);
+
+                return RedirectToAction("Index", new { id = newStore.Id });
+
+
+
                 IdentityRole identityRole = new IdentityRole
                 {
                     Name = model.RoleName
@@ -51,7 +64,7 @@ namespace LunchBox.Admin.Controllers
             }
 
             return View(model); ModelState
-            */
+            
             storeRepository.AddStore(store);
             return View();
         }
