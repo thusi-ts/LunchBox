@@ -1,17 +1,19 @@
 ﻿@model LunchBoxAdmin.ViewModels.StoreEditViewModel
 
 @{
-    ViewData["Title"] = "Create";
+    ViewData["Title"] = "Edit";
 }
 
-<h1>Store</h1>
+<h1>Edit</h1>
 
-<h4>Create</h4>
+<h4>StoreEditViewModel</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="Create" enctype="multipart/form-data" method="post" asp-controller="Store">
+        <form asp-action="Edit" enctype="multipart/form-data" method="post">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" class="form-control" />
+            <input type="hidden" asp-for="ExistingLogoPath" class="form" />
             <div class="form-group">
                 <label asp-for="StoreName" class="control-label"></label>
                 <input asp-for="StoreName" class="form-control" />
@@ -37,13 +39,6 @@
                 <input asp-for="City" class="form-control" />
                 <span asp-validation-for="City" class="text-danger"></span>
             </div>
-
-            <div class="form-group">
-                <label asp-for="Logo" class="control-label"></label>
-                <input asp-for="Logo" class="form-control custom-file-input">
-                <span asp-validation-for="Logo" class="text-danger"></span>
-            </div>
-
             <div class="form-group">
                 <label asp-for="ZipCode" class="control-label"></label>
                 <input asp-for="ZipCode" class="form-control" />
@@ -53,6 +48,11 @@
                 <label asp-for="Cvr" class="control-label"></label>
                 <input asp-for="Cvr" class="form-control" />
                 <span asp-validation-for="Cvr" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Logo" class="control-label"></label>
+                <input asp-for="Logo" class="form-control custom-file-input">
+                <span asp-validation-for="Logo" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="ChainId" class="control-label"></label>
@@ -109,7 +109,6 @@
                 <input asp-for="PickupTime" class="form-control" />
                 <span asp-validation-for="PickupTime" class="text-danger"></span>
             </div>
-
             <div class="form-group">
                 <label asp-for="OpenMan" class="control-label"></label>
                 <input asp-for="OpenMan" class="form-control" />
@@ -146,7 +145,7 @@
                 <span asp-validation-for="OpenSun" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+                <input type="submit" value="Save" class="btn btn-primary" />
             </div>
         </form>
     </div>

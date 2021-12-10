@@ -7,12 +7,12 @@ using System.Threading.Tasks;
 
 namespace LunchBoxAdmin.Models
 {
-    public class StoreRepository : IStoreRepository
+    public class Store1Repository : IStoreRepository
     {
 
         private readonly LbDbContext appDBContext;
 
-        public StoreRepository(LbDbContext appDBContext)
+        public Store1Repository(LbDbContext appDBContext)
         {
             this.appDBContext = appDBContext;
         }
@@ -39,7 +39,7 @@ namespace LunchBoxAdmin.Models
         {
             var store = appDBContext.Stores.Attach(editStore);
             store.State = Microsoft.EntityFrameworkCore.EntityState.Modified;
-            await appDBContext.SaveChangesAsync();
+            appDBContext.SaveChanges();
             
             return editStore;
         }

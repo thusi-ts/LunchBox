@@ -26,7 +26,7 @@ namespace LunchBox.Admin.Middleware
                     httpContext.Response.Redirect("/Login/Index");
                 }
             }
-            return _next(httpContext);
+            return _next(httpContext); // ask
         }
     }
 
