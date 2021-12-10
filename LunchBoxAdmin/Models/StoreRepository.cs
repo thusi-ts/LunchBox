@@ -21,7 +21,7 @@ namespace LunchBoxAdmin.Models
         public async Task<Store> AddStore(Store store)
         {
             var result = await appDBContext.Stores.AddAsync(store);
-            await appDBContext.SaveChangesAsync(); // ask not refresh
+            await appDBContext.SaveChangesAsync(); // ask not refresh, attach 
             return result.Entity;
         }
 
@@ -30,18 +30,17 @@ namespace LunchBoxAdmin.Models
             var result = await appDBContext.Stores.FirstOrDefaultAsync(s => s.Id == id);
             if(result != null)
             {
-                appDBContext.Stores.Remove(result);
+                appDBContext.Remove(result);
                 await appDBContext.SaveChangesAsync();
             }
         }
 
         public async Task<Store> EditStore(Store editStore)
         {
-            var store = appDBContext.Stores.Attach(editStore);
-            store.State = Microsoft.EntityFrameworkCore.EntityState.Modified;
+            var result = appDBContext.Update(editStore);
             await appDBContext.SaveChangesAsync();
             
-            return editStore;
+            return result.Entity;
         }
 
         public async Task<Store> GetStore(int id)

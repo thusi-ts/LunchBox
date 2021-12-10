@@ -30,7 +30,7 @@ namespace LunchBoxAdmin.ViewModels
 
         public String Cvr { get; set; }
 
-        public int ChainId { get; set; } = 1;
+        public int ChainId { get; set; }
 
         public String ContactPersonName { get; set; }
 
@@ -50,22 +50,22 @@ namespace LunchBoxAdmin.ViewModels
 
         public bool Pickup { get; set; } = true;
 
-        public bool DeliveryOption { get; set; } = true;
+        public bool DeliveryOption { get; set; }
 
         public String PickupTime { get; set; }
 
-        public String OpenMan { get; set; } = "11-20";
+        public String OpenMan { get; set; }
 
-        public String OpenTue { get; set; } = "11-20";
+        public String OpenTue { get; set; }
 
-        public String OpenWed { get; set; } = "11-20";
+        public String OpenWed { get; set; }
 
-        public String OpenThu { get; set; } = "11-20";
+        public String OpenThu { get; set; }
 
-        public String OpenFre { get; set; } = "11-20";
+        public String OpenFre { get; set; }
 
-        public String OpenSat { get; set; } = "11-20";
+        public String OpenSat { get; set; }
 
-        public String OpenSun { get; set; } = "11-20";
+        public String OpenSun { get; set; }
     }
 }

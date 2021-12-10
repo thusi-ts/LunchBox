@@ -31,6 +31,11 @@ namespace LunchBox.Admin.Controllers
         public ViewResult Details(int id)
         {
             var model = storeRepository.GetStore(id).Result;
+            if (model == null)
+            {
+                ViewBag.ErrorMessage = $"Store with Id = {id} cannot be found";
+                return View("NotFound");
+            }
             return View(model);
         }
 
@@ -41,11 +46,8 @@ namespace LunchBox.Admin.Controllers
         [HttpPost]
         public IActionResult Create(StoreCreateViewModel model)
         {
-            // validate
             if (ModelState.IsValid)
             {
-                // upload logo
-                // upload picture
                 String logoUniqueFileName = LogoUploadProcess(model);
 
                 Store store = new Store
@@ -80,7 +82,6 @@ namespace LunchBox.Admin.Controllers
                 };
 
                 storeRepository.AddStore(store);
-                //return RedirectToAction("Details", new { id = store.Id });
                 return RedirectToAction("Index");
             }
             return View();
@@ -163,6 +164,7 @@ namespace LunchBox.Admin.Controllers
 
                 Store store = new Store
                 {
+                    Id = model.Id,
                     Active = model.Active,
                     ActiveOffMes = model.ActiveOffMes,
                     ChainId = model.ChainId,
@@ -198,5 +200,21 @@ namespace LunchBox.Admin.Controllers
             return View();
         }
 
+        [HttpGet]
+        [HttpPost]
+        public IActionResult Delete(int id)
+        {
+            Store store = storeRepository.GetStore(id).Result;
+            if (store == null)
+            {
+                ViewBag.ErrorMessage = $"Store with Id = {id} cannot be found";
+                return View("NotFound"); 
+            }
+            else
+            {
+                storeRepository.DeleteStore(id);
+                return RedirectToAction("Index");
+            }
+        }
     }
 }
