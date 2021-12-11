@@ -28,6 +28,28 @@ namespace LunchBox.Shared
             builder.HasKey(p => p.Id);
             builder.Property(p => p.CategoryName).HasMaxLength(100).IsRequired();
             builder.Property(p => p.ImageFolder).HasMaxLength(200);
+
+            builder.HasData
+            (
+                new ProductCategory
+                {
+                    Id = 1,
+                    CategoryName = "Sandwich",
+                    ImageFolder = null
+                },
+                new Student
+                {
+                    Id = 2,
+                    CategoryName = "Salat",
+                    ImageFolder = null
+                },
+                new Student
+                {
+                    Id = 3,
+                    CategoryName = "Drikkevarer",
+                    ImageFolder = null
+                }
+            );
         }
     }
 }
