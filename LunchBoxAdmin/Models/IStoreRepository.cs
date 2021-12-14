@@ -16,7 +16,7 @@ namespace LunchBoxAdmin.Models
         
         Task<Store> EditStore(Store store);
 
-        Task DeleteStore(int id);
+        Task<Boolean> DeleteStore(int id);
 
     }
 }

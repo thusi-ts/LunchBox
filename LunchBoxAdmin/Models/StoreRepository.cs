@@ -25,14 +25,16 @@ namespace LunchBoxAdmin.Models
             return result.Entity;
         }
 
-        public async Task DeleteStore(int id)
+        public async Task<Boolean> DeleteStore(int id)
         {
-            var result = await appDBContext.Stores.FirstOrDefaultAsync(s => s.Id == id);
-            if(result != null)
+            Store store = await GetStore(id);
+            if(store != null)
             {
-                appDBContext.Remove(result);
+                appDBContext.Remove(store);
                 await appDBContext.SaveChangesAsync();
+                return true;
             }
+            return false;
         }
 
         public async Task<Store> EditStore(Store editStore)
@@ -45,10 +47,10 @@ namespace LunchBoxAdmin.Models
 
         public async Task<Store> GetStore(int id)
         {
-            var result = await appDBContext.Stores.FirstOrDefaultAsync(s => s.Id == id);
-            if (result != null)
+            Store store = await appDBContext.Stores.FirstOrDefaultAsync(s => s.Id == id);
+            if (store != null)
             {
-                return result;
+                return store;
             }
             return null;
         }
