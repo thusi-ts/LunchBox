@@ -1,0 +1,293 @@
+﻿@model IEnumerable<LunchBox.Shared.ProductExtraItem>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MachineName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StoreId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ItemName1)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ItemPrice1)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ItemName2)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ItemPrice2)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ItemName3)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ItemPrice3)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ItemName4)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ItemPrice4)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ItemName5)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ItemPrice5)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ItemName6)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ItemPrice6)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ItemName7)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ItemPrice7)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ItemName8)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ItemPrice8)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ItemName9)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ItemPrice9)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ItemName10)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ItemPrice10)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ItemName11)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ItemPrice11)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ItemName12)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ItemPrice12)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ItemName13)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ItemPrice13)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ItemName14)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ItemPrice14)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ItemName15)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ItemPrice15)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ItemName16)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ItemPrice16)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ItemName17)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ItemPrice17)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ItemName18)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ItemPrice18)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ItemName19)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ItemPrice19)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ItemName20)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ItemPrice20)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MachineName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StoreId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ItemName1)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ItemPrice1)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ItemName2)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ItemPrice2)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ItemName3)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ItemPrice3)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ItemName4)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ItemPrice4)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ItemName5)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ItemPrice5)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ItemName6)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ItemPrice6)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ItemName7)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ItemPrice7)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ItemName8)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ItemPrice8)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ItemName9)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ItemPrice9)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ItemName10)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ItemPrice10)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ItemName11)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ItemPrice11)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ItemName12)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ItemPrice12)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ItemName13)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ItemPrice13)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ItemName14)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ItemPrice14)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ItemName15)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ItemPrice15)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ItemName16)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ItemPrice16)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ItemName17)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ItemPrice17)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ItemName18)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ItemPrice18)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ItemName19)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ItemPrice19)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ItemName20)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ItemPrice20)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

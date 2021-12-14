@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace LunchBox.Shared.Migrations
 {
-    public partial class init : Migration
+    public partial class @int : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -61,7 +61,6 @@ namespace LunchBox.Shared.Migrations
                     Street = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
                     City = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
                     Logo = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Picture = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     ZipCode = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: true),
                     Cvr = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true),
                     ChainId = table.Column<int>(type: "int", nullable: false),
@@ -156,7 +155,8 @@ namespace LunchBox.Shared.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    ItemMachineName = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    MachineName = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Name = table.Column<string>(type: "nvarchar(250)", maxLength: 250, nullable: true),
                     StoreId = table.Column<int>(type: "int", nullable: false),
                     ItemName1 = table.Column<string>(type: "nvarchar(250)", maxLength: 250, nullable: true),
                     ItemPrice1 = table.Column<decimal>(type: "decimal(5,2)", nullable: false),
@@ -506,6 +506,32 @@ namespace LunchBox.Shared.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                 });
+
+            migrationBuilder.InsertData(
+                table: "ProductCategorys",
+                columns: new[] { "Id", "CategoryName", "ImageFolder" },
+                values: new object[,]
+                {
+                    { 1, "Sandwich", null },
+                    { 2, "Salat", null },
+                    { 3, "Drikkevarer", null }
+                });
+
+            migrationBuilder.InsertData(
+                table: "ProductExtraItems",
+                columns: new[] { "Id", "ItemName1", "ItemName10", "ItemName11", "ItemName12", "ItemName13", "ItemName14", "ItemName15", "ItemName16", "ItemName17", "ItemName18", "ItemName19", "ItemName2", "ItemName20", "ItemName3", "ItemName4", "ItemName5", "ItemName6", "ItemName7", "ItemName8", "ItemName9", "ItemPrice1", "ItemPrice10", "ItemPrice11", "ItemPrice12", "ItemPrice13", "ItemPrice14", "ItemPrice15", "ItemPrice16", "ItemPrice17", "ItemPrice18", "ItemPrice19", "ItemPrice2", "ItemPrice20", "ItemPrice3", "ItemPrice4", "ItemPrice5", "ItemPrice6", "ItemPrice7", "ItemPrice8", "ItemPrice9", "MachineName", "Name", "StoreId" },
+                values: new object[,]
+                {
+                    { 1, "Lys", null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, 0m, 0m, 0m, 0m, 0m, 0m, 0m, 0m, 0m, 0m, 0m, 0m, 0m, 0m, 0m, 0m, 0m, 0m, 0m, 0m, "bread", "Brød", 0 },
+                    { 2, "Karry", "Ingen dressing", null, null, null, null, null, null, null, null, null, "Creme fraiche", null, "Chili", "Hvidløg", "Thousand Island", "Mexikansk", "Grøn pesto", "BBQ sauce", "Senneps dild", 0m, 0m, 0m, 0m, 0m, 0m, 0m, 0m, 0m, 0m, 0m, 0m, 0m, 0m, 0m, 0m, 0m, 0m, 0m, 0m, "saurce", "Dressing", 0 },
+                    { 3, "Ananas", "Cheddar ost", null, null, null, null, null, null, null, null, null, "Bacon", null, "Jalapenios", "Kylling", "Ost", "Rejer", "Rødløg", "Tun", "Tzatziki", 5.00m, 5.00m, 0m, 0m, 0m, 0m, 0m, 0m, 0m, 0m, 0m, 5.00m, 0m, 5.00m, 5.00m, 5.00m, 5.00m, 5.00m, 5.00m, 5.00m, "pep", "Ekstra fyld", 0 },
+                    { 4, "Dåsesodavand", null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, 10.00m, 0m, 0m, 0m, 0m, 0m, 0m, 0m, 0m, 0m, 0m, 0m, 0m, 0m, 0m, 0m, 0m, 0m, 0m, 0m, "menu_drinks", "Menutilbud", 0 }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Users",
+                columns: new[] { "Id", "Active", "City", "CreatedTime", "EnteredTime", "Full Name", "LastModifiedTime", "LocationId", "Newsletter", "Password", "Phone", "PrimaryStoreIds", "Role", "Street", "Token", "UserName", "ZipCode" },
+                values: new object[] { 1, 1, "Struer", new DateTime(2021, 12, 14, 14, 53, 26, 155, DateTimeKind.Local).AddTicks(6071), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Thusi Selvaratnam", new DateTime(2021, 12, 14, 14, 53, 26, 155, DateTimeKind.Local).AddTicks(7804), 0, 0, "password", "23469055", null, "Has authority of users and roles and permissions.", "Kjelding Høj 10", null, "admin", "7600" });
 
             migrationBuilder.CreateIndex(
                 name: "IX_LocationsDeliverys_StoreId",

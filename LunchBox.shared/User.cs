@@ -69,6 +69,26 @@ namespace LunchBox.Shared
 
             builder.HasOne(p => p.Location).WithMany(p => p.Users)
             .HasForeignKey(p => p.LocationId).OnDelete(DeleteBehavior.Restrict).IsRequired(false);
+
+            builder.HasData
+            (
+                new User
+                {
+                    Id = 1,
+                    Fullname = "Thusi Selvaratnam",
+                    UserName = "admin",
+                    CreatedTime = DateTime.Now,
+                    Active = 1,
+                    City = "Struer",
+                    LastModifiedTime = DateTime.Now,
+                    Password = "password",
+                    ZipCode = "7600",
+                    Street = "Kjelding Høj 10",
+                    Phone = "23469055",
+                    Role = Role.SuperAdmin,
+                    Newsletter = 0,
+                }
+            );
         }
     }
 }

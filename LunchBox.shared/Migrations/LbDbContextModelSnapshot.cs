@@ -19,7 +19,7 @@ namespace LunchBox.Shared.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("ProductVersion", "5.0.0");
 
-            modelBuilder.Entity("Lunchbox.shared.CartTemp", b =>
+            modelBuilder.Entity("LunchBox.Shared.CartTemp", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -55,7 +55,7 @@ namespace LunchBox.Shared.Migrations
                     b.ToTable("TempCarts");
                 });
 
-            modelBuilder.Entity("Lunchbox.shared.CartTempExtraItem", b =>
+            modelBuilder.Entity("LunchBox.Shared.CartTempExtraItem", b =>
                 {
                     b.Property<int>("TempCartId")
                         .ValueGeneratedOnAdd()
@@ -85,7 +85,7 @@ namespace LunchBox.Shared.Migrations
                     b.ToTable("TempCartExtraItems");
                 });
 
-            modelBuilder.Entity("Lunchbox.shared.Location", b =>
+            modelBuilder.Entity("LunchBox.Shared.Location", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -162,7 +162,7 @@ namespace LunchBox.Shared.Migrations
                     b.ToTable("Locations");
                 });
 
-            modelBuilder.Entity("Lunchbox.shared.LocationsDelivery", b =>
+            modelBuilder.Entity("LunchBox.Shared.LocationsDelivery", b =>
                 {
                     b.Property<int>("LocationId")
                         .HasColumnType("int");
@@ -188,7 +188,7 @@ namespace LunchBox.Shared.Migrations
                     b.ToTable("LocationsDeliverys");
                 });
 
-            modelBuilder.Entity("Lunchbox.shared.Order", b =>
+            modelBuilder.Entity("LunchBox.Shared.Order", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -238,7 +238,7 @@ namespace LunchBox.Shared.Migrations
                     b.ToTable("Orders");
                 });
 
-            modelBuilder.Entity("Lunchbox.shared.OrderExtraItem", b =>
+            modelBuilder.Entity("LunchBox.Shared.OrderExtraItem", b =>
                 {
                     b.Property<int>("OrderId")
                         .HasColumnType("int");
@@ -283,7 +283,7 @@ namespace LunchBox.Shared.Migrations
                     b.ToTable("OrderExtraItems");
                 });
 
-            modelBuilder.Entity("Lunchbox.shared.Product", b =>
+            modelBuilder.Entity("LunchBox.Shared.Product", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -406,7 +406,7 @@ namespace LunchBox.Shared.Migrations
                     b.ToTable("Products");
                 });
 
-            modelBuilder.Entity("Lunchbox.shared.ProductCategory", b =>
+            modelBuilder.Entity("LunchBox.Shared.ProductCategory", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -425,17 +425,31 @@ namespace LunchBox.Shared.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("ProductCategorys");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            CategoryName = "Sandwich"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            CategoryName = "Salat"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            CategoryName = "Drikkevarer"
+                        });
                 });
 
-            modelBuilder.Entity("Lunchbox.shared.ProductExtraItem", b =>
+            modelBuilder.Entity("LunchBox.Shared.ProductExtraItem", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .UseIdentityColumn();
-
-                    b.Property<string>("ItemMachineName")
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("ItemName1")
                         .HasMaxLength(250)
@@ -577,6 +591,13 @@ namespace LunchBox.Shared.Migrations
                     b.Property<decimal>("ItemPrice9")
                         .HasColumnType("decimal(5,2)");
 
+                    b.Property<string>("MachineName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .HasMaxLength(250)
+                        .HasColumnType("nvarchar(250)");
+
                     b.Property<int>("StoreId")
                         .HasColumnType("int");
 
@@ -585,9 +606,141 @@ namespace LunchBox.Shared.Migrations
                     b.HasIndex("StoreId");
 
                     b.ToTable("ProductExtraItems");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            ItemName1 = "Lys",
+                            ItemPrice1 = 0m,
+                            ItemPrice10 = 0m,
+                            ItemPrice11 = 0m,
+                            ItemPrice12 = 0m,
+                            ItemPrice13 = 0m,
+                            ItemPrice14 = 0m,
+                            ItemPrice15 = 0m,
+                            ItemPrice16 = 0m,
+                            ItemPrice17 = 0m,
+                            ItemPrice18 = 0m,
+                            ItemPrice19 = 0m,
+                            ItemPrice2 = 0m,
+                            ItemPrice20 = 0m,
+                            ItemPrice3 = 0m,
+                            ItemPrice4 = 0m,
+                            ItemPrice5 = 0m,
+                            ItemPrice6 = 0m,
+                            ItemPrice7 = 0m,
+                            ItemPrice8 = 0m,
+                            ItemPrice9 = 0m,
+                            MachineName = "bread",
+                            Name = "Brød",
+                            StoreId = 0
+                        },
+                        new
+                        {
+                            Id = 2,
+                            ItemName1 = "Karry",
+                            ItemName10 = "Ingen dressing",
+                            ItemName2 = "Creme fraiche",
+                            ItemName3 = "Chili",
+                            ItemName4 = "Hvidløg",
+                            ItemName5 = "Thousand Island",
+                            ItemName6 = "Mexikansk",
+                            ItemName7 = "Grøn pesto",
+                            ItemName8 = "BBQ sauce",
+                            ItemName9 = "Senneps dild",
+                            ItemPrice1 = 0m,
+                            ItemPrice10 = 0m,
+                            ItemPrice11 = 0m,
+                            ItemPrice12 = 0m,
+                            ItemPrice13 = 0m,
+                            ItemPrice14 = 0m,
+                            ItemPrice15 = 0m,
+                            ItemPrice16 = 0m,
+                            ItemPrice17 = 0m,
+                            ItemPrice18 = 0m,
+                            ItemPrice19 = 0m,
+                            ItemPrice2 = 0m,
+                            ItemPrice20 = 0m,
+                            ItemPrice3 = 0m,
+                            ItemPrice4 = 0m,
+                            ItemPrice5 = 0m,
+                            ItemPrice6 = 0m,
+                            ItemPrice7 = 0m,
+                            ItemPrice8 = 0m,
+                            ItemPrice9 = 0m,
+                            MachineName = "saurce",
+                            Name = "Dressing",
+                            StoreId = 0
+                        },
+                        new
+                        {
+                            Id = 3,
+                            ItemName1 = "Ananas",
+                            ItemName10 = "Cheddar ost",
+                            ItemName2 = "Bacon",
+                            ItemName3 = "Jalapenios",
+                            ItemName4 = "Kylling",
+                            ItemName5 = "Ost",
+                            ItemName6 = "Rejer",
+                            ItemName7 = "Rødløg",
+                            ItemName8 = "Tun",
+                            ItemName9 = "Tzatziki",
+                            ItemPrice1 = 5.00m,
+                            ItemPrice10 = 5.00m,
+                            ItemPrice11 = 0m,
+                            ItemPrice12 = 0m,
+                            ItemPrice13 = 0m,
+                            ItemPrice14 = 0m,
+                            ItemPrice15 = 0m,
+                            ItemPrice16 = 0m,
+                            ItemPrice17 = 0m,
+                            ItemPrice18 = 0m,
+                            ItemPrice19 = 0m,
+                            ItemPrice2 = 5.00m,
+                            ItemPrice20 = 0m,
+                            ItemPrice3 = 5.00m,
+                            ItemPrice4 = 5.00m,
+                            ItemPrice5 = 5.00m,
+                            ItemPrice6 = 5.00m,
+                            ItemPrice7 = 5.00m,
+                            ItemPrice8 = 5.00m,
+                            ItemPrice9 = 5.00m,
+                            MachineName = "pep",
+                            Name = "Ekstra fyld",
+                            StoreId = 0
+                        },
+                        new
+                        {
+                            Id = 4,
+                            ItemName1 = "Dåsesodavand",
+                            ItemPrice1 = 10.00m,
+                            ItemPrice10 = 0m,
+                            ItemPrice11 = 0m,
+                            ItemPrice12 = 0m,
+                            ItemPrice13 = 0m,
+                            ItemPrice14 = 0m,
+                            ItemPrice15 = 0m,
+                            ItemPrice16 = 0m,
+                            ItemPrice17 = 0m,
+                            ItemPrice18 = 0m,
+                            ItemPrice19 = 0m,
+                            ItemPrice2 = 0m,
+                            ItemPrice20 = 0m,
+                            ItemPrice3 = 0m,
+                            ItemPrice4 = 0m,
+                            ItemPrice5 = 0m,
+                            ItemPrice6 = 0m,
+                            ItemPrice7 = 0m,
+                            ItemPrice8 = 0m,
+                            ItemPrice9 = 0m,
+                            MachineName = "menu_drinks",
+                            Name = "Menutilbud",
+                            StoreId = 0
+                        });
                 });
 
-            modelBuilder.Entity("Lunchbox.shared.ProductStoreLocation", b =>
+            modelBuilder.Entity("LunchBox.Shared.ProductStoreLocation", b =>
                 {
                     b.Property<int>("StoreId")
                         .HasColumnType("int");
@@ -610,7 +763,7 @@ namespace LunchBox.Shared.Migrations
                     b.ToTable("ProductStoreLocations");
                 });
 
-            modelBuilder.Entity("Lunchbox.shared.Store", b =>
+            modelBuilder.Entity("LunchBox.Shared.Store", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -698,9 +851,6 @@ namespace LunchBox.Shared.Migrations
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
-                    b.Property<string>("Picture")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("StoreName")
                         .IsRequired()
                         .HasMaxLength(250)
@@ -720,7 +870,7 @@ namespace LunchBox.Shared.Migrations
                     b.ToTable("Stores");
                 });
 
-            modelBuilder.Entity("Lunchbox.shared.StoresPaymentDetail", b =>
+            modelBuilder.Entity("LunchBox.Shared.StoresPaymentDetail", b =>
                 {
                     b.Property<int>("StoreId")
                         .HasColumnType("int");
@@ -751,7 +901,7 @@ namespace LunchBox.Shared.Migrations
                     b.ToTable("StoresPaymentDetails");
                 });
 
-            modelBuilder.Entity("Lunchbox.shared.User", b =>
+            modelBuilder.Entity("LunchBox.Shared.User", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -822,16 +972,36 @@ namespace LunchBox.Shared.Migrations
                     b.HasIndex("LocationId");
 
                     b.ToTable("Users");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Active = 1,
+                            City = "Struer",
+                            CreatedTime = new DateTime(2021, 12, 14, 14, 53, 26, 155, DateTimeKind.Local).AddTicks(6071),
+                            EnteredTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Fullname = "Thusi Selvaratnam",
+                            LastModifiedTime = new DateTime(2021, 12, 14, 14, 53, 26, 155, DateTimeKind.Local).AddTicks(7804),
+                            LocationId = 0,
+                            Newsletter = 0,
+                            Password = "password",
+                            Phone = "23469055",
+                            Role = "Has authority of users and roles and permissions.",
+                            Street = "Kjelding Høj 10",
+                            UserName = "admin",
+                            ZipCode = "7600"
+                        });
                 });
 
-            modelBuilder.Entity("Lunchbox.shared.CartTemp", b =>
+            modelBuilder.Entity("LunchBox.Shared.CartTemp", b =>
                 {
-                    b.HasOne("Lunchbox.shared.Product", "Product")
+                    b.HasOne("LunchBox.Shared.Product", "Product")
                         .WithMany("TempCarts")
                         .HasForeignKey("ProductId")
                         .OnDelete(DeleteBehavior.Restrict);
 
-                    b.HasOne("Lunchbox.shared.Store", "Store")
+                    b.HasOne("LunchBox.Shared.Store", "Store")
                         .WithMany("TempCarts")
                         .HasForeignKey("StoreId")
                         .OnDelete(DeleteBehavior.Restrict);
@@ -841,13 +1011,13 @@ namespace LunchBox.Shared.Migrations
                     b.Navigation("Store");
                 });
 
-            modelBuilder.Entity("Lunchbox.shared.CartTempExtraItem", b =>
+            modelBuilder.Entity("LunchBox.Shared.CartTempExtraItem", b =>
                 {
-                    b.HasOne("Lunchbox.shared.CartTemp", null)
+                    b.HasOne("LunchBox.Shared.CartTemp", null)
                         .WithMany("TempCartExtraItems")
                         .HasForeignKey("CartTempId");
 
-                    b.HasOne("Lunchbox.shared.ProductExtraItem", "ProductExtraItem")
+                    b.HasOne("LunchBox.Shared.ProductExtraItem", "ProductExtraItem")
                         .WithMany("TempCartExtraItems")
                         .HasForeignKey("ProductExtraItemId")
                         .OnDelete(DeleteBehavior.Restrict);
@@ -855,14 +1025,14 @@ namespace LunchBox.Shared.Migrations
                     b.Navigation("ProductExtraItem");
                 });
 
-            modelBuilder.Entity("Lunchbox.shared.LocationsDelivery", b =>
+            modelBuilder.Entity("LunchBox.Shared.LocationsDelivery", b =>
                 {
-                    b.HasOne("Lunchbox.shared.Location", "Location")
+                    b.HasOne("LunchBox.Shared.Location", "Location")
                         .WithMany("LocationsDeliverys")
                         .HasForeignKey("LocationId")
                         .OnDelete(DeleteBehavior.Restrict);
 
-                    b.HasOne("Lunchbox.shared.Store", "Store")
+                    b.HasOne("LunchBox.Shared.Store", "Store")
                         .WithMany("LocationsDeliverys")
                         .HasForeignKey("StoreId")
                         .OnDelete(DeleteBehavior.Restrict);
@@ -872,14 +1042,14 @@ namespace LunchBox.Shared.Migrations
                     b.Navigation("Store");
                 });
 
-            modelBuilder.Entity("Lunchbox.shared.Order", b =>
+            modelBuilder.Entity("LunchBox.Shared.Order", b =>
                 {
-                    b.HasOne("Lunchbox.shared.Store", "Store")
+                    b.HasOne("LunchBox.Shared.Store", "Store")
                         .WithMany("Orders")
                         .HasForeignKey("StoreId")
                         .OnDelete(DeleteBehavior.Restrict);
 
-                    b.HasOne("Lunchbox.shared.User", "User")
+                    b.HasOne("LunchBox.Shared.User", "User")
                         .WithMany("Orders")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Restrict);
@@ -889,19 +1059,19 @@ namespace LunchBox.Shared.Migrations
                     b.Navigation("User");
                 });
 
-            modelBuilder.Entity("Lunchbox.shared.OrderExtraItem", b =>
+            modelBuilder.Entity("LunchBox.Shared.OrderExtraItem", b =>
                 {
-                    b.HasOne("Lunchbox.shared.Order", "Order")
+                    b.HasOne("LunchBox.Shared.Order", "Order")
                         .WithMany("OrderExtraItems")
                         .HasForeignKey("OrderId")
                         .OnDelete(DeleteBehavior.Restrict);
 
-                    b.HasOne("Lunchbox.shared.Product", "Product")
+                    b.HasOne("LunchBox.Shared.Product", "Product")
                         .WithMany("OrderExtraItems")
                         .HasForeignKey("ProductId")
                         .OnDelete(DeleteBehavior.Restrict);
 
-                    b.HasOne("Lunchbox.shared.ProductExtraItem", "ProductExtraItem")
+                    b.HasOne("LunchBox.Shared.ProductExtraItem", "ProductExtraItem")
                         .WithMany("OrderExtraItems")
                         .HasForeignKey("ProductId")
                         .OnDelete(DeleteBehavior.Restrict);
@@ -913,63 +1083,63 @@ namespace LunchBox.Shared.Migrations
                     b.Navigation("ProductExtraItem");
                 });
 
-            modelBuilder.Entity("Lunchbox.shared.Product", b =>
+            modelBuilder.Entity("LunchBox.Shared.Product", b =>
                 {
-                    b.HasOne("Lunchbox.shared.ProductCategory", "ProductCategory")
+                    b.HasOne("LunchBox.Shared.ProductCategory", "ProductCategory")
                         .WithMany("Products")
                         .HasForeignKey("ProductCategoryId")
                         .OnDelete(DeleteBehavior.Restrict);
 
-                    b.HasOne("Lunchbox.shared.ProductExtraItem", "ProductExtraItem10")
+                    b.HasOne("LunchBox.Shared.ProductExtraItem", "ProductExtraItem10")
                         .WithMany("Products10")
                         .HasForeignKey("ProductExtraitem10Id")
                         .OnDelete(DeleteBehavior.Restrict);
 
-                    b.HasOne("Lunchbox.shared.ProductExtraItem", "ProductExtraItem1")
+                    b.HasOne("LunchBox.Shared.ProductExtraItem", "ProductExtraItem1")
                         .WithMany("Products1")
                         .HasForeignKey("ProductExtraitem1Id")
                         .OnDelete(DeleteBehavior.Restrict);
 
-                    b.HasOne("Lunchbox.shared.ProductExtraItem", "ProductExtraItem2")
+                    b.HasOne("LunchBox.Shared.ProductExtraItem", "ProductExtraItem2")
                         .WithMany("Products9")
                         .HasForeignKey("ProductExtraitem2Id");
 
-                    b.HasOne("Lunchbox.shared.ProductExtraItem", "ProductExtraItem3")
+                    b.HasOne("LunchBox.Shared.ProductExtraItem", "ProductExtraItem3")
                         .WithMany("Products2")
                         .HasForeignKey("ProductExtraitem3Id")
                         .OnDelete(DeleteBehavior.Restrict);
 
-                    b.HasOne("Lunchbox.shared.ProductExtraItem", "ProductExtraItem4")
+                    b.HasOne("LunchBox.Shared.ProductExtraItem", "ProductExtraItem4")
                         .WithMany("Products3")
                         .HasForeignKey("ProductExtraitem4Id")
                         .OnDelete(DeleteBehavior.Restrict);
 
-                    b.HasOne("Lunchbox.shared.ProductExtraItem", "ProductExtraItem5")
+                    b.HasOne("LunchBox.Shared.ProductExtraItem", "ProductExtraItem5")
                         .WithMany("Products4")
                         .HasForeignKey("ProductExtraitem5Id")
                         .OnDelete(DeleteBehavior.Restrict);
 
-                    b.HasOne("Lunchbox.shared.ProductExtraItem", "ProductExtraItem6")
+                    b.HasOne("LunchBox.Shared.ProductExtraItem", "ProductExtraItem6")
                         .WithMany("Products5")
                         .HasForeignKey("ProductExtraitem6Id")
                         .OnDelete(DeleteBehavior.Restrict);
 
-                    b.HasOne("Lunchbox.shared.ProductExtraItem", "ProductExtraItem7")
+                    b.HasOne("LunchBox.Shared.ProductExtraItem", "ProductExtraItem7")
                         .WithMany("Products6")
                         .HasForeignKey("ProductExtraitem7Id")
                         .OnDelete(DeleteBehavior.Restrict);
 
-                    b.HasOne("Lunchbox.shared.ProductExtraItem", "ProductExtraItem8")
+                    b.HasOne("LunchBox.Shared.ProductExtraItem", "ProductExtraItem8")
                         .WithMany("Products7")
                         .HasForeignKey("ProductExtraitem8Id")
                         .OnDelete(DeleteBehavior.Restrict);
 
-                    b.HasOne("Lunchbox.shared.ProductExtraItem", "ProductExtraItem9")
+                    b.HasOne("LunchBox.Shared.ProductExtraItem", "ProductExtraItem9")
                         .WithMany("Products8")
                         .HasForeignKey("ProductExtraitem9Id")
                         .OnDelete(DeleteBehavior.Restrict);
 
-                    b.HasOne("Lunchbox.shared.Store", "Store")
+                    b.HasOne("LunchBox.Shared.Store", "Store")
                         .WithMany("Products")
                         .HasForeignKey("StoreId")
                         .OnDelete(DeleteBehavior.Restrict);
@@ -999,9 +1169,9 @@ namespace LunchBox.Shared.Migrations
                     b.Navigation("Store");
                 });
 
-            modelBuilder.Entity("Lunchbox.shared.ProductExtraItem", b =>
+            modelBuilder.Entity("LunchBox.Shared.ProductExtraItem", b =>
                 {
-                    b.HasOne("Lunchbox.shared.Store", "Store")
+                    b.HasOne("LunchBox.Shared.Store", "Store")
                         .WithMany("ProductExtraItems")
                         .HasForeignKey("StoreId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -1010,19 +1180,19 @@ namespace LunchBox.Shared.Migrations
                     b.Navigation("Store");
                 });
 
-            modelBuilder.Entity("Lunchbox.shared.ProductStoreLocation", b =>
+            modelBuilder.Entity("LunchBox.Shared.ProductStoreLocation", b =>
                 {
-                    b.HasOne("Lunchbox.shared.Location", "Location")
+                    b.HasOne("LunchBox.Shared.Location", "Location")
                         .WithMany("ProductStoreLocations")
                         .HasForeignKey("LocationId")
                         .OnDelete(DeleteBehavior.Restrict);
 
-                    b.HasOne("Lunchbox.shared.Product", "Product")
+                    b.HasOne("LunchBox.Shared.Product", "Product")
                         .WithMany("ProductStoreLocations")
                         .HasForeignKey("ProductId")
                         .OnDelete(DeleteBehavior.Restrict);
 
-                    b.HasOne("Lunchbox.shared.Store", "Store")
+                    b.HasOne("LunchBox.Shared.Store", "Store")
                         .WithMany("ProductStoreLocations")
                         .HasForeignKey("StoreId")
                         .OnDelete(DeleteBehavior.Restrict);
@@ -1034,9 +1204,9 @@ namespace LunchBox.Shared.Migrations
                     b.Navigation("Store");
                 });
 
-            modelBuilder.Entity("Lunchbox.shared.StoresPaymentDetail", b =>
+            modelBuilder.Entity("LunchBox.Shared.StoresPaymentDetail", b =>
                 {
-                    b.HasOne("Lunchbox.shared.Store", "Store")
+                    b.HasOne("LunchBox.Shared.Store", "Store")
                         .WithMany("StoresPaymentDetails")
                         .HasForeignKey("StoreId")
                         .OnDelete(DeleteBehavior.Restrict);
@@ -1044,9 +1214,9 @@ namespace LunchBox.Shared.Migrations
                     b.Navigation("Store");
                 });
 
-            modelBuilder.Entity("Lunchbox.shared.User", b =>
+            modelBuilder.Entity("LunchBox.Shared.User", b =>
                 {
-                    b.HasOne("Lunchbox.shared.Location", "Location")
+                    b.HasOne("LunchBox.Shared.Location", "Location")
                         .WithMany("Users")
                         .HasForeignKey("LocationId")
                         .OnDelete(DeleteBehavior.Restrict);
@@ -1054,12 +1224,12 @@ namespace LunchBox.Shared.Migrations
                     b.Navigation("Location");
                 });
 
-            modelBuilder.Entity("Lunchbox.shared.CartTemp", b =>
+            modelBuilder.Entity("LunchBox.Shared.CartTemp", b =>
                 {
                     b.Navigation("TempCartExtraItems");
                 });
 
-            modelBuilder.Entity("Lunchbox.shared.Location", b =>
+            modelBuilder.Entity("LunchBox.Shared.Location", b =>
                 {
                     b.Navigation("LocationsDeliverys");
 
@@ -1068,12 +1238,12 @@ namespace LunchBox.Shared.Migrations
                     b.Navigation("Users");
                 });
 
-            modelBuilder.Entity("Lunchbox.shared.Order", b =>
+            modelBuilder.Entity("LunchBox.Shared.Order", b =>
                 {
                     b.Navigation("OrderExtraItems");
                 });
 
-            modelBuilder.Entity("Lunchbox.shared.Product", b =>
+            modelBuilder.Entity("LunchBox.Shared.Product", b =>
                 {
                     b.Navigation("OrderExtraItems");
 
@@ -1082,12 +1252,12 @@ namespace LunchBox.Shared.Migrations
                     b.Navigation("TempCarts");
                 });
 
-            modelBuilder.Entity("Lunchbox.shared.ProductCategory", b =>
+            modelBuilder.Entity("LunchBox.Shared.ProductCategory", b =>
                 {
                     b.Navigation("Products");
                 });
 
-            modelBuilder.Entity("Lunchbox.shared.ProductExtraItem", b =>
+            modelBuilder.Entity("LunchBox.Shared.ProductExtraItem", b =>
                 {
                     b.Navigation("OrderExtraItems");
 
@@ -1114,7 +1284,7 @@ namespace LunchBox.Shared.Migrations
                     b.Navigation("TempCartExtraItems");
                 });
 
-            modelBuilder.Entity("Lunchbox.shared.Store", b =>
+            modelBuilder.Entity("LunchBox.Shared.Store", b =>
                 {
                     b.Navigation("LocationsDeliverys");
 
@@ -1131,7 +1301,7 @@ namespace LunchBox.Shared.Migrations
                     b.Navigation("TempCarts");
                 });
 
-            modelBuilder.Entity("Lunchbox.shared.User", b =>
+            modelBuilder.Entity("LunchBox.Shared.User", b =>
                 {
                     b.Navigation("Orders");
                 });

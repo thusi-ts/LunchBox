@@ -37,13 +37,13 @@ namespace LunchBox.Shared
                     CategoryName = "Sandwich",
                     ImageFolder = null
                 },
-                new Student
+                new ProductCategory
                 {
                     Id = 2,
                     CategoryName = "Salat",
                     ImageFolder = null
                 },
-                new Student
+                new ProductCategory
                 {
                     Id = 3,
                     CategoryName = "Drikkevarer",

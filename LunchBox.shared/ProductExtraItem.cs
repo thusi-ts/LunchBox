@@ -14,7 +14,9 @@ namespace LunchBox.Shared
     {
         public int Id { get; set; }
 
-        public String ItemMachineName { get; set; }
+        public String MachineName { get; set; }
+
+        public String Name { get; set; }
 
         public Store Store { get; set; }
 
@@ -119,6 +121,7 @@ namespace LunchBox.Shared
         public void Configure(EntityTypeBuilder<ProductExtraItem> builder)
         {
             builder.HasKey(p => p.Id);
+            builder.Property(p => p.Name).HasMaxLength(250);
             builder.Property(p => p.ItemName1).HasMaxLength(250);
             builder.Property(p => p.ItemName2).HasMaxLength(250);
             builder.Property(p => p.ItemName3).HasMaxLength(250);
@@ -161,6 +164,73 @@ namespace LunchBox.Shared
             builder.Property(b => b.ItemPrice19).HasColumnType("decimal(5, 2)");
             builder.Property(b => b.ItemPrice20).HasColumnType("decimal(5, 2)");
 
+            builder.HasData
+            (
+                new ProductExtraItem
+                {
+                    Id = 1, 
+                    MachineName = "bread", 
+                    StoreId = 0, 
+                    Name = "Brød", 
+                    ItemName1 = "Lys", 
+                    ItemPrice1 = 0
+                },
+                new ProductExtraItem
+                {
+                    Id = 2, 
+                    MachineName = "saurce", 
+                    StoreId = 0, 
+                    Name = "Dressing", 
+                    ItemName1 = "Karry",
+                    ItemName2 = "Creme fraiche",
+                    ItemName3 = "Chili",
+                    ItemName4 = "Hvidløg",
+                    ItemName5 = "Thousand Island",
+                    ItemName6 = "Mexikansk",
+                    ItemName7 = "Grøn pesto",
+                    ItemName8 = "BBQ sauce",
+                    ItemName9 = "Senneps dild",
+                    ItemName10 = "Ingen dressing",
+                },
+
+                new ProductExtraItem
+                {
+                    Id = 3,
+                    MachineName = "pep",
+                    StoreId = 0,
+                    Name = "Ekstra fyld",
+                    ItemName1 = "Ananas",
+                    ItemPrice1 = 5.00m,
+                    ItemName2 = "Bacon",
+                    ItemPrice2 = 5.00m,
+                    ItemName3 = "Jalapenios",
+                    ItemPrice3 = 5.00m,
+                    ItemName4 = "Kylling",
+                    ItemPrice4 = 5.00m,
+                    ItemName5 = "Ost",
+                    ItemPrice5 = 5.00m,
+                    ItemName6 = "Rejer",
+                    ItemPrice6 = 5.00m,
+                    ItemName7 = "Rødløg",
+                    ItemPrice7 = 5.00m,
+                    ItemName8 = "Tun",
+                    ItemPrice8 = 5.00m,
+                    ItemName9 = "Tzatziki",
+                    ItemPrice9 = 5.00m,
+                    ItemName10 = "Cheddar ost",
+                    ItemPrice10 = 5.00m,
+                },
+
+                new ProductExtraItem
+                {
+                    Id = 4,
+                    MachineName = "menu_drinks",
+                    StoreId = 0,
+                    Name = "Menutilbud",
+                    ItemName1 = "Dåsesodavand",
+                    ItemPrice1 = 10.00m,
+                }
+            );
         }
     }
 }
