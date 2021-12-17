@@ -35,7 +35,14 @@
                             <td>@store.Email</td>
                             <td><a asp-route-id="@store.Id" class="navbar-brand" asp-action="Details" asp-controller="Store"><span class="btn btn-success btn-sm">Details</span></a></td>
                             <td><a asp-route-id="@store.Id" class="navbar-brand" asp-action="Edit" asp-controller="Store"><span class="btn btn-info btn-sm">Edit</span></a></td>
-                            <td><a asp-route-id="@store.Id" class="navbar-brand" asp-action="Delete" asp-controller="Store" onclick="return confirm('Are you sure you want to delete it : @store.StoreName')"><span class="btn btn-info btn-sm">Delete</span></a></td>
+                            <td>
+                                <form method="post" asp-action="Delete" asp-route-id="@store.Id">
+                                    <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete it: @store.StoreName')">
+                                        <span class="btn btn-info btn-sm">Delete</span>
+                                    </button>
+                                </form>
+                            </td>                           
+
                         </tr>
                         }
                     </tbody>

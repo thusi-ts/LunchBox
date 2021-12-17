@@ -27,23 +27,24 @@ namespace LunchBoxAdmin.Models
 
         public async Task<Store> DeleteStore(int id)
         {
-            var test = await appDBContext.Stores.ToListAsync();
-            Store store = await GetStore(id);
-            if(store != null)
+            var result = await appDBContext.Stores.FirstOrDefaultAsync(s => s.Id == id);
+            if (result != null)
             {
                 try
                 {
-                    appDBContext.Stores.Remove(store);
+                    appDBContext.Stores.Remove(result);
                     await appDBContext.SaveChangesAsync();
+                    
+                    return result;
                 }
                 catch (ObjectDisposedException e)
                 {
-                    
+                    Console.WriteLine("Store: {0}", result.Id);
                     Console.WriteLine("Caught: {0}", e.Message);
                 }
                 
             }
-            return store;
+            return null;
         }
 
         public async Task<Store> EditStore(Store editStore)
@@ -56,12 +57,7 @@ namespace LunchBoxAdmin.Models
 
         public async Task<Store> GetStore(int id)
         {
-            Store store = await appDBContext.Stores.FirstOrDefaultAsync(s => s.Id == id);
-            if (store != null)
-            {
-                return store;
-            }
-            return null;
+            return await appDBContext.Stores.FirstOrDefaultAsync(s => s.Id == id);
         }
 
         public async Task<IEnumerable<Store>> GetStores()

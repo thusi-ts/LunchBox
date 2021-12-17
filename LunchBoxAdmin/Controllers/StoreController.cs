@@ -200,7 +200,6 @@ namespace LunchBox.Admin.Controllers
             return View();
         }
 
-        [HttpGet]
         [HttpPost]
         public IActionResult Delete(int id)
         {
