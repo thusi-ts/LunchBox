@@ -21,16 +21,16 @@ namespace LunchBox.Admin.Controllers
             this.storeRepository = storeRepository;
             this.webHostEnvironment = webHostEnvironment;
         }
-        public ViewResult Index()
+        public async Task<ViewResult> Index()
         {
-            var model = storeRepository.GetStores().Result; // ask and not refresh
+            var model = await storeRepository.GetStores(); // ask and not refresh
 
             return View(model);
         }
 
-        public ViewResult Details(int id)
+        public async Task<ViewResult> Details(int id)
         {
-            var model = storeRepository.GetStore(id).Result;
+            var model = await storeRepository.GetStore(id);
             if (model == null)
             {
                 ViewBag.ErrorMessage = $"Store with Id = {id} cannot be found";
@@ -43,8 +43,9 @@ namespace LunchBox.Admin.Controllers
         {
             return View();
         }
+        
         [HttpPost]
-        public IActionResult Create(StoreCreateViewModel model)
+        public async Task<IActionResult> Create(StoreCreateViewModel model)
         {
             if (ModelState.IsValid)
             {
@@ -81,7 +82,7 @@ namespace LunchBox.Admin.Controllers
                     ZipCode = model.ZipCode,
                 };
 
-                storeRepository.AddStore(store);
+                await storeRepository.AddStore(store);
                 return RedirectToAction("Index");
             }
             return View();
@@ -106,43 +107,44 @@ namespace LunchBox.Admin.Controllers
             return logoUniqueFileName;
         }
 
-        public ViewResult Edit(int id)
+        public async Task<ViewResult> Edit(int id)
         {
-            Store store = storeRepository.GetStore(id).Result;
+            var result = await storeRepository.GetStore(id);
+            
             StoreEditViewModel storeEditModel = new StoreEditViewModel
             {
-                Id = store.Id,
-                Active = store.Active,
-                ActiveOffMes = store.ActiveOffMes,
-                ChainId = store.ChainId,
-                City = store.City,
-                Cvr = store.Cvr,
-                ContactPersonEmail = store.ContactPersonEmail,
-                ContactPersonName = store.ContactPersonName,
-                DeliveryOption = store.DeliveryOption,
-                Description = store.Description,
-                Discount = store.Discount,
-                Email = store.Email,
-                Pickup = store.Pickup,
-                PickupTime = store.PickupTime,
-                ExistingLogoPath = store.Logo,
-                Map = store.Map,
-                OpenFre = store.OpenFre,
-                OpenMan = store.OpenMan,
-                OpenSat = store.OpenSat,
-                OpenSun = store.OpenSun,
-                OpenThu = store.OpenThu,
-                OpenTue = store.OpenTue,
-                OpenWed = store.OpenWed,
-                Phone = store.Phone,
-                StoreName = store.StoreName,
-                Street = store.Street,
-                ZipCode = store.ZipCode,
+                Id = result.Id,
+                Active = result.Active,
+                ActiveOffMes = result.ActiveOffMes,
+                ChainId = result.ChainId,
+                City = result.City,
+                Cvr = result.Cvr,
+                ContactPersonEmail = result.ContactPersonEmail,
+                ContactPersonName = result.ContactPersonName,
+                DeliveryOption = result.DeliveryOption,
+                Description = result.Description,
+                Discount = result.Discount,
+                Email = result.Email,
+                Pickup = result.Pickup,
+                PickupTime = result.PickupTime,
+                ExistingLogoPath = result.Logo,
+                Map = result.Map,
+                OpenFre = result.OpenFre,
+                OpenMan = result.OpenMan,
+                OpenSat = result.OpenSat,
+                OpenSun = result.OpenSun,
+                OpenThu = result.OpenThu,
+                OpenTue = result.OpenTue,
+                OpenWed = result.OpenWed,
+                Phone = result.Phone,
+                StoreName = result.StoreName,
+                Street = result.Street,
+                ZipCode = result.ZipCode,
             };
             return View(storeEditModel);
         }
         [HttpPost]
-        public IActionResult Edit(StoreEditViewModel model)
+        public async Task<IActionResult> Edit(StoreEditViewModel model)
         {
             String logoPath = null;
 
@@ -194,24 +196,24 @@ namespace LunchBox.Admin.Controllers
                     ZipCode = model.ZipCode,
                 };
 
-                storeRepository.EditStore(store);
+                await storeRepository.EditStore(store);
                 return RedirectToAction("Details", new { id = model.Id });
             }
             return View();
         }
 
         [HttpPost]
-        public IActionResult Delete(int id)
+        public async Task<IActionResult> Delete(int id)
         {
-            Store store = storeRepository.GetStore(id).Result;
-            if (store == null)
+            var result = await storeRepository.GetStore(id);
+            if (result == null)
             {
                 ViewBag.ErrorMessage = $"Store with Id = {id} cannot be found";
                 return View("NotFound"); 
             }
             else
             {
-                storeRepository.DeleteStore(id);
+                await storeRepository.DeleteStore(id);
                 return RedirectToAction("Index");
             }
         }
