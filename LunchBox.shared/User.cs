@@ -43,7 +43,7 @@ namespace LunchBox.Shared
 
         public Location Location { get; set; }
 
-        public int LocationId { get; set; }
+        public int? LocationId { get; set; }
 
         public String PrimaryStoreIds { get; set; }
 
@@ -69,7 +69,7 @@ namespace LunchBox.Shared
 
             builder.HasOne(p => p.Location).WithMany(p => p.Users)
             .HasForeignKey(p => p.LocationId).OnDelete(DeleteBehavior.Restrict).IsRequired(false);
-
+            
             builder.HasData
             (
                 new User
@@ -89,6 +89,7 @@ namespace LunchBox.Shared
                     Newsletter = 0,
                 }
             );
+            
         }
     }
 }

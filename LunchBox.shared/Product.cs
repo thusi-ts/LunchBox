@@ -22,7 +22,7 @@ namespace LunchBox.Shared
         
         public Store Store { get; set; }
 
-        public int StoreId { get; set; }
+        public int? StoreId { get; set; }
 
         public decimal Price { get; set; }
         
@@ -30,7 +30,7 @@ namespace LunchBox.Shared
 
         public String Picture { get; set; }
 
-        public int Active { get; set; } = 1;
+        public int Active { get; set; }
 
         public String ActiveOffMes { get; set; }
         
@@ -38,61 +38,61 @@ namespace LunchBox.Shared
 
         public int? ProductExtraitem1Id { get; set; }
 
-        public int ProductExtraitemMandatory1 { get; set; }
+        public int? ProductExtraitemMandatory1 { get; set; }
         
         public ProductExtraItem ProductExtraItem2 { get; set; }
         
         public int? ProductExtraitem2Id { get; set; }
         
-        public int ProductExtraitemMandatory2 { get; set; }
+        public int? ProductExtraitemMandatory2 { get; set; }
 
         public ProductExtraItem ProductExtraItem3 { get; set; }
 
         public int? ProductExtraitem3Id { get; set; }
         
-        public int ProductExtraitemMandatory3 { get; set; }
+        public int? ProductExtraitemMandatory3 { get; set; }
 
         public ProductExtraItem ProductExtraItem4 { get; set; }
 
         public int? ProductExtraitem4Id { get; set; }
         
-        public int ProductExtraitemMandatory4 { get; set; }
+        public int? ProductExtraitemMandatory4 { get; set; }
 
         public ProductExtraItem ProductExtraItem5 { get; set; }
 
         public int? ProductExtraitem5Id { get; set; }
         
-        public int ProductExtraitemMandatory5 { get; set; }
+        public int? ProductExtraitemMandatory5 { get; set; }
 
         public ProductExtraItem ProductExtraItem6 { get; set; }
 
         public int? ProductExtraitem6Id { get; set; }
         
-        public int ProductExtraitemMandatory6 { get; set; }
+        public int? ProductExtraitemMandatory6 { get; set; }
 
         public ProductExtraItem ProductExtraItem7 { get; set; }
 
         public int? ProductExtraitem7Id { get; set; }
         
-        public int ProductExtraitemMandatory7 { get; set; }
+        public int? ProductExtraitemMandatory7 { get; set; }
 
         public ProductExtraItem ProductExtraItem8 { get; set; }
 
         public int? ProductExtraitem8Id { get; set; }
         
-        public int ProductExtraitemMandatory8 { get; set; }
+        public int? ProductExtraitemMandatory8 { get; set; }
 
         public ProductExtraItem ProductExtraItem9 { get; set; }
 
         public int? ProductExtraitem9Id { get; set; }
         
-        public int ProductExtraitemMandatory9 { get; set; }
+        public int? ProductExtraitemMandatory9 { get; set; }
 
         public ProductExtraItem ProductExtraItem10 { get; set; }
 
         public int? ProductExtraitem10Id { get; set; }
         
-        public int ProductExtraitemMandatory10 { get; set; }
+        public int? ProductExtraitemMandatory10 { get; set; }
 
         public ICollection<OrderExtraItem> OrderExtraItems { get; set; }
         public ICollection<ProductStoreLocation> ProductStoreLocations { get; set; }
@@ -135,6 +135,219 @@ namespace LunchBox.Shared
 
             builder.HasOne(p => p.ProductCategory).WithMany(pc => pc.Products)
            .HasForeignKey(p => p.ProductCategoryId).OnDelete(DeleteBehavior.Restrict).IsRequired(false);
+
+            builder.HasData
+            (
+                new Product
+                {
+                    Id = 1,
+                    ProductName = "kylling & Bacon",
+                    ProductCategoryId = 1,
+                    StoreId = null,
+                    Price = 32.00m,
+                    ProductExtraitem1Id = 1,
+                    ProductExtraitemMandatory1 = 1,
+                    ProductExtraitem2Id = 2,
+                    ProductExtraitemMandatory2 = 1,
+                    ProductExtraitem3Id = 3,
+                    ProductExtraitemMandatory3 = null,
+                    ProductExtraitem4Id = 4,
+                    ProductExtraitemMandatory4 = null,
+                },
+                new Product
+                {
+                    Id = 2,
+                    ProductName = "kylling & Annanas",
+                    ProductCategoryId = 1,
+                    StoreId = null,
+                    Price = 32.00m,
+                    ProductExtraitem1Id = 1,
+                    ProductExtraitemMandatory1 = 1,
+                    ProductExtraitem2Id = 2,
+                    ProductExtraitemMandatory2 = 1,
+                    ProductExtraitem3Id = 3,
+                    ProductExtraitemMandatory3 = null,
+                    ProductExtraitem4Id = 4,
+                    ProductExtraitemMandatory4 = null,
+                },
+                new Product
+                {
+                    Id = 3,
+                    ProductName = "Kylling & Jalepenos",
+                    ProductCategoryId = 1,
+                    StoreId = null,
+                    Price = 32.00m,
+                    ProductExtraitem1Id = 1,
+                    ProductExtraitemMandatory1 = 1,
+                    ProductExtraitem2Id = 2,
+                    ProductExtraitemMandatory2 = 1,
+                    ProductExtraitem3Id = 3,
+                    ProductExtraitemMandatory3 = null,
+                    ProductExtraitem4Id = 4,
+                    ProductExtraitemMandatory4 = null,
+                },
+                new Product
+                {
+                    Id = 4,
+                    ProductName = "Kylling",
+                    ProductCategoryId = 1,
+                    StoreId = null,
+                    Price = 32.00m,
+                    ProductExtraitem1Id = 1,
+                    ProductExtraitemMandatory1 = 1,
+                    ProductExtraitem2Id = 2,
+                    ProductExtraitemMandatory2 = 1,
+                    ProductExtraitem3Id = 3,
+                    ProductExtraitemMandatory3 = null,
+                    ProductExtraitem4Id = 4,
+                    ProductExtraitemMandatory4 = null,
+                },
+                new Product
+                {
+                    Id = 5,
+                    ProductName = "Skinke & Ost",
+                    ProductCategoryId = 1,
+                    StoreId = null,
+                    Price = 32.00m,
+                    ProductExtraitem1Id = 1,
+                    ProductExtraitemMandatory1 = 1,
+                    ProductExtraitem2Id = 2,
+                    ProductExtraitemMandatory2 = 1,
+                    ProductExtraitem3Id = 3,
+                    ProductExtraitemMandatory3 = null,
+                    ProductExtraitem4Id = 4,
+                    ProductExtraitemMandatory4 = null,
+                },
+                new Product
+                {
+                    Id = 6,
+                    ProductName = "Æg & Rejer",
+                    ProductCategoryId = 1,
+                    StoreId = null,
+                    Price = 32.00m,
+                    ProductExtraitem1Id = 1,
+                    ProductExtraitemMandatory1 = 1,
+                    ProductExtraitem2Id = 2,
+                    ProductExtraitemMandatory2 = 1,
+                    ProductExtraitem3Id = 3,
+                    ProductExtraitemMandatory3 = null,
+                    ProductExtraitem4Id = 4,
+                    ProductExtraitemMandatory4 = null,
+                },
+                new Product
+                {
+                    Id = 7,
+                    ProductName = "Tunsalat",
+                    ProductCategoryId = 1,
+                    StoreId = null,
+                    Price = 32.00m,
+                    ProductExtraitem1Id = 1,
+                    ProductExtraitemMandatory1 = 1,
+                    ProductExtraitem2Id = 2,
+                    ProductExtraitemMandatory2 = 1,
+                    ProductExtraitem3Id = 3,
+                    ProductExtraitemMandatory3 = null,
+                    ProductExtraitem4Id = 4,
+                    ProductExtraitemMandatory4 = null,
+                },
+                new Product
+                {
+                    Id = 8,
+                    ProductName = "Koldrøget Laks",
+                    ProductCategoryId = 1,
+                    StoreId = null,
+                    Price = 32.00m,
+                    ProductExtraitem1Id = 1,
+                    ProductExtraitemMandatory1 = 1,
+                    ProductExtraitem2Id = 2,
+                    ProductExtraitemMandatory2 = 1,
+                    ProductExtraitem3Id = 3,
+                    ProductExtraitemMandatory3 = null,
+                    ProductExtraitem4Id = 4,
+                    ProductExtraitemMandatory4 = null,
+                },
+                new Product
+                {
+                    Id = 9,
+                    ProductName = "Oksestrimler",
+                    ProductCategoryId = 1,
+                    StoreId = null,
+                    Price = 32.00m,
+                    ProductExtraitem1Id = 1,
+                    ProductExtraitemMandatory1 = 1,
+                    ProductExtraitem2Id = 2,
+                    ProductExtraitemMandatory2 = 1,
+                    ProductExtraitem3Id = 3,
+                    ProductExtraitemMandatory3 = null,
+                    ProductExtraitem4Id = 4,
+                    ProductExtraitemMandatory4 = null,
+                },
+                new Product
+                {
+                    Id = 10,
+                    ProductName = "Pulled Pork",
+                    ProductCategoryId = 1,
+                    StoreId = null,
+                    Price = 32.00m,
+                    ProductExtraitem1Id = 1,
+                    ProductExtraitemMandatory1 = 1,
+                    ProductExtraitem2Id = 2,
+                    ProductExtraitemMandatory2 = 1,
+                    ProductExtraitem3Id = 3,
+                    ProductExtraitemMandatory3 = null,
+                    ProductExtraitem4Id = 4,
+                    ProductExtraitemMandatory4 = null,
+                },
+                new Product
+                {
+                    Id = 11,
+                    ProductName = "Lufttørret Skinke",
+                    ProductCategoryId = 1,
+                    StoreId = null,
+                    Price = 32.00m,
+                    ProductExtraitem1Id = 1,
+                    ProductExtraitemMandatory1 = 1,
+                    ProductExtraitem2Id = 2,
+                    ProductExtraitemMandatory2 = 1,
+                    ProductExtraitem3Id = 3,
+                    ProductExtraitemMandatory3 = null,
+                    ProductExtraitem4Id = 4,
+                    ProductExtraitemMandatory4 = null,
+                },
+                new Product
+                {
+                    Id = 12,
+                    ProductName = "Vegatar Falafel",
+                    ProductCategoryId = 1,
+                    StoreId = null,
+                    Price = 32.00m,
+                    ProductExtraitem1Id = 1,
+                    ProductExtraitemMandatory1 = 1,
+                    ProductExtraitem2Id = 2,
+                    ProductExtraitemMandatory2 = 1,
+                    ProductExtraitem3Id = 3,
+                    ProductExtraitemMandatory3 = null,
+                    ProductExtraitem4Id = 4,
+                    ProductExtraitemMandatory4 = null,
+                },
+                new Product
+                {
+                    Id = 13,
+                    ProductName = "Mexikansk krydret oksekød",
+                    ProductCategoryId = 1,
+                    StoreId = null,
+                    Price = 32.00m,
+                    ProductExtraitem1Id = 1,
+                    ProductExtraitemMandatory1 = 1,
+                    ProductExtraitem2Id = 2,
+                    ProductExtraitemMandatory2 = 1,
+                    ProductExtraitem3Id = 3,
+                    ProductExtraitemMandatory3 = null,
+                    ProductExtraitem4Id = 4,
+                    ProductExtraitemMandatory4 = null,
+                }
+            );
+
         }
     }
 }

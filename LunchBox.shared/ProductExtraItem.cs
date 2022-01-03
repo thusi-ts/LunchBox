@@ -20,7 +20,7 @@ namespace LunchBox.Shared
 
         public Store Store { get; set; }
 
-        public int StoreId { get; set; }
+        public int? StoreId { get; set; }
 
         public String ItemName1 { get; set; }
         
@@ -170,7 +170,7 @@ namespace LunchBox.Shared
                 {
                     Id = 1, 
                     MachineName = "bread", 
-                    StoreId = 0, 
+                    StoreId = null, 
                     Name = "Brød", 
                     ItemName1 = "Lys", 
                     ItemPrice1 = 0
@@ -179,7 +179,7 @@ namespace LunchBox.Shared
                 {
                     Id = 2, 
                     MachineName = "saurce", 
-                    StoreId = 0, 
+                    StoreId = null, 
                     Name = "Dressing", 
                     ItemName1 = "Karry",
                     ItemName2 = "Creme fraiche",
@@ -197,7 +197,7 @@ namespace LunchBox.Shared
                 {
                     Id = 3,
                     MachineName = "pep",
-                    StoreId = 0,
+                    StoreId = null,
                     Name = "Ekstra fyld",
                     ItemName1 = "Ananas",
                     ItemPrice1 = 5.00m,
@@ -225,7 +225,7 @@ namespace LunchBox.Shared
                 {
                     Id = 4,
                     MachineName = "menu_drinks",
-                    StoreId = 0,
+                    StoreId = null,
                     Name = "Menutilbud",
                     ItemName1 = "Dåsesodavand",
                     ItemPrice1 = 10.00m,
