@@ -8,8 +8,8 @@ namespace LunchBox.Shared
 {
     public static class Role
     {
-        public const string SuperAdmin = "Has authority of users and roles and permissions.";
-        public const string StorAdmin = "Has full authority of own store";
-        public const string User = "Customer of the system";
+        public const string SuperAdmin = "Super admin";
+        public const string StorAdmin = "Store admin";
+        public const string User = "User";
     }
 }

@@ -1,4 +1,5 @@
 using LunchBox.Admin.Middleware;
+using LunchBox.Admin.Models;
 using LunchBox.Shared;
 using LunchBoxAdmin.Models;
 using Microsoft.AspNetCore.Builder;
@@ -36,6 +37,8 @@ namespace LunchBoxAdmin
             services.AddControllersWithViews();
 
             services.AddScoped<IStoreRepository, StoreRepository>();
+            services.AddScoped<IUserRepository, UserRepository>();
+            services.AddScoped<IProductExtraItemsRepository, ProductExtraItemsRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

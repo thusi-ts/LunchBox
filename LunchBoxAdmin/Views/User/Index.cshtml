@@ -6,9 +6,6 @@
 
 <h1>Index</h1>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
 <table class="table">
     <thead>
         <tr>
@@ -44,12 +41,6 @@
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Newsletter)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.CreatedTime)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.EnteredTime)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.LastModifiedTime)
@@ -103,12 +94,6 @@
                 @Html.DisplayFor(modelItem => item.Newsletter)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.CreatedTime)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.EnteredTime)
-            </td>
-            <td>
                 @Html.DisplayFor(modelItem => item.LastModifiedTime)
             </td>
             <td>
@@ -120,7 +105,6 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Token)
             </td>
-            
         </tr>
 }
     </tbody>

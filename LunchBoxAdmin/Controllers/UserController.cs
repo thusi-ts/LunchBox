@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using LunchBox.Admin.Models;
+using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,9 +9,18 @@ namespace LunchBox.Admin.Controllers
 {
     public class UserController : Controller
     {
-        public IActionResult Index()
+        private readonly IUserRepository userReposotory;
+
+        public UserController(IUserRepository userReposotory)
         {
-            return View();
+            this.userReposotory = userReposotory;
+        }
+
+        public async Task<ViewResult> Index()
+        {
+            var model = await userReposotory.GetUsers();
+            
+            return View(model);
         }
     }
 }

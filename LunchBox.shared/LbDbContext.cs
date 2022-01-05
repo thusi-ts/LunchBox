@@ -9,6 +9,9 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
+
+//SqllocalDB.exe s MSSQLLocalDB, SqllocalDB.exe i MSSQLLocalDB
+
 namespace LunchBox.Shared
 {
     public class LbDbContext : DbContext
