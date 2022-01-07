@@ -1,5 +1,11 @@
 ﻿$(document).ready(function () {
     loop_news_slider();
+
+    $('a.page-submit').on('click', function () {
+        var index = $(this).data('index');
+        $("#hfCurrentPageIndex").val(index);
+        $("#pagination-form").submit();
+    });
 })
 
 var loop_news_slider_timer = '';

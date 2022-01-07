@@ -37,7 +37,7 @@
                             <td><a asp-route-id="@store.Id" class="navbar-brand" asp-action="Edit" asp-controller="Store"><span class="btn btn-info btn-sm">Edit</span></a></td>
                             <td>
                                 <form method="post" asp-action="Delete" asp-route-id="@store.Id">
-                                    <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete it: @store.StoreName')">
+                                    <button type="submit" class="btn" onclick="return confirm('Are you sure you want to delete it: @store.StoreName')">
                                         <span class="btn btn-info btn-sm">Delete</span>
                                     </button>
                                 </form>
@@ -47,33 +47,6 @@
                         }
                     </tbody>
                 </table>
-            </div>
-            <div class="row">
-                <div class="text-center">
-                    <ul class="pagination">
-                        <li class="page-item disabled">
-                            <a class="page-link" href="#">&laquo;</a>
-                        </li>
-                        <li class="page-item active">
-                            <a class="page-link" href="#">1</a>
-                        </li>
-                        <li class="page-item">
-                            <a class="page-link" href="#">2</a>
-                        </li>
-                        <li class="page-item">
-                            <a class="page-link" href="#">3</a>
-                        </li>
-                        <li class="page-item">
-                            <a class="page-link" href="#">4</a>
-                        </li>
-                        <li class="page-item">
-                            <a class="page-link" href="#">5</a>
-                        </li>
-                        <li class="page-item">
-                            <a class="page-link" href="#">&raquo;</a>
-                        </li>
-                    </ul>
-                </div>
             </div>
         </div>
     </div>
