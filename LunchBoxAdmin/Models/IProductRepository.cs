@@ -11,8 +11,8 @@ namespace LunchBox.Admin.Models
     {
         Task<IEnumerable<Product>> GetProducts();
 
-        Task<IEnumerable<ProductListViewModel>> GetProductsList();
+        Task<ProductListViewModelPagination> GetProductsList(int currentPageIndex);
 
-        Task<IEnumerable<ProductListViewModel>> GetProductsListSQL();
+        Task<IEnumerable<ProductListViewModel>> GetProductsListSQL(string filter);
     }
 }

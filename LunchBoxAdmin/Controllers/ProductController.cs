@@ -18,7 +18,14 @@ namespace LunchBox.Admin.Controllers
 
         public async Task<ViewResult> Index()
         {
-            var model = await productRepository.GetProductsList();
+            var model = await productRepository.GetProductsList(1);
+            return View(model);
+        }
+
+        [HttpPost]
+        public async Task<ViewResult> Index(int currentPageIndex)
+        {
+            var model = await productRepository.GetProductsList(currentPageIndex);
             return View(model);
         }
     }
