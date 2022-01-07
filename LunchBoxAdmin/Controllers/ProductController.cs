@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using LunchBox.Admin.Models;
+using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,9 +9,17 @@ namespace LunchBox.Admin.Controllers
 {
     public class ProductController : Controller
     {
-        public IActionResult Index()
+        private readonly IProductRepository productRepository;
+
+        public ProductController(IProductRepository productRepository)
         {
-            return View();
+            this.productRepository = productRepository;
+        }
+
+        public async Task<ViewResult> Index()
+        {
+            var model = await productRepository.GetProductsList();
+            return View(model);
         }
     }
 }

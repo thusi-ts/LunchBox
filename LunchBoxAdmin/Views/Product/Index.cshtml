@@ -1,0 +1,196 @@
+﻿@model IEnumerable<LunchBox.Admin.ViewModels.ProductListViewModel>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ProductName)
+            </th>
+            @*
+        <th>
+            @Html.DisplayNameFor(model => model.ProductCategoryId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.StoreId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Price)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Discount)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Picture)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Active)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ActiveOffMes)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ProductExtraitem1Id)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ProductExtraitemMandatory1)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ProductExtraitem2Id)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ProductExtraitemMandatory2)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ProductExtraitem3Id)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ProductExtraitemMandatory3)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ProductExtraitem4Id)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ProductExtraitemMandatory4)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ProductExtraitem5Id)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ProductExtraitemMandatory5)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ProductExtraitem6Id)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ProductExtraitemMandatory6)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ProductExtraitem7Id)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ProductExtraitemMandatory7)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ProductExtraitem8Id)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ProductExtraitemMandatory8)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ProductExtraitem9Id)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ProductExtraitemMandatory9)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ProductExtraitem10Id)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ProductExtraitemMandatory10)
+        </th>
+            *@
+        </tr>
+            </thead>
+            <tbody>
+        @foreach (var item in Model) {
+                <tr>
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ProductName)
+                    </td>
+                    @*
+        <td>
+            @Html.DisplayFor(modelItem => item.ProductCategoryId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.StoreId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Price)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Discount)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Picture)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Active)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ActiveOffMes)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ProductExtraitem1Id)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ProductExtraitemMandatory1)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ProductExtraitem2Id)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ProductExtraitemMandatory2)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ProductExtraitem3Id)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ProductExtraitemMandatory3)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ProductExtraitem4Id)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ProductExtraitemMandatory4)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ProductExtraitem5Id)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ProductExtraitemMandatory5)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ProductExtraitem6Id)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ProductExtraitemMandatory6)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ProductExtraitem7Id)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ProductExtraitemMandatory7)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ProductExtraitem8Id)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ProductExtraitemMandatory8)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ProductExtraitem9Id)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ProductExtraitemMandatory9)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ProductExtraitem10Id)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ProductExtraitemMandatory10)
+        </td>
+                    *@
+                </tr>
+        }
+            </tbody>
+        </table>
