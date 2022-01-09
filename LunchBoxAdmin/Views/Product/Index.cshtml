@@ -12,25 +12,26 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="bs-component">
-                    <table class="table table-hover">
-                        <thead>
-                            <tr>
-                                <th scope="col">Name</th>
-                                <th scope="col">Street</th>
-                                <th scope="col">City</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach (var item in Model.productListViewModel)
-                            {
-                                <tr>
-                                    <td>@item.ProductName</td>
-                                    <td>@item.ProductName</td>
-                                    <td>@item.ProductName</td>
-                                </tr>
-                            }
-                        </tbody>
-                    </table>
+                    @foreach (var item in Model.ProductListViewModel)
+                    {
+                        <div class="accordion" id="accordion">
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="heading@(item.Number)">
+                                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse@(item.Number)" aria-expanded="true" aria-controls="collapse@(item.Number)">
+                                        Navn: @item.ProductName, Categori: @item.Category, Pris: @item.Price
+                                    </button>
+                                </h2>
+                                <div id="collapse@(item.Number)" class="accordion-collapse collapse" aria-labelledby="heading@(item.Number)" data-bs-parent="#accordion@(item.Number)">
+                                    <div class="accordion-body">
+                                        <strong>@item.ProductExtraItem1Name</strong>: @item.Extraitem1<br />
+                                        <strong>@item.ProductExtraItem2Name</strong>: @item.Extraitem2<br />
+                                        <strong>@item.ProductExtraItem3Name</strong>: @item.Extraitem3<br />
+                                        <strong>@item.ProductExtraItem4Name</strong>: @item.Extraitem4<br />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
                 </div>
                 <div class="row">
                     <div class="text-center">
@@ -67,7 +68,3 @@
     </div>
     <input type="hidden" id="hfCurrentPageIndex" name="currentPageIndex" />
 </form>
-
-@section Scripts {
-    <script src="~/js/site.js"></script>
-}

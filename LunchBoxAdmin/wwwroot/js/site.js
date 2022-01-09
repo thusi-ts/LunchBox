@@ -6,6 +6,17 @@
         $("#hfCurrentPageIndex").val(index);
         $("#pagination-form").submit();
     });
+
+    $(".accordion-button").on("click", function () {
+        var id = $(this).data("bs-target");
+        let isVisible = $(id).is(':visible')
+        $(".accordion-collapse").not(":eq(" + id + " )").hide();
+        if (isVisible == true) {
+            $(id).hide();
+        } else {
+            $(id).toggle('slow');
+        }
+    });
 })
 
 var loop_news_slider_timer = '';
