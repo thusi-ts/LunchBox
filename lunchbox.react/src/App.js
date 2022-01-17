@@ -1,9 +1,12 @@
-import './App.css';
-
 function App() {
   return (
-    <div className="App">
-      TEST
+    <div className="grid-container">
+      <header>
+      </header>
+      <header>
+      </header>
+      <main>
+      </main>
     </div>
   );
 }

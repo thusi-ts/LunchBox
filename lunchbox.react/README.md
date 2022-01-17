@@ -1,14 +1,15 @@
 # Getting Started with Create React App
 
 USEFULL
-Start project: npm start 
 
 
-1. Create React App : npx create-react-app foldername
+
+1. Create React App : npx create-react-app foldername.
     a. Start project: npm start
+    b. delete unnecessary files, logo.svg, setupTests.js, app.test.js, app.css, reportWebVitals.js AND DELETE lines index.js , app.js, index.css(all) osv..
 2. Install tools
 3. Create Layout
-4. Json files
+4. Json data files
 5. React
     - front component, Shops view
     - Product list for a given shop
