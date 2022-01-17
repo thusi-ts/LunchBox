@@ -1,9 +1,15 @@
 # Getting Started with Create React App
 
-1. Create React App 
+USEFULL
+Start project: npm start 
+
+
+1. Create React App : npx create-react-app foldername
+    a. Start project: npm start
 2. Install tools
-3. Json files
-4. React
+3. Create Layout
+4. Json files
+5. React
     - front component, Shops view
     - Product list for a given shop
     - Cart
@@ -18,12 +24,13 @@
 
 
 ##Tools and Technologies
-- JavaScript (arrow functions, array functions, spread Operators, ...)
+- JavaScript (arrow functions, array functions, spread Operators, Deconstructing assginments, Local storage)
 - React (react-touter-dom, react-reveal, react-modal)
 - Redux (react-redux, redux-thunk)
 - Node (express, body-parser, Environment Variables, nodemon)
-- MongoDB ( mongoose, shortid)
-- VS Code (ES6 Snippets, ES7 React Extension, ESLint Extension,CSS Peek)
+- API 
+- VS Code (ES6 Snippets, ES7 React Extension, ESLint Extension,CSS Peek, Node debug, Prettier, Bracket Pair Colorizer
+)
 - Chrome ( React Developer Tools, Redux Developer Tools)
 -  Git (create repo, commit, remote, create and push branch)
 -  Github (create repo, connect to local repo, pull request and merge)
