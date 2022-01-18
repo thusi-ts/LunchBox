@@ -6,7 +6,7 @@ USEFULL
 
 1. Create React App : npx create-react-app foldername.
     a. Start project: npm start
-    b. delete unnecessary files, logo.svg, setupTests.js, app.test.js, app.css, reportWebVitals.js AND DELETE lines index.js , app.js, index.css(all) osv..
+    b. delete unnecessary files, logo.svg, setupTests.js, app.test.js, app.css, reportWebVitals.js AND clean the code for deleted files in index.js , app.js, index.css(all) osv..
 2. Install tools
 3. Create Layout
 4. Json data files
