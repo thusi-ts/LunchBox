@@ -1,33 +1,144 @@
-html{
-  font-size: 62.5%;
-  box-sizing: border-box;
-}
-
-body, #root {
-  height: 100vh;
+* {
+  box-sizing: border-box;  /* include the padding and border in an element's total width and height */
   margin: 0;
+  padding: 0;
 }
 
+body,
+input,
+select,
+button,
+textarea {
+  font-family: Montserrat, Helvetica, Arial, sans-serif;
+  font-size: 1rem;
+}
+
+body {
+  background-image: url(http://www.lunchbox.dk/assets/images/bg.jpg);
+  background-position: top;
+  background-size: 100% 894px;
+}
+
+body, #root{
+  
+ 
+}
 .grid-container{
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-areas: 
-            "header header"
-            "navigation navigation"
-            "main cart";
+  grid-template-columns: 1fr;
+  grid-template-rows: 6.75rem 2.25rem 1fr;
+  grid-template-areas:
+            "header-area"
+            "navigation-area"
+            "main-area";
 }
 
-#page > header {
-  grid-area: head;
-  background-color: #8ca0ff;
+a{
+  text-decoration: none;
 }
 
-#page > nav {
-  grid-area: nav;
-  background-color: #ffa08c;
+header-container {
+  grid-area: header-area;
+  background-color: #005984;
 }
 
-#page > main {
-  grid-area: main;
-  background-color: #ffff64;
+navigation-container {
+  grid-area: navigation-area;
+  background-color: #4caf50;
+  box-shadow: 1px 1px 10px rgb(0 0 0 / 50%);
 }
+
+main-container {
+  grid-area: main-area;
+  display: flex;
+  gap: 1rem;
+  flex-direction:row;
+  max-width: 60rem;
+  margin: 0 auto;
+  background-color: #fff;
+}
+
+.main {
+  padding: 0.5rem;
+  background-color: red;
+  flex: 1 0 36rem;
+}
+
+.cart {
+  padding: 0.5rem;
+  background-color: yellow;
+}
+
+.header-wrapper{
+  max-width: 60rem;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;                /* wrap: new line if no place in current place */             
+  align-items: center;
+  justify-content: space-between;  /* horisontal(x axis) align */
+  height: 100%;
+}
+
+.header-wrapper > div{          /* direct child divs */
+  flex: 1;
+}
+
+.header-wrapper .back {
+  display: none;
+}
+
+.header-wrapper .logo img{
+  height: 4.68rem;
+  border: 0;
+}
+
+.header-wrapper .memebership {
+  align-self: flex-end;         /* vertical(y axis) place bottom */
+  text-align: right;            /* align */
+}
+
+.header-wrapper .memebership a {
+  color: white;
+  text-decoration: none;
+  cursor: pointer;
+  text-transform: uppercase;
+}
+
+/* TABLET MEDIA QUERY */
+ @media screen and (max-width: 950px) {
+  .grid-container{
+    grid-template-rows: 3rem 2.25rem 1fr;
+  }
+
+  main-container {
+    flex-direction:column;    /* vertical(y axis) */
+    gap: 0rem;
+  }
+
+  .header-wrapper{
+    justify-content: center;   /* horizontally center(x axis) */
+  }
+
+  .header-wrapper .back {
+    display: block;
+  }
+
+  .header-wrapper .logo {
+    text-align: center;
+  }
+
+  .header-wrapper .logo img{
+    height: 2.5rem;
+    border: 0;
+  }
+  .header-wrapper .memebership {
+    align-self: center;   /* vertical center(y axis) */
+    text-align: right;
+  }
+}
+
+/* MOBILE MEDIA QUERY */
+@media screen and (max-width: 690px) {
+ 
+}
+
