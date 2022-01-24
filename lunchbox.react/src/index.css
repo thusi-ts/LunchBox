@@ -46,22 +46,29 @@ navigation-container {
   grid-area: navigation-area;
   background-color: #4caf50;
   box-shadow: 1px 1px 10px rgb(0 0 0 / 50%);
+  z-index: 0;
 }
 
 main-container {
   grid-area: main-area;
-  display: flex;
-  gap: 1rem;
-  flex-direction:row;
-  max-width: 60rem;
   margin: 0 auto;
   background-color: #fff;
+  padding-bottom: 30px;
+}
+
+.main-inner-wrapper{
+  display: flex;
+  gap: 1rem;
+  max-width: 58rem;
+}
+
+.main-header{
+
 }
 
 .main {
-  padding: 0.5rem;
-  background-color: red;
-  flex: 1 0 36rem;
+  flex: 1 0 37.5rem;
+  margin-left: 10px;
 }
 
 .cart {
@@ -79,7 +86,7 @@ main-container {
   height: 100%;
 }
 
-.header-wrapper > div{          /* direct child divs */
+.header-wrapper > div{          /* first child */
   flex: 1;
 }
 
@@ -104,13 +111,78 @@ main-container {
   text-transform: uppercase;
 }
 
+.main-header{
+  text-align: center;
+  text-align: center;
+  font-size: 23px;
+  color: #000000;
+  margin: 20px 0 10px 0;
+  font-weight: bold;
+}
+
+.product-list-wrapper li{
+  list-style-type: none;
+  border-bottom: 1px solid rgb(178, 178, 178);
+}
+
+.product-list.header{
+  background-color: #005984;
+  font-size: 20px;
+  line-height: 40px;
+  vertical-align: top;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  padding-right: 20px;
+  color: white; 
+  border-bottom: 0;  
+}
+
+.product-list.header .icon img {
+  height: 40px;
+  width: 60px;
+  display: inline-block;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  vertical-align: top;
+  margin-right: 10px;
+}
+
+.product-list.item{
+  font-size: 14px;
+  padding: 10px 0 10px 10px;
+  color: #333;
+  display: flex;
+}
+
+.product-list .name{
+  flex: 1 1 auto;
+}
+
+.product-list .price{
+  width: 50px;  
+}
+
+
+.main-title {
+  margin-bottom: 5px;
+  font-size: 20px;
+  font-weight: normal;
+  color: white;
+  background-color: #4caf50;
+  padding: 8px;
+  font-weight: 500;
+  text-shadow: none;
+}
+
 /* TABLET MEDIA QUERY */
  @media screen and (max-width: 950px) {
   .grid-container{
     grid-template-rows: 3rem 2.25rem 1fr;
   }
 
-  main-container {
+  .main-inner-wrapper {
     flex-direction:column;    /* vertical(y axis) */
     gap: 0rem;
   }
