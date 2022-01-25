@@ -1,5 +1,6 @@
 import Header from "./components/Header";
 import ProductList from "./components/ProductList";
+import Cart from "./components/Cart";
 
 function App() {
   return (
@@ -14,7 +15,9 @@ function App() {
             <div class="main">
               <ProductList />
             </div>
-            <div class="cart">fsfsf sfsfsf sf fsfsf sf sfsf sf sfs sfsf sfs fsf sf sf sf sdfsdfs sdf sf sfsf sdf sdf sf sfs fsdf sdf sf sfsd fsdf sdf sdffsdfsdf sf sdf sfsdf sdf sdf</div>
+            <div class="cart">
+            <Cart />
+            </div>
           </div>
         </main-container>
     </div>
