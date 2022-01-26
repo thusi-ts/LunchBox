@@ -62,10 +62,6 @@ main-container {
   max-width: 58rem;
 }
 
-.main-header{
-
-}
-
 .main {
   flex: 1 0 auto;
   margin-left: 10px;
@@ -91,7 +87,7 @@ main-container {
 }
 
 .header-wrapper{
-  max-width: 60rem;
+  width: 940px;
   margin: 0 auto;
   display: flex;
   flex-wrap: wrap;                /* wrap: new line if no place in current place */             
@@ -188,6 +184,51 @@ main-container {
   padding: 8px;
   font-weight: 500;
   text-shadow: none;
+}
+
+nav{
+  margin: 0 auto;
+  width: 940px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+nav ul{
+  list-style: none;
+  display: flex;
+}
+
+nav ul li a{
+  line-height: 36px;
+  height: 100%;
+  font-size: 15px;
+  display: inline-block;
+  position: relative;
+  z-index: 1;
+  text-decoration: none;
+  text-align: center;
+  cursor: pointer;
+  padding: 0 15px;
+  color: white;
+  text-shadow: none;
+  font-weight: normal;
+}
+
+.fa, .fas {
+  font-family: 'Font Awesome 5 Free';
+  font-weight: 900;
+}
+
+.fa-receipt:before {
+  content: "\f543";
+}
+
+.fa-utensils:before {
+  content: "\f2e7";
+}
+
+.fa-info-circle:before {
+  content: "\f05a";
 }
 
 /* TABLET MEDIA QUERY */

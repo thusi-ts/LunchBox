@@ -24,11 +24,11 @@ function App() {
         </navigation-container>
         <main-container>
           <Routes> 
-              <Route path = "/pages/" exact component = {Index}></Route>
-              <Route path = "/pages/info" exact component = {Info}></Route>
-              <Route path = "/pages/forgotPassword" component = {ForgotPassword}></Route>
-              <Route path = "/pages/login" component = {Login}></Route>
-              <Route path = "/pages/register" component = {Register}></Route>
+              <Route path = "/pages" exact element = {<Index />}/>
+              <Route path = "/pages/info" element = {<Info />}></Route>
+              <Route path = "/pages/forgotPassword" element = {<ForgotPassword />}></Route>
+              <Route path = "/pages/login" element = {<Login />}></Route>
+              <Route path = "/pages/register" element = {<Register />}></Route>
           </Routes>
         </main-container>
       </div>
@@ -36,6 +36,5 @@ function App() {
   );
 }
 
- 
 
 export default App;

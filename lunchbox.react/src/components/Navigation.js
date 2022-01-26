@@ -8,7 +8,7 @@ export default class Navigation extends Component {
             <nav>
                 <ul>
                     <li className="fa fa-utensils">
-                        <Link to="/pages/index">Find mad</Link>
+                        <Link to="/pages">Find mad</Link>
                     </li>
                     <li className="fa fa-receipt">
                         <Link to="/pages/register">Ordrer</Link>
@@ -24,15 +24,3 @@ export default class Navigation extends Component {
         )
     }
 }
-
-
-
-
-
-
-<nav>
-                    	<a onclick="link_navigation('index');"><i class="fa fa-utensils"></i> Find mad</a>
-                    	<a onclick="link_navigation('orders');"><i class="fa fa-receipt"></i> Ordrer</a>
-                        <a onclick="link_navigation('info');"><i class="fa fa-info-circle"></i> Info</a>
-                    	<a onclick="link_navigation('user');"><i class="fa fa-user"></i> Min konto</a>
-                    </nav>
