@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 
 import Header from "./components/Header";
 import Splash from "./components/Splash";
@@ -24,13 +24,13 @@ function App() {
           <Navigation />
         </navigation-container>
         <main-container>
-          <Switch> 
+          <Routes> 
               <Route path = "/pages/" exact component = {Index}></Route>
               <Route path = "/pages/info" exact component = {Info}></Route>
               <Route path = "/pages/forgotPassword" component = {ForgotPassword}></Route>
               <Route path = "/pages/login" component = {Login}></Route>
               <Route path = "/pages/register" component = {Register}></Route>
-          </Switch>
+          </Routes>
         </main-container>
       </div>
     </Router>

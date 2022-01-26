@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-import ProductList from "/components/ProductList";
-import Cart from "/components/Cart";
+import ProductList from "../ProductList";
+import Cart from "../Cart";
 
 export default class Index extends Component {
     render() {
