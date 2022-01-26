@@ -7,9 +7,9 @@ export default class Index extends Component {
         return (
             <div>
                 <div className="main-header">Kylling & Co Viborg, Gravene</div>
-                <div className="main-inner-wrapper">
+                <div className="main-inner-wrapper">ggg
                     <div class="main">
-                    <ProductList />
+                    <ProductList />ggg
                     </div>
                     <div className="cart">
                     <Cart />
