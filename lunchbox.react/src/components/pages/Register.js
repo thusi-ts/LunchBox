@@ -13,33 +13,65 @@ export default class Register extends Component {
                 zipcode: '',
                 city: '',
                 phone: '',
-                email: '',
+                mail: '',
                 password: '',
                 location_id: 0,
                 primary_stores: [],
-                newsletter: '',
+                newsletter: false,
                 user_id: 0,
             }
         };
+
+        this.changeLocationHandler = this.changeLocationHandler.bind(this);
+        this.changeStoresHandler = this.changeStoresHandler.bind(this);
+        this.checkNewsletterHandler = this.checkNewsletterHandler.bind(this);
+        this.changeHandler = this.changeHandler.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
+        
     }
 
     locationOptions = [
         { value: '0', label: 'Ingen' },
         { value: '1', label: 'Midtbyen gymnasium' },
+        { value: '2', label: 'Midtbyen gymnasium test' },
     ]
 
-    setName = (e, value) => {
-        console.log(e+" "+value);
+    changeLocationHandler = (e) => {
+        
+        const location_id = "location_id";
+
+        this.setState({ 
+            user : {
+                ...this.state.user, 
+                [location_id] : e.value,
+            }
+        });
     }
 
-    changeMultipleHandler = (e) => {
-        console.log(e);
-        const location_id = "location_id";
+    changeStoresHandler = (event) => {
+
+        const stores_ids = "primary_stores";
+        const selectedValues = (Array.isArray(event) ? event.map(x => new { value: x.value, label: x.label }) : [] );
         
         this.setState({ 
             user : {
-                
-                [location_id] : e.value,
+                ...this.state.user, 
+                [stores_ids] : selectedValues,
+            }
+        });
+    }
+
+    checkNewsletterHandler(e){
+
+        const name = e.target.name;
+        const value = e.target.checked;
+        
+        const newsletterValue = ((value == true) ? true : false);
+
+        this.setState({ 
+            user : {
+                ...this.state.user, 
+                [name] : newsletterValue,
             }
         });
     }
@@ -47,6 +79,8 @@ export default class Register extends Component {
     changeHandler = (e) => {
         const name = e.target.name;
         const value = e.target.value;
+
+        console.log(this.state.user+" "+name);
 
         this.setState({
             user : {
@@ -125,16 +159,15 @@ export default class Register extends Component {
                     </p>
                     
                     <p>
-                        <label htmlFor="email">E-mail: ( bruges til brugernavn ):</label>
+                        <label htmlFor="mail">E-mail: ( bruges til brugernavn ):</label>
                         <input 
                             type="email" 
                             name="mail" 
-                            value={this.state.user.email} 
+                            value={this.state.user.mail} 
                             onChange={this.changeHandler}
                             required 
                         />
                     </p>
-                    
                     <p>
                         <label htmlFor="password">Vælg adgangskode:</label>
                         <input 
@@ -150,36 +183,34 @@ export default class Register extends Component {
                     <p>
                         <label htmlFor="location_id">Din Institution:</label>
                         <Select 
-                            name="location_id" 
                             options={this.locationOptions}
-                            selectedValue={this.state.user.location_id} 
-                            onChange={this.changeMultipleHandler} 
+                            defaultValue={this.state.user.location_id} 
+                            onChange={this.changeLocationHandler} 
                         />
                     </p>
                     <p>
                         <label htmlFor="primary_stores">Butik: ( handle med ):</label>
                         <Select  
                             isMulti
-                            name="primary_stores" 
-                            options={[{label:"Kylling & Co Viborg, Gravene", value:1}]}
-                            selectedValue={this.state.user.primary_stores} 
-                            onChange={ (event) => this.setName('primary_stores') }  
+                            options={[{label:"Kylling & Co Viborg, Gravene", value:1}, {label:"Kylling & Co Viborg, Gravene test", value:2}]}
+                            defaultValue={this.state.user.primary_stores} 
+                            onChange={this.changeStoresHandler} 
                         />
                     </p>
                     <p>
-                    <input 
-                        name="newsletter" 
-                        type="checkbox" 
-                        id="newsletter" 
-                    />
+                        <input 
+                            type="checkbox" 
+                            name="newsletter" 
+                            onChange={this.checkNewsletterHandler} 
+                            checked={this.state.user.newsletter}
+                        />
                     <label htmlFor="newsletter"> Nyhedsbrev: ( Send mig de bedste deals og nyt om restauranten ):</label>
                     </p>
-                    
                     <p>
                         <input 
                             type="submit" 
                             value="Gem bruger" 
-                            className="submitbtn"
+                            className="submitbtn" 
                         />
                     </p>
                     
