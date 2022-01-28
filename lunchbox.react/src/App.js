@@ -1,4 +1,7 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { useEffect } from "react";
+import { BrowserRouter as Router, Routes, Route, Navigate, useLocation } from "react-router-dom";
+
+
 
 import Header from "./components/Header";
 import Splash from "./components/Splash";
@@ -12,7 +15,25 @@ import Login from "./components/pages/Login";
 import Register from "./components/pages/Register";
 
 
+
 function App() {
+
+  useEffect(() => {
+
+    setTimeout(() => { 
+      <Navigate to='/pages'  />
+    }, 5000)
+  });
+
+  //const location = useLocation();
+
+  //console.log(location);
+
+  //https://medium.com/@arashdeeps2004/splash-screen-in-react-js-using-react-redux-8e75871482e9
+
+  if(false){
+    return ( <Splash /> );
+  }
   return (
     <Router>
       <div className="grid-container">
@@ -23,8 +44,9 @@ function App() {
           <Navigation />
         </navigation-container>
         <main-container>
+        
           <Routes> 
-              <Route path = "/pages" exact element = {<Index />}/>
+              <Route path = "/pages" element = {<Index />} ></Route>
               <Route path = "/pages/info" element = {<Info />}></Route>
               <Route path = "/pages/forgotPassword" element = {<ForgotPassword />}></Route>
               <Route path = "/pages/login" element = {<Login />}></Route>
@@ -32,9 +54,8 @@ function App() {
           </Routes>
         </main-container>
       </div>
-    </Router>
+      </Router>
   );
 }
-
 
 export default App;

@@ -9,7 +9,7 @@ export default class ProductList extends Component {
             
                 <ul className="product-list-wrapper">
                     <li className="product-list header">
-                        <span class="icon"><img src="http://www.lunchbox.dk/assets/images/product/kc.jpg" className="product-list-icon" alt="" border="0"></img></span>
+                        <span className="icon"><img src="http://www.lunchbox.dk/assets/images/product/kc.jpg" className="product-list-icon" alt="" border="0"></img></span>
                         <span>Sandwich</span>
                     </li>
                     <li className="product-list item">
