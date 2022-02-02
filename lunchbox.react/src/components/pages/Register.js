@@ -51,7 +51,7 @@ export default class Register extends Component {
     changeStoresHandler = (event) => {
 
         const stores_ids = "primary_stores";
-        const selectedValues = (Array.isArray(event) ? event.map(x => new { value: x.value, label: x.label }) : [] );
+        const selectedValues = (Array.isArray(event) ? event.map(x => x.value) : [] );
         
         this.setState({ 
             user : {
@@ -66,7 +66,7 @@ export default class Register extends Component {
         const name = e.target.name;
         const value = e.target.checked;
         
-        const newsletterValue = ((value == true) ? true : false);
+        const newsletterValue = ((value === true) ? true : false);
 
         this.setState({ 
             user : {

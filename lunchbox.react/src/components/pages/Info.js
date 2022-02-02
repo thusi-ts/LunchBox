@@ -1,58 +1,40 @@
 import React, { Component } from 'react'
+import { render } from 'react-dom';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 
 export default class Info extends Component {
 
     constructor(props){
-        
         super(props);
-        
     }
 
     render() {
-
-        const tabs = 
-            <Tabs>
-              <TabList>
-                <Tab>Mario</Tab>
-                <Tab disabled>Luigi</Tab>
-                <Tab>Peach</Tab>
-              </TabList>
-          
-              <TabPanel>
-                <p>
-                  hello
-                </p>
-                <p>
-                  Source:{' '}
-                  
-                </p>
-              </TabPanel>
-              <TabPanel>
-                <p>
-                  test1
-                </p>
-                <p>
-                  Source:{' '}
-                  
-                </p>
-              </TabPanel>
-              <TabPanel>
-                <p>
-                  test
-                </p>
-                <p>
-                  Source:{' '}
-                  
-                </p>
-              </TabPanel>
-             
-            </Tabs>
-
-
         return (
-            <div>
-                { tabs }
+            <div className='info-tabs'>
+                <h1 className="title">Info</h1>
+                <Tabs>
+                    <TabList>
+                        <Tab>Mario</Tab>
+                        <Tab>Peach</Tab>
+                        <Tab>Test</Tab>
+                    </TabList>
+                
+                    <TabPanel>
+                        <p>
+                            hello
+                        </p>
+                    </TabPanel>
+                    <TabPanel>
+                        <p>
+                            test1
+                        </p>
+                    </TabPanel>
+                    <TabPanel>
+                        <p>
+                            test
+                        </p>
+                    </TabPanel>
+                </Tabs>
             </div>
         )
     }
