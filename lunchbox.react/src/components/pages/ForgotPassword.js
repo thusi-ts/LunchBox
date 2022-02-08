@@ -1,21 +1,61 @@
 import React, { Component } from 'react'
 
 export default class ForgotPassword extends Component {
+
+    constructor(props){
+        
+        super(props);
+        this.state = {
+            user : {
+                mail: '',
+            }
+        };
+
+        this.changeHandler = this.changeHandler.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
+    }
+
+    changeHandler = (e) => {
+        const name = e.target.name;
+        const value = e.target.value;
+
+        console.log(this.state.user+" "+name);
+
+        this.setState({
+            user : {
+                ...this.state.user, 
+                [name] : value,
+            }
+        });
+    }
+
+    handleSubmit = (event) => {
+        event.preventDefault();
+        console.log(this.state.user);
+    };
+
     render() {
         return (
-            <div>
+            <div className="forgotpassword form">
                 <h1>Glemt password</h1>
-                <form id="user-forgot-password-form" method="post">
+                <form onSubmit={this.handleSubmit} >
                 
                 <p className="row">
-                    <label for="email" className="labeltxt">E-mail: ( bruges til brugernavn )</label>
-                    <input type="email" className="inputC" name="forgot_mail" required="" />
+                    <label htmlFor="mail">E-mail</label>
+                    <input 
+                        type="email" 
+                        name="mail" 
+                        onChange={this.changeHandler}
+                        required="" 
+                    />
                 </p>
-                
-                <p className="row">
-                    <input className="submit button user-forgot-password-submit-button" type="submit" value="Send" />
+                <p>
+                    <input 
+                        type="submit" 
+                        class="submitbtn"
+                        value="Send" 
+                    />
                 </p>
-                <input type="hidden" name="x_login_submit" value="1" />
                 </form>
             </div>
         )

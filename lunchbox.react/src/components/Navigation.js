@@ -20,7 +20,7 @@ export default class Navigation extends Component {
             <nav>
                 <ul>
                     <li> {myfood} <Link to="/pages">Find mad</Link> </li>
-                    <li> {myaccount} <i className="fas fa-basketball-hoop"></i><Link to="/pages/register">Ordrer</Link> </li>
+                    <li> {myaccount} <i className="fas fa-basketball-hoop"></i><Link to="/pages/order">Ordrer</Link> </li>
                     <li> {info} <Link to="/pages/info">Info</Link> </li>
                     <li> {register} <Link to="/pages/login">Min konto</Link> </li>
                 </ul>

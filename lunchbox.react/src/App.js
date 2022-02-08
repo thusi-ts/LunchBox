@@ -13,6 +13,7 @@ import Info from "./components/pages/Info";
 import ForgotPassword from "./components/pages/ForgotPassword";
 import Login from "./components/pages/Login";
 import Register from "./components/pages/Register";
+import Order from "./components/pages/Order";
 
 
 
@@ -50,6 +51,7 @@ function App() {
               <Route path = "/pages/info" element = {<Info />}></Route>
               <Route path = "/pages/forgotPassword" element = {<ForgotPassword />}></Route>
               <Route path = "/pages/login" element = {<Login />}></Route>
+              <Route path = "/pages/order" element = {<Order />}></Route>
               <Route path = "/pages/register" element = {<Register />}></Route>
           </Routes>
         </main-container>
