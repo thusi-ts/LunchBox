@@ -55,29 +55,6 @@ h1 {
   padding: 0 16px;
 }
 
-ul.list {
-  list-style-type: none;
-  padding: 0;
-  margin: 0;
-}
-
-ul.list li {
-  border: 1px solid #ddd;
-  margin-top: -1px; /* Prevent double borders */
-  background-color: #f6f6f6;
-  padding: 12px;
-  text-decoration: none;
-  font-size: 18px;
-  color: black;
-  display: block;
-  position: relative;
-}
-
-ul.list li:hover {
-  background-color: #eee;
-}
-
-
 .grid-container{
   display: grid;
   grid-template-rows: 6.75rem 2.25rem 1fr;
@@ -501,4 +478,33 @@ input[type="text"], input[type="tel"], input[type="email"], input[type="password
 
 .react-tabs__tab-panel--selected {
   display: block;
+}
+
+/* orders */
+.oders ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.oders ul li {
+  border: 1px solid #ddd;
+  margin-top: -1px; /* Prevent double borders */
+  text-decoration: none;
+  font-size: 18px;
+  color: black;
+  display: block;
+  position: relative;
+}
+
+.oders  ul li:hover {
+  background-color: #eee;
+}
+
+.oders .order-header{
+  background-color: #f6f6f6;
+  padding: 12px;
+}
+.oders  .order-details{
+  background-color: #fff;
 }

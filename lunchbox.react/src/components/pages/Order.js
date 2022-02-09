@@ -6,22 +6,22 @@ export default class Order extends Component {
     constructor(props){
         super(props);
 
-        this.state = { active: false} 
+        this.state = { active: []} 
 
         this.toggleMenu = this.toggleMenu.bind(this);
     }
     // https://www.w3schools.com/howto/howto_js_close_list_items.asp
 
-    toggleMenu = () => {
+    toggleMenu = (e) => {
 
-        const active = this.state.active ? false : true;
+        //const active = this.state.active ? false : true;
 
-        console.log(active);
+        console.log(e);
 
     // function that will toggle active/false
-        this.setState((prevState) => {
+       /* this.setState((prevState) => {
         active: !prevState.active
-        });
+        }); */
     }
 
     render() {
@@ -32,13 +32,13 @@ export default class Order extends Component {
 
                 <ul className='list'>
                 <li>
-                    <OrderHeader display={true}  />
+                    <OrderHeader name={'items-1'} display={true} toggleMenu = {this.toggleMenu}  />
                 </li>
                 <li>
-                    <OrderHeader display={true}  />
+                    <OrderHeader name={'items-2'} display={true} toggleMenu = {this.toggleMenu}  />
                 </li>
                 <li>
-                    <OrderHeader display={true}  />
+                    <OrderHeader name={'items-13'} display={true} toggleMenu = {this.toggleMenu}  />
                 </li>
                 </ul>
             </div>
@@ -47,11 +47,23 @@ export default class Order extends Component {
 }
 
 const OrderHeader = (props) => {
-    return <OrderDetails display={true} onClick={toggleMenu} />
+    return (<div >
+                <div className='order-header' onClick={(e) => props.toggleMenu(e, active)}>Test</div>
+                <OrderDetails name={props.name} display={true} toggleMenu={props.toggleMenu} />
+            </div>)
 } 
 
 const OrderDetails = (props) => {
-    if (props.display) {
-        return <div className='items-1'>infor 1</div>
+
+    let details;
+    let active = props.active ? false : true;
+    console.log(active);
+
+    if (active) {
+        details = <div className='order-details'  {props.name} </div>
+    } else {
+        details = <div className='order-details'> </div>
     }
+
+    return <div> {details} </div>
 } 
