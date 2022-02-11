@@ -6,22 +6,37 @@ export default class Order extends Component {
     constructor(props){
         super(props);
 
-        this.state = { active: []} 
+        this.state = {
+            /*
+            list: [
+              { id: '1', active: 42 },
+              { id: '2', age: 33 },
+              { id: '3', age: 68 },
+            ],
+            */
+           orderList : []
+          };
 
         this.toggleMenu = this.toggleMenu.bind(this);
     }
-    // https://www.w3schools.com/howto/howto_js_close_list_items.asp
 
-    toggleMenu = (e) => {
+    toggleMenu = (name) => {
 
-        //const active = this.state.active ? false : true;
+        console.log(name);
+        let newOrderList;
+        const orderList = this.state.orderList.slice();
 
-        console.log(e);
+        const result = orderList.find( ({ name }) => name === name );
 
-    // function that will toggle active/false
-       /* this.setState((prevState) => {
-        active: !prevState.active
-        }); */
+        console.log(result);
+
+        let active = true;
+        if(result != undefined){
+            newOrderList = orderList.push(...orderList, {name: name, value: true});
+        }
+        
+
+        console.log(newOrderList);
     }
 
     render() {
@@ -48,7 +63,7 @@ export default class Order extends Component {
 
 const OrderHeader = (props) => {
     return (<div >
-                <div className='order-header' onClick={(e) => props.toggleMenu(e, active)}>Test</div>
+                <div className='order-header' onClick={(e) => props.toggleMenu('header-1')}>Test</div>
                 <OrderDetails name={props.name} display={true} toggleMenu={props.toggleMenu} />
             </div>)
 } 
@@ -60,10 +75,10 @@ const OrderDetails = (props) => {
     console.log(active);
 
     if (active) {
-        details = <div className='order-details'  {props.name} </div>
+        details = <div className='order-details'>  {props.name} </div>
     } else {
         details = <div className='order-details'> </div>
     }
 
-    return <div> {details} </div>
+    return (<div> {details} </div>)
 } 
