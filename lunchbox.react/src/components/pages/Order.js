@@ -22,21 +22,33 @@ export default class Order extends Component {
 
     toggleMenu = (name) => {
 
-        console.log(name);
+        
         let newOrderList;
-        const orderList = this.state.orderList.slice();
+       // const orderList = this.state.orderList.slice();
+
+       const orderList = [];
+
+        console.log(this.state);
 
         const result = orderList.find( ({ name }) => name === name );
 
-        console.log(result);
-
-        let active = true;
-        if(result != undefined){
-            newOrderList = orderList.push(...orderList, {name: name, value: true});
-        }
         
 
+        let active = true;
+        if(result === undefined){
+            newOrderList = orderList.push(...orderList, {name: name, value: true});
+        }
+
         console.log(newOrderList);
+
+        this.setState({
+            orderList : newOrderList
+        });
+
+
+        
+
+       // console.log(orderList);
     }
 
     render() {
@@ -53,7 +65,7 @@ export default class Order extends Component {
                     <OrderHeader name={'items-2'} display={true} toggleMenu = {this.toggleMenu}  />
                 </li>
                 <li>
-                    <OrderHeader name={'items-13'} display={true} toggleMenu = {this.toggleMenu}  />
+                    <OrderHeader name={'items-3'} display={true} toggleMenu = {this.toggleMenu}  />
                 </li>
                 </ul>
             </div>
@@ -63,7 +75,7 @@ export default class Order extends Component {
 
 const OrderHeader = (props) => {
     return (<div >
-                <div className='order-header' onClick={(e) => props.toggleMenu('header-1')}>Test</div>
+                <div className='order-header' onClick={(e) => props.toggleMenu(props.name)}>Test</div>
                 <OrderDetails name={props.name} display={true} toggleMenu={props.toggleMenu} />
             </div>)
 } 
@@ -72,7 +84,6 @@ const OrderDetails = (props) => {
 
     let details;
     let active = props.active ? false : true;
-    console.log(active);
 
     if (active) {
         details = <div className='order-details'>  {props.name} </div>
