@@ -7,48 +7,32 @@ export default class Order extends Component {
         super(props);
 
         this.state = {
-            /*
-            list: [
-              { id: '1', active: 42 },
-              { id: '2', age: 33 },
-              { id: '3', age: 68 },
-            ],
-            */
-           orderList : []
-          };
+           orderList : [
+               {index: 'items1', name : 'test1', display: false},
+               {index: 'items2', name : 'test2', display: false},
+               {index: 'items3', name : 'test3', display: false}
+           ]
+        };
 
         this.toggleMenu = this.toggleMenu.bind(this);
     }
 
-    toggleMenu = (name) => {
+    toggleMenu = (index) => {
 
-        
-        let newOrderList;
-       // const orderList = this.state.orderList.slice();
+        let orderList = this.state.orderList.slice();
+        let newOrderList = [];
 
-       const orderList = [];
-
-        console.log(this.state);
-
-        const result = orderList.find( ({ name }) => name === name );
-
-        
-
-        let active = true;
-        if(result === undefined){
-            newOrderList = orderList.push(...orderList, {name: name, value: true});
-        }
-
-        console.log(newOrderList);
+        orderList.forEach((x) => {
+            if(x.index == index){
+                newOrderList.push({index: x.index, name : x.name, display: x.display ? false : true});
+            }else{
+                newOrderList.push(x);
+            }
+        });
 
         this.setState({
             orderList : newOrderList
         });
-
-
-        
-
-       // console.log(orderList);
     }
 
     render() {
@@ -58,38 +42,34 @@ export default class Order extends Component {
                 <div className="main-title">Produkter</div>
 
                 <ul className='list'>
-                <li>
-                    <OrderHeader name={'items-1'} display={true} toggleMenu = {this.toggleMenu}  />
-                </li>
-                <li>
-                    <OrderHeader name={'items-2'} display={true} toggleMenu = {this.toggleMenu}  />
-                </li>
-                <li>
-                    <OrderHeader name={'items-3'} display={true} toggleMenu = {this.toggleMenu}  />
-                </li>
+                    {this.state.orderList.map((x) => ( 
+                        <li key={x.index}>
+                            <OrderHeader index={x.index} name={x.name} display={x.display} toggleMenu = {this.toggleMenu} />
+                        </li>
+                    ))}
                 </ul>
             </div>
         )
     }
 }
 
-const OrderHeader = (props) => {
-    return (<div >
-                <div className='order-header' onClick={(e) => props.toggleMenu(props.name)}>Test</div>
-                <OrderDetails name={props.name} display={true} toggleMenu={props.toggleMenu} />
-            </div>)
+const OrderHeader = (props) => {  
+    return (
+        <div>
+            <div className='order-header' onClick={(e) => props.toggleMenu(props.index)}>{props.name}</div>
+            <OrderDetails index={props.index} name={props.name} display={props.display} toggleMenu={props.toggleMenu} />
+        </div>
+    )
 } 
 
 const OrderDetails = (props) => {
 
     let details;
-    let active = props.active ? false : true;
 
-    if (active) {
-        details = <div className='order-details'>  {props.name} </div>
+    if (props.display) {
+        details = <div index={props.index} className='order-details'>  {props.name} </div>
     } else {
-        details = <div className='order-details'> </div>
+        details = <div index={props.index} className='order-details'> </div>
     }
-
     return (<div> {details} </div>)
 } 
