@@ -1,12 +1,7 @@
 import React, { Component } from 'react'
-import { render } from 'react-dom';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 
 export default class Info extends Component {
-
-    constructor(props){
-        super(props);
-    }
 
     render() {
         return (

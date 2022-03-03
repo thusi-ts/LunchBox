@@ -12,7 +12,7 @@ export default class Header extends Component {
             <div className="header-wrapper">
                 <div className="back">Back</div>
                 <div className="logo">
-                <Link to="/pages"><img src="http://www.lunchbox.dk/assets/images/logo/white.svg" className="default-icon" alt="" border="0" /></Link>
+                <Link to="/"><img src="http://www.lunchbox.dk/assets/images/logo/white.svg" className="default-icon" alt="" border="0" /></Link>
                 </div>
                 <div className="memebership">{myfood} <Link to="/pages/login">Login som medlem</Link></div>
             </div>
