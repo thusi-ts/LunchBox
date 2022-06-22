@@ -508,3 +508,12 @@ input[type="text"], input[type="tel"], input[type="email"], input[type="password
 .oders  .order-details{
   background-color: #fff;
 }
+
+.oders  .order-details.show{
+  transition: opacity 1s;
+  opacity: 1;
+}
+
+.oders  .order-details.hide{
+  opacity: 0;
+}

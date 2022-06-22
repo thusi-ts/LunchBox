@@ -19,7 +19,7 @@ import Order from "./components/pages/Order";
 
 function App() {
 
-  useEffect(() => {
+  useEffect(() => { console.log('1');
 
     setTimeout(() => { 
       <Navigate to='/pages'  />
@@ -45,7 +45,7 @@ function App() {
           <Navigation />
         </navigation-container>
         <main-container>
-        
+        test
           <Routes> 
               <Route path = "/pages" element = {<Index />} ></Route>
               <Route path = "/pages/info" element = {<Info />}></Route>

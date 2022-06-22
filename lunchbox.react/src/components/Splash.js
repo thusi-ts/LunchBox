@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Navigate } from 'react-router';
 
 export default class Splash extends Component {
     render() {
@@ -18,11 +19,12 @@ export default class Splash extends Component {
             </div>
         )
     }
-/*
-    componentDidUpdate() {
+
+    componentDidUpdate() { console.log('0');
         setTimeout(() => { 
+            console.log('test');
             <Navigate to='/pages'  />
           }, 5000)
       }
-      */
+      
 }

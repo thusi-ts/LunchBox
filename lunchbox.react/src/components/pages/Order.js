@@ -65,11 +65,14 @@ const OrderHeader = (props) => {
 const OrderDetails = (props) => {
 
     let details;
+    let show;
 
     if (props.display) {
-        details = <div index={props.index} className='order-details'>  {props.name} </div>
+        show = true;
+        details = <div index={props.index} className='order-body'>  {props.name} </div>
     } else {
-        details = <div index={props.index} className='order-details'> </div>
+        show = false;
+        details = <div index={props.index} className='order-body'></div>
     }
-    return (<div> {details} </div>)
+    return (<div className={show ? 'order-details show' : 'order-details hide'}> {details} </div>)
 } 
