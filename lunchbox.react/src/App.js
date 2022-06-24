@@ -14,21 +14,20 @@ import Login from "./components/pages/Login";
 import Register from "./components/pages/Register";
 import Order from "./components/pages/Order";
 
-function App() {
+export default function App() {
 
-  useEffect(() => { console.log('1');
   const [isLoading, setIsLoading] = useState(true);
 
-  useEffect(() => {
-
-    setTimeout(() => { 
-      setIsLoading(false);
-    }, 5000)
+  useEffect(() => { console.log('1');
+    
+      setTimeout(() => { 
+        setIsLoading(false);
+      }, 5000)
   });
 
   //https://medium.com/@arashdeeps2004/splash-screen-in-react-js-using-react-redux-8e75871482e9
 
-  if(isLoading){
+  if(false){
     return ( <Splash /> );
   }
   return (
@@ -55,6 +54,4 @@ function App() {
       </div>
       </Router>
   );
-}
-
-export default App;
+};
