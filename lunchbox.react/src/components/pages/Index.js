@@ -1,20 +1,17 @@
 import React, { Component } from 'react'
-import ProductList from "../ProductList";
-import Cart from "../Cart";
+import ImageSlider from "../ImageSlider";
+import StoreList from "../StoreList";
 
 export default class Index extends Component {
     render() {
         return (
-            <div>
+            <div className="slider-wrapper">
                 <div className="main-header">Kylling & Co Viborg, Gravene</div>
-                <div className="main-inner-wrapper">
-                    <div className="main">
-                    <ProductList />
-                    </div>
-                    <div className="cart">
-                    <Cart />
-                    </div>
+                <div className="main-resume">
+                    Har du eller dit firma har brug for noget rigtig lækkert til frokost, som er godt for krop og sjæl, er du kommer til det helt rigtig sted. Vælg fra listen neden under hvor du gerne ville have det fra.
                 </div>
+                <ImageSlider />
+                <StoreList />
             </div>
         )
     }

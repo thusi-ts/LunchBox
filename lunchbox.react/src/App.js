@@ -1,38 +1,34 @@
-import { useEffect } from "react";
-import { BrowserRouter as Router, Routes, Route, Navigate, useLocation } from "react-router-dom";
-
-
+import { useState, useEffect } from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 import Header from "./components/Header";
-import Splash from "./components/Splash";
 import Navigation from "./components/Navigation";
 
 // pages
+import Splash from "./components/Splash";
 import Index from "./components/pages/Index";
+import Store from "./components/pages/Store";
 import Info from "./components/pages/Info";
 import ForgotPassword from "./components/pages/ForgotPassword";
 import Login from "./components/pages/Login";
 import Register from "./components/pages/Register";
 import Order from "./components/pages/Order";
 
-
-
 function App() {
 
   useEffect(() => { console.log('1');
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
 
     setTimeout(() => { 
-      <Navigate to='/pages'  />
+      setIsLoading(false);
     }, 5000)
   });
 
-  //const location = useLocation();
-
-  //console.log(location);
-
   //https://medium.com/@arashdeeps2004/splash-screen-in-react-js-using-react-redux-8e75871482e9
 
-  if(false){
+  if(isLoading){
     return ( <Splash /> );
   }
   return (
@@ -45,9 +41,10 @@ function App() {
           <Navigation />
         </navigation-container>
         <main-container>
-        test
-          <Routes> 
+          <Routes>
+              <Route path = "/" exact element = {<Index />} ></Route>
               <Route path = "/pages" element = {<Index />} ></Route>
+              <Route path = "/pages/store" element = {<Store />} ></Route>
               <Route path = "/pages/info" element = {<Info />}></Route>
               <Route path = "/pages/forgotPassword" element = {<ForgotPassword />}></Route>
               <Route path = "/pages/login" element = {<Login />}></Route>

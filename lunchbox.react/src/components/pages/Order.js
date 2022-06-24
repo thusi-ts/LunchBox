@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import { render } from 'react-dom';
 
 export default class Order extends Component {
 
@@ -23,7 +22,7 @@ export default class Order extends Component {
         let newOrderList = [];
 
         orderList.forEach((x) => {
-            if(x.index == index){
+            if(x.index === index){
                 newOrderList.push({index: x.index, name : x.name, display: x.display ? false : true});
             }else{
                 newOrderList.push(x);
