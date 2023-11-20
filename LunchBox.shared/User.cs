@@ -12,7 +12,6 @@ namespace LunchBox.Shared
 {
     public class User
     {
-
         public int Id { get; set; }
 
         public String Fullname { get; set; }
@@ -52,6 +51,12 @@ namespace LunchBox.Shared
         public ICollection<Order> Orders { get; set; }
     }
 
+    /// <summary>
+    /// OnModelCreating call this method automatically by ApplyConfigurationsFromAssembly function in LbDbContext.cs
+    /// Specify Fluent Api to this class property. Read more https://www.entityframeworktutorial.net/efcore/fluent-api-in-entity-framework-core.aspx
+    /// Fluent Api is equal to Annotation in class property like [Key], [MaxLength]
+    /// Fluent Api more powerful and have control. Easily can create relation between tables. Annotation is uses for simple cases
+    /// </summary>
     public class UserImageEntityTypeConfiguration : IEntityTypeConfiguration<User>
     {
         public void Configure(EntityTypeBuilder<User> builder)
@@ -69,7 +74,7 @@ namespace LunchBox.Shared
 
             builder.HasOne(p => p.Location).WithMany(p => p.Users)
             .HasForeignKey(p => p.LocationId).OnDelete(DeleteBehavior.Restrict).IsRequired(false);
-            
+
             builder.HasData
             (
                 new User
@@ -89,7 +94,6 @@ namespace LunchBox.Shared
                     Newsletter = 0,
                 }
             );
-            
         }
     }
 }

@@ -24,11 +24,11 @@ namespace LunchBox.Shared
         
         public int? Quantity { get; set; }
         
-        public decimal Price { get; set; }
+        public Decimal Price { get; set; }
         
-        public decimal Discount { get; set; }
+        public Decimal Discount { get; set; }
         
-        public decimal TotalPrice { get; set; }
+        public Decimal TotalPrice { get; set; }
         
         public ProductExtraItem ProductExtraItem { get; set; }
 
@@ -38,9 +38,15 @@ namespace LunchBox.Shared
 
         public String ProductExtraitemValue { get; set; }
 
-        public decimal ProductExtraitemPrice { get; set; }
+        public Decimal ProductExtraitemPrice { get; set; }
     }
 
+    /// <summary>
+    /// OnModelCreating call this method automatically by ApplyConfigurationsFromAssembly function in LbDbContext.cs
+    /// Specify Fluent Api to this class property. Read more https://www.entityframeworktutorial.net/efcore/fluent-api-in-entity-framework-core.aspx
+    /// Fluent Api is equal to Annotation in class property like [Key], [MaxLength]
+    /// Fluent Api more powerful and have control. Easily can create relation between tables. Annotation is uses for simple cases
+    /// </summary>
     public class OrderExtraItemImageEntityTypeConfiguration : IEntityTypeConfiguration<OrderExtraItem>
     {
         public void Configure(EntityTypeBuilder<OrderExtraItem> builder)
@@ -49,6 +55,10 @@ namespace LunchBox.Shared
             builder.Property(p => p.ProductName).HasMaxLength(200);
             builder.Property(p => p.ProductExtraitemName).HasMaxLength(200);
             builder.Property(p => p.ProductExtraitemValue).HasMaxLength(200);
+            builder.Property(p => p.Discount).HasColumnType("decimal(5, 2)");
+            builder.Property(p => p.Price).HasColumnType("decimal(5, 2)");
+            builder.Property(p => p.ProductExtraitemPrice).HasColumnType("decimal(5, 2)");
+            builder.Property(p => p.TotalPrice).HasColumnType("decimal(5, 2)");
 
             builder.HasOne(o => o.Order).WithMany(o => o.OrderExtraItems)
             .HasForeignKey(p => p.OrderId).OnDelete(DeleteBehavior.Restrict).IsRequired(false);

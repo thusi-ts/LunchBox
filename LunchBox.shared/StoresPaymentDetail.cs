@@ -27,6 +27,12 @@ namespace LunchBox.Shared
         public String AccountPrivateKey { get; set; }
     }
 
+    /// <summary>
+    /// OnModelCreating call this method automatically by ApplyConfigurationsFromAssembly function in LbDbContext.cs
+    /// Specify Fluent Api to this class property. Read more https://www.entityframeworktutorial.net/efcore/fluent-api-in-entity-framework-core.aspx
+    /// Fluent Api is equal to Annotation in class property like [Key], [MaxLength]
+    /// Fluent Api more powerful and have control. Easily can create relation between tables. Annotation is uses for simple cases
+    /// </summary>
     public class StoresPaymentDetailImageEntityTypeConfiguration : IEntityTypeConfiguration<StoresPaymentDetail>
     {
         public void Configure(EntityTypeBuilder<StoresPaymentDetail> builder)

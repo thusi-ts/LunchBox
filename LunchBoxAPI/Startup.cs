@@ -64,7 +64,7 @@ namespace LunchBoxAPI
 
             app.UseRouting();
 
-            app.UseAuthorization();
+            //app.UseAuthorization();
 
             // setup routing
             app.UseEndpoints(endpoints =>

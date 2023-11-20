@@ -4,6 +4,7 @@ using LunchBox.Shared;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace LunchBox.Shared.Migrations
 {
     [DbContext(typeof(LbDbContext))]
-    partial class LbDbContextModelSnapshot : ModelSnapshot
+    [Migration("20231116134116_migrationOn161123")]
+    partial class migrationOn161123
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -1184,10 +1187,10 @@ namespace LunchBox.Shared.Migrations
                             Id = 1,
                             Active = 1,
                             City = "Struer",
-                            CreatedTime = new DateTime(2023, 11, 16, 22, 43, 56, 118, DateTimeKind.Local).AddTicks(2431),
+                            CreatedTime = new DateTime(2023, 11, 16, 14, 41, 15, 894, DateTimeKind.Local).AddTicks(7459),
                             EnteredTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Fullname = "Thusi Selvaratnam",
-                            LastModifiedTime = new DateTime(2023, 11, 16, 22, 43, 56, 118, DateTimeKind.Local).AddTicks(2436),
+                            LastModifiedTime = new DateTime(2023, 11, 16, 14, 41, 15, 894, DateTimeKind.Local).AddTicks(7463),
                             Newsletter = 0,
                             Password = "password",
                             Phone = "23469055",

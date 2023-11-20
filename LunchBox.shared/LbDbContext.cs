@@ -10,8 +10,6 @@ using System.Text;
 using System.Threading.Tasks;
 
 
-//SqllocalDB.exe s MSSQLLocalDB, SqllocalDB.exe i MSSQLLocalDB
-
 namespace LunchBox.Shared
 {
     public class LbDbContext : DbContext
@@ -35,12 +33,22 @@ namespace LunchBox.Shared
         public DbSet<CartTemp> TempCarts { get; set; }
         public DbSet<CartTempExtraItem> TempCartExtraItems { get; set; }
 
+        /// <summary>
+        /// ApplyConfigurationsFromAssembly Applies configuration from all IEntityTypeConfiguration<TEntity> /> instances that are defined in provided assembly.
+        /// IEntityTypeConfiguration simply automatically look for all classes that implement IEntityTypeConfiguration and look for fluent Api configuration
+        /// StoreImageEntityTypeConfiguration from Store class implemented by IEntityTypeConfiguration. StoreImageEntityTypeConfiguration invoked by IEntityTypeConfiguration automatically
+        /// </summary>
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
         }
     }
 
+    /// <summary>
+    /// LunchBox.Shared is just a class library and dobn't have program.cs
+    /// ContextFactory is neccessy if you have a class library and want to use EF uses for test purpose or 
+    /// that is why you have to add this ContextFactory to look for your Database
+    /// </summary>
     public class LbDbContextFactory : IDesignTimeDbContextFactory<LbDbContext>
     {
         public LbDbContext CreateDbContext(string[] args = null)
@@ -49,7 +57,7 @@ namespace LunchBox.Shared
 
             var optionsBuilder = new DbContextOptionsBuilder<LbDbContext>();
             optionsBuilder
-                //.UseLoggerFactory(LoggerFactory.Create(builder => builder.AddConsole()))
+                //.UseLoggerFactory(LoggerFactory.Create(builder => builder.AddConsole())) if you want to log it
                 .UseSqlServer(configuration["ConnectionStrings:DefaultConnection"]);
 
             return new LbDbContext(optionsBuilder.Options);
