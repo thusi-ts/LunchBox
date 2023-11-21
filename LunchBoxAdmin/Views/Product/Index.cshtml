@@ -2,7 +2,7 @@
 @model LunchBox.Admin.ViewModels.ProductListViewModelPagination
 
 @{
-    ViewData["Title"] = "Index";
+    ViewBag.Title = "Index";
 }
 
 <h1>Product</h1>
@@ -43,7 +43,6 @@
 
                             @for (int i = 1; i <= Model.PageCount; i++)
                             {
-
                                 @if (i != Model.CurrentPageIndex)
                                 {
                                     <li class="page-item">

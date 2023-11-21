@@ -20,11 +20,11 @@ namespace LunchBoxAdmin
 
         /*
          * 1. Model: create Model eller ViewModels i Model eller ViewModels folder
-2. Repository pattern med interface or Class i Model folder
-3. Controller: og inject Repository eller new object i Controller
-3. Controller: Evt Lav model og pass it to View
-4. Lav View
- */
+           2. Repository pattern med interface or Class i Model folder
+           3. Controller: og inject Repository eller new object i Controller
+           3. Controller: Evt Lav model og pass it to View
+           4. Lav View
+        */
 
         public IConfiguration Configuration { get; }
 
@@ -51,7 +51,8 @@ namespace LunchBoxAdmin
             }
             else
             {
-                app.UseExceptionHandler("/Home/Error");
+                app.UseExceptionHandler("/Error");
+                app.UseStatusCodePagesWithReExecute("/Error/{0}");
             }
             app.UseSession();
             app.UseMiddleware<AuthenticationMiddleware>();

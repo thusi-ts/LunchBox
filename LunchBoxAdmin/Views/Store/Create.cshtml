@@ -1,7 +1,7 @@
 ﻿@model LunchBoxAdmin.ViewModels.StoreEditViewModel
 
 @{
-    ViewData["Title"] = "Create";
+    ViewBag.Title = "Create";
 }
 
 <h1>Store</h1>
@@ -155,7 +155,3 @@
 <div>
     <a asp-action="Index">Back to List</a>
 </div>
-
-@section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-}
