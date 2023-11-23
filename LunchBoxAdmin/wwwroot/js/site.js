@@ -12,7 +12,8 @@
         let isVisible = $(id).is(':visible')
         $(".accordion-collapse").not(":eq(" + id + " )").hide();
         if (isVisible == true) {
-            $(id).hide();
+            alert("here")
+            $(id).hide('slow');
         } else {
             $(id).toggle('slow');
         }

@@ -23,7 +23,7 @@ namespace LunchBox.Admin.Controllers
         }
         public async Task<ViewResult> Index()
         {
-            var model = await storeRepository.GetStores(); // ask and not refresh
+            var model = await storeRepository.GetStores();
 
             return View(model);
         }

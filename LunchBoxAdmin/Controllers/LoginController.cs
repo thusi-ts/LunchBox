@@ -15,7 +15,7 @@ namespace LunchBox.Admin.Controllers
         }
 
         [HttpPost]
-        public IActionResult Login(string username, string password)
+        public IActionResult Index(string username, string password)
         {
             if (username != null && password != null && username.Equals("admin") && password.Equals("admin"))
             {

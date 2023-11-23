@@ -21,6 +21,7 @@ namespace LunchBoxAdmin.Controllers
             this.logger = logger;
         }
 
+        //404 error. app.UseStatusCodePagesWithReExecute("/Error/{0}"); in Startup.cs
         [Route("Error/{statusCode}")]
         public IActionResult HttpStatusCodeHandler(int statusCode)
         {
@@ -29,7 +30,8 @@ namespace LunchBoxAdmin.Controllers
             switch (statusCode)
             {
                 case 404:
-                    ViewBag.ErrorMessage = "Sorry, the resource you requested could not be found";
+                    ViewBag.ErrorMessage = "Sorry, the page you requested could not be found";
+                    // Log it to Output 
                     logger.LogWarning($"404 Error Occured. Path = {statusCodeResult.OriginalPath}" +
                         $" and QueryString = {statusCodeResult.OriginalQueryString}");
                     break;
@@ -44,6 +46,7 @@ namespace LunchBoxAdmin.Controllers
         {
             var exceptionDetails = HttpContext.Features.Get<IExceptionHandlerPathFeature>();
 
+            // Log it to Output 
             logger.LogError($"The path {exceptionDetails.Path} threw an exception " +
                 $"{exceptionDetails.Error}");
 

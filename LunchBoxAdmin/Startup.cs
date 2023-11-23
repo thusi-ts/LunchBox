@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using System.IO;
 
 namespace LunchBoxAdmin
 {
@@ -51,11 +52,11 @@ namespace LunchBoxAdmin
             }
             else
             {
-                app.UseExceptionHandler("/Error");
-                app.UseStatusCodePagesWithReExecute("/Error/{0}");
+                app.UseExceptionHandler("/Error"); // 500 Internal Server Error. Global Exceptions
+                app.UseStatusCodePagesWithReExecute("/Error/{0}");  // 404 error. Middelware to 404 error, etc the page not found. Uses only in Production ENVIRONMENT
             }
-            app.UseSession();
-            app.UseMiddleware<AuthenticationMiddleware>();
+             app.UseSession();
+            // app.UseMiddleware<AuthenticationMiddleware>();
 
             app.UseStaticFiles();
 

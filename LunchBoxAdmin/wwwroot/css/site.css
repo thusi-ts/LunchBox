@@ -117,3 +117,11 @@ body {
     transition: opacity 2s;
     opacity: 1;
 }
+
+.accordion {
+    margin-top: 4px;
+}
+
+.pagination {
+    margin-top: 10px;
+}
