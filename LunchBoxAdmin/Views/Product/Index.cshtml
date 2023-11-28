@@ -1,9 +1,5 @@
 ﻿@model LunchBox.Admin.ViewModels.ProductListViewModelPagination
 
-@{
-    ViewBag.Title = "Index";
-}
-
 <h1>Product</h1>
 
 <form id="pagination-form" asp-action="Index" asp-controller="Product" method="post">
@@ -11,18 +7,18 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="bs-component">
-                    <div class="accordion" id="accordion" style="margin-top: 4px;">
+                    <div class="accordion" id="product-accordion" style="margin-top: 4px;">
                         @foreach (var item in Model.ProductListViewModel)
                         {
                             <div class="accordion-item">
 
                                 <h2 class="accordion-header" id="heading@(item.Number)">
-                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse@(item.Number)" aria-expanded="true" aria-controls="collapse@(item.Number)">
-                                        Navn: @item.ProductName, Categori: @item.Category, Pris: @item.Price
+                                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#product@(item.Number)" aria-expanded="true" aria-controls="product@(item.Number)">
+                                     Navn: @item.ProductName, Categori: @item.Category, Pris: @item.Price
                                     </button>
                                 </h2>
 
-                                <div id="collapse@(item.Number)" class="accordion-collapse collapse" aria-labelledby="heading@(item.Number)" data-bs-parent="#accordion@(item.Number)">
+                                <div id="product@(item.Number)" class="accordion-collapse collapse" aria-labelledby="heading@(item.Number)" data-bs-parent="#product-accordion">
                                     <div class="accordion-body">
                                         <strong>@item.ProductExtraItem1Name</strong>: @item.Extraitem1<br />
                                         <strong>@item.ProductExtraItem2Name</strong>: @item.Extraitem2<br />
@@ -31,7 +27,7 @@
                                     </div>
                                 </div>
                             </div>
-                        }
+                        } 
                        </div>
                 </div>
                 <div class="row">
