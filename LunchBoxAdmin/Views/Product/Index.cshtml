@@ -35,10 +35,6 @@
   
                         <ul class="pagination">
 
-                            <li class="page-item disabled">
-                                <a class="page-link" href="#" data-index="1">&laquo;</a>
-                            </li>
-
                             @for (int i = 1; i <= Model.PageCount; i++)
                             {
                                 @if (i != Model.CurrentPageIndex)
@@ -54,9 +50,6 @@
                                     </li>
                                 }
                             }
-                            <li class="page-item">
-                                <a class="page-link" href="#">&raquo;</a>
-                            </li>
                         </ul>
                     </div>
                 </div>

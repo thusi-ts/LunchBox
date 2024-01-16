@@ -56,13 +56,13 @@ namespace LunchBoxAdmin
                 app.UseStatusCodePagesWithReExecute("/Error/{0}");  // 404 error. Middelware to 404 error, etc the page not found. Uses only in Production ENVIRONMENT
             }
              app.UseSession();
-            // app.UseMiddleware<AuthenticationMiddleware>();
+             app.UseMiddleware<AuthenticationMiddleware>();
 
             app.UseStaticFiles();
 
             app.UseRouting();
 
-            app.UseAuthorization();
+            app.UseAuthentication();
 
             app.UseEndpoints(endpoints =>
             {

@@ -73,6 +73,27 @@ namespace LunchBox.Shared
             builder.Property(p => p.Map).HasMaxLength(250);
             builder.Property(p => p.Description).HasColumnType("nvarchar(max)");
             builder.Property(p => p.ActiveOffMes).HasColumnType("nvarchar(max)");
+
+            builder.HasData
+            (
+                new Location
+                {
+                    Id = 1,
+                    Active = 1,
+                    ActiveOffMes = "",
+                    City = "Viborg", 
+                    ContactPersonEmail = "email",
+                    ContactPersonName = "name",
+                    CreatedTime = DateTime.Now,
+                    Cvr = "12133",
+                    Description = "description",
+                    Email = "email",
+                    LocationName = "Midtbyen gymnasium",
+                    ZipCode = "code",
+                    Phone = "23465656", 
+                    Street = ""
+                }
+            );
         }
     }
 }

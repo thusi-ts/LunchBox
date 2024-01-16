@@ -45,6 +45,18 @@ namespace LunchBox.Shared
             .HasForeignKey(p => p.LocationId).OnDelete(DeleteBehavior.Restrict).IsRequired(false);
             builder.HasOne(o => o.Store).WithMany(p => p.LocationsDeliverys)
             .HasForeignKey(p => p.StoreId).OnDelete(DeleteBehavior.Restrict).IsRequired(false);
+
+            builder.HasData
+            (
+                new LocationsDelivery
+                {
+                    Active = 1,
+                    DeliveryTime = "10:30-11:30",
+                    LocationId = 1,
+                    StoreId = 1,
+                    OrderClosingTime = "11:00"
+                }
+            );
         }
     }
 }

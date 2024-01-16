@@ -21,7 +21,7 @@ namespace LunchBoxAdmin.Models
         public async Task<Store> AddStore(Store store)
         {
             var result = await appDBContext.Stores.AddAsync(store);
-            await appDBContext.SaveChangesAsync(); // ask not refresh, attach 
+            await appDBContext.SaveChangesAsync();
             return result.Entity;
         }
 

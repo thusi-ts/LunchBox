@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
@@ -123,7 +124,7 @@ namespace LunchBox.Admin.Controllers
                 ContactPersonName = result.ContactPersonName,
                 DeliveryOption = result.DeliveryOption,
                 Description = result.Description,
-                Discount = result.Discount,
+                Discount = Convert.ToDecimal(result.Discount, new CultureInfo("fr-FR")),
                 Email = result.Email,
                 Pickup = result.Pickup,
                 PickupTime = result.PickupTime,
