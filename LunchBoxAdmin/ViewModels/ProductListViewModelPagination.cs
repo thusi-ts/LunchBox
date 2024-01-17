@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace LunchBox.Admin.ViewModels
+namespace LunchBoxAdmin.ViewModels
 {
     public class ProductListViewModelPagination
     {
@@ -13,6 +13,6 @@ namespace LunchBox.Admin.ViewModels
 
         public int PageCount { get; set; }
 
-        public int maxRows { get; set; } = 10;
+        public int MaxRows { get; set; } = 10;
 }
 }

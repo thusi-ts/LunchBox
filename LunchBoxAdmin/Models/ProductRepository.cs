@@ -1,5 +1,5 @@
-﻿using LunchBox.Admin.ViewModels;
-using LunchBox.Shared;
+﻿using LunchBox.Shared;
+using LunchBoxAdmin.ViewModels;
 using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -9,7 +9,7 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace LunchBox.Admin.Models
+namespace LunchBoxAdmin.Models
 {
     public class ProductRepository : IProductRepository
     {
@@ -29,7 +29,7 @@ namespace LunchBox.Admin.Models
         {
             ProductListViewModelPagination ProductListViewModelPagination = new();
 
-            int maxRows = ProductListViewModelPagination.maxRows;
+            int maxRows = ProductListViewModelPagination.MaxRows;
 
             var leftOuterJoin = await (from product in appDBContext.Products
                                         join category in appDBContext.ProductCategorys on product.ProductCategoryId equals category.Id 

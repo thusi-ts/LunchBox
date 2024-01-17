@@ -1,4 +1,6 @@
-﻿using LunchBox.Shared;
+﻿using EmployeeManagement.Models;
+using LunchBox.Shared;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
 using Microsoft.Extensions.Configuration;
@@ -12,14 +14,14 @@ using System.Threading.Tasks;
 
 namespace LunchBox.Shared
 {
-    public class LbDbContext : DbContext
+    public class LbDbContext : IdentityDbContext
     {
         public LbDbContext(DbContextOptions<LbDbContext> options)
             : base(options)
         { 
         
         }
-        public DbSet<User> Users { get; set; }
+        
         public DbSet<Location> Locations { get; set; }
         public DbSet<LocationsDelivery> LocationsDeliverys { get; set; }
         public DbSet<Order> Orders { get; set; }
@@ -32,6 +34,8 @@ namespace LunchBox.Shared
         public DbSet<StoresPaymentDetail> StoresPaymentDetails { get; set; }
         public DbSet<CartTemp> TempCarts { get; set; }
         public DbSet<CartTempExtraItem> TempCartExtraItems { get; set; }
+        public DbSet<User> Users { get; set; }
+
 
         /// <summary>
         /// ApplyConfigurationsFromAssembly Applies configuration from all IEntityTypeConfiguration<TEntity> /> instances that are defined in provided assembly.
@@ -40,7 +44,9 @@ namespace LunchBox.Shared
         /// </summary>
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            base.OnModelCreating(modelBuilder); // call the base class OnModelCreating() to fix the identity imigration
             modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
+            modelBuilder.SeedUser();
         }
     }
 

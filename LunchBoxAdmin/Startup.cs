@@ -1,13 +1,14 @@
-using LunchBox.Admin.Middleware;
-using LunchBox.Admin.Models;
+using LunchBoxAdmin.Middleware;
 using LunchBox.Shared;
 using LunchBoxAdmin.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using System;
 using System.IO;
 
 namespace LunchBoxAdmin
@@ -37,6 +38,8 @@ namespace LunchBoxAdmin
             services.AddDbContext<LbDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
             services.AddControllersWithViews();
 
+            services.AddIdentity<IdentityUser, IdentityRole>().AddEntityFrameworkStores<LbDbContext>(); // Add-Migration AddingIdentity
+
             services.AddScoped<IStoreRepository, StoreRepository>();
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<IProductExtraItemsRepository, ProductExtraItemsRepository>();
@@ -56,7 +59,7 @@ namespace LunchBoxAdmin
                 app.UseStatusCodePagesWithReExecute("/Error/{0}");  // 404 error. Middelware to 404 error, etc the page not found. Uses only in Production ENVIRONMENT
             }
              app.UseSession();
-             app.UseMiddleware<AuthenticationMiddleware>();
+             //app.UseMiddleware<AuthenticationMiddleware>(); // previus session authentication
 
             app.UseStaticFiles();
 

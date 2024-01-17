@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿@inject SignInManager<IdentityUser> signInManager;
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -8,7 +9,7 @@
 </head>
 <body>
     <header>
-        <partial name="/Views/Shared/_RenderMenuPartial.cshtml" />
+        @await Html.PartialAsync("_RenderMenuPartial", signInManager)
     </header>
     <div class="container">
         <main role="main" class="pb-3">

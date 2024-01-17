@@ -5,7 +5,7 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarColor01">
             <ul class="navbar-nav me-auto">
-                @if (Context.Session.GetString("username") != null)
+                @if (Model.IsSignedIn(User))  //@if (Context.Session.GetString("username") != null)
                 {
                     <li class="nav-item">
                         <a class="nav-link" asp-area="" asp-controller="Store" asp-action="Index">Stores</a>
@@ -26,20 +26,31 @@
                         <a class="nav-link" asp-controller="Login" asp-action="MySite">Min side</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" asp-controller="Login" asp-action="Logout">Logout</a>
+                        <form method="post" asp-action="logout" asp-controller="account">
+                            <button type="submit" class="nav-link btn btn-link py-0"
+                                    style="width:auto">
+                                Logout @User.Identity.Name
+                            </button>
+                        </form>
                     </li>
-                }
-                else
+                }else
                 {
-                    if (Context.Request.Path.Value.StartsWith("/Login") == false)
+                    @*if (Context.Request.Path.Value.StartsWith("/Login") == false)
                     {
                         <li class="nav-item">
                             <a class="nav-link" asp-controller="Login" asp-action="Index">Login</a>
                         </li>
-                    }
+                    }*@
+
+                    <li class="nav-item">
+                        <a asp-action="register" asp-controller="account" class="nav-link">Register</a>
+                    </li>
+                    <li class="nav-item">
+                        <a asp-action="login" asp-controller="account" class="nav-link">Login</a>
+                    </li>
                 }
             </ul>
-            @if (Context.Session.GetString("username") != null)
+            @if (Model.IsSignedIn(User))
              {
                 <form class="d-flex">
                     <input class="form-control me-sm-2" type="search" placeholder="Search">

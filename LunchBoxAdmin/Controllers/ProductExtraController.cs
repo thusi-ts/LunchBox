@@ -1,11 +1,11 @@
-﻿using LunchBox.Admin.Models;
+﻿using LunchBoxAdmin.Models;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace LunchBox.Admin.Controllers
+namespace LunchBoxAdmin.Controllers
 {
     public class ProductExtraController : Controller
     {

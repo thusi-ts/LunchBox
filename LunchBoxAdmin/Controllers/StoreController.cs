@@ -10,7 +10,7 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace LunchBox.Admin.Controllers
+namespace LunchBoxAdmin.Controllers
 {
     public class StoreController : Controller
     {

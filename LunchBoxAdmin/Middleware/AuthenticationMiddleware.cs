@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace LunchBox.Admin.Middleware
+namespace LunchBoxAdmin.Middleware
 {
     public class AuthenticationMiddleware
     {

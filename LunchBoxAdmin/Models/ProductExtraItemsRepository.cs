@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace LunchBox.Admin.Models
+namespace LunchBoxAdmin.Models
 {
     public class ProductExtraItemsRepository : IProductExtraItemsRepository
     {
