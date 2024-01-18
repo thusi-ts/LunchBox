@@ -10,6 +10,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using System;
 using System.IO;
+using Microsoft.AspNetCore.Http;
+using Microsoft.Extensions.Options;
 
 namespace LunchBoxAdmin
 {
@@ -38,12 +40,20 @@ namespace LunchBoxAdmin
             services.AddDbContext<LbDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
             services.AddControllersWithViews();
 
-            services.AddIdentity<IdentityUser, IdentityRole>().AddEntityFrameworkStores<LbDbContext>(); // Add-Migration AddingIdentity
+            services.AddIdentity<User, IdentityRole>()
+                .AddEntityFrameworkStores<LbDbContext>()
+                .AddDefaultTokenProviders();
 
             services.AddScoped<IStoreRepository, StoreRepository>();
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<IProductExtraItemsRepository, ProductExtraItemsRepository>();
             services.AddScoped<IProductRepository, ProductRepository>();
+
+            services.ConfigureApplicationCookie(config =>
+            {
+                /* config.LoginPath =  "login"; Don't need "Account/login" is default */
+                config.AccessDeniedPath = new PathString("/Account/AccessDenied");
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -66,6 +76,7 @@ namespace LunchBoxAdmin
             app.UseRouting();
 
             app.UseAuthentication();
+            app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {

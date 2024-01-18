@@ -23,6 +23,7 @@ namespace LunchBoxAdmin.Controllers
 
         //404 error. app.UseStatusCodePagesWithReExecute("/Error/{0}"); in Startup.cs
         [Route("Error/{statusCode}")]
+        [AllowAnonymous]
         public IActionResult HttpStatusCodeHandler(int statusCode)
         {
             var statusCodeResult = HttpContext.Features.Get<IStatusCodeReExecuteFeature>();

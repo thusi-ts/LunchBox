@@ -21,7 +21,7 @@ namespace LunchBox.Shared
         { 
         
         }
-        
+        public DbSet<Store> Stores { get; set; }
         public DbSet<Location> Locations { get; set; }
         public DbSet<LocationsDelivery> LocationsDeliverys { get; set; }
         public DbSet<Order> Orders { get; set; }
@@ -29,12 +29,11 @@ namespace LunchBox.Shared
         public DbSet<ProductCategory> ProductCategorys { get; set; }
         public DbSet<Product> Products { get; set; }
         public DbSet<ProductExtraItem> ProductExtraItems { get; set; }
-        public DbSet<Store> Stores { get; set; }
         public DbSet<ProductStoreLocation> ProductStoreLocations { get; set; }
         public DbSet<StoresPaymentDetail> StoresPaymentDetails { get; set; }
         public DbSet<CartTemp> TempCarts { get; set; }
         public DbSet<CartTempExtraItem> TempCartExtraItems { get; set; }
-        public DbSet<User> Users { get; set; }
+        //public DbSet<User> Users { get; set; }
 
 
         /// <summary>

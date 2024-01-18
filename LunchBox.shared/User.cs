@@ -1,5 +1,7 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using Microsoft.Identity;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -10,10 +12,8 @@ using System.Threading.Tasks;
 
 namespace LunchBox.Shared
 {
-    public class User
+    public class User : IdentityUser
     {
-        public int Id { get; set; }
-
         public String Fullname { get; set; }
 
         public String Phone { get; set; }
@@ -23,10 +23,6 @@ namespace LunchBox.Shared
         public String City { get; set; }
 
         public String ZipCode { get; set; }
-
-        public String UserName { get; set; }
-
-        public String Password { get; set; }
 
         public int Active { get; set; } = 1;
 
@@ -57,43 +53,22 @@ namespace LunchBox.Shared
     /// Fluent Api is equal to Annotation in class property like [Key], [MaxLength]
     /// Fluent Api more powerful and have control. Easily can create relation between tables. Annotation is uses for simple cases
     /// </summary>
+    
     public class UserImageEntityTypeConfiguration : IEntityTypeConfiguration<User>
     {
+        
         public void Configure(EntityTypeBuilder<User> builder)
         {
-            builder.HasKey(d => d.Id);
             builder.Property(p => p.Fullname).HasColumnName("Full Name").HasMaxLength(50).IsRequired();
             builder.Property(p => p.Phone).HasMaxLength(100);
             builder.Property(p => p.Street).HasMaxLength(100);
             builder.Property(p => p.City).HasMaxLength(100);
             builder.Property(p => p.ZipCode).HasMaxLength(100);
-            builder.Property(p => p.UserName).HasMaxLength(100);
-            builder.Property(p => p.Password).HasMaxLength(50);
             builder.Property(p => p.PrimaryStoreIds).HasMaxLength(75);
             builder.Property(p => p.Token).HasMaxLength(500);
 
             builder.HasOne(p => p.Location).WithMany(p => p.Users)
             .HasForeignKey(p => p.LocationId).OnDelete(DeleteBehavior.Restrict).IsRequired(false);
-
-            builder.HasData
-            (
-                new User
-                {
-                    Id = 1,
-                    Fullname = "Thusi Selvaratnam",
-                    UserName = "admin",
-                    CreatedTime = DateTime.Now,
-                    Active = 1,
-                    City = "Struer",
-                    LastModifiedTime = DateTime.Now,
-                    Password = "password",
-                    ZipCode = "7600",
-                    Street = "Kjelding Høj 10",
-                    Phone = "23469055",
-                    Role = Role.SuperAdmin,
-                    Newsletter = 0,
-                }
-            );
         }
     }
 }

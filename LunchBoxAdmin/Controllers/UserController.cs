@@ -1,4 +1,5 @@
 ﻿using LunchBoxAdmin.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -7,6 +8,7 @@ using System.Threading.Tasks;
 
 namespace LunchBoxAdmin.Controllers
 {
+    [Authorize]
     public class UserController : Controller
     {
         private readonly IUserRepository userReposotory;
@@ -16,9 +18,9 @@ namespace LunchBoxAdmin.Controllers
             this.userReposotory = userReposotory;
         }
 
-        public async Task<ViewResult> Index()
+        public IActionResult Index()
         {
-            var model = await userReposotory.GetUsers();
+            var model = userReposotory.GetUsers();
             
             return View(model);
         }

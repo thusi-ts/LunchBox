@@ -1,6 +1,7 @@
 ﻿using LunchBox.Shared;
 using LunchBoxAdmin.Models;
 using LunchBoxAdmin.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -12,6 +13,7 @@ using System.Threading.Tasks;
 
 namespace LunchBoxAdmin.Controllers
 {
+    [Authorize]
     public class StoreController : Controller
     {
         private readonly IStoreRepository storeRepository;

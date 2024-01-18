@@ -1,4 +1,6 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using LunchBoxAdmin.Utilities;
+using Microsoft.AspNetCore.Mvc;
+using System.ComponentModel.DataAnnotations;
 
 namespace LunchBoxAdmin.ViewModels
 {
@@ -6,6 +8,9 @@ namespace LunchBoxAdmin.ViewModels
     {
         [Required]
         [EmailAddress]
+        [Remote(action: "IsEmailInUse", controller: "Account")]  // Custom attribute
+        [ValidEmailDomain(allowedDomain: "hotmail.com",
+            ErrorMessage = "Email domain must be hotmail.com")]
         public string Email { get; set; }
 
         [Required]

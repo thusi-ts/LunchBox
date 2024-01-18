@@ -12,6 +12,10 @@ a {
   color: #0366d6;
 }
 
+.btn-form {
+    margin-top: 10px;
+}
+
 .btn-primary {
   color: #fff;
   background-color: #1b6ec2;
@@ -24,10 +28,13 @@ a {
   border-color: #1861ac;
 }
 
+.logout-link {
+    margin: 8px;
+}
 /* Sticky footer styles
 -------------------------------------------------- */
 html {
-  font-size: 14px;
+    font-size: 14px;
 }
 @media (min-width: 768px) {
   html {
@@ -124,4 +131,9 @@ body {
 
 .pagination {
     margin-top: 10px;
+}
+
+.product-extra-table {
+    overflow: auto;
+    width: 100%;
 }

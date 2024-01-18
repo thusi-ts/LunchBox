@@ -1,4 +1,5 @@
 ﻿using LunchBox.Shared;
+using Microsoft.AspNetCore.Identity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,14 +9,6 @@ namespace LunchBoxAdmin.Models
 {
     public interface IUserRepository
     {
-        Task<IEnumerable<User>> GetUsers();
-
-        Task<User> GetUser(int id);
-
-        Task<User> AddUser(Store store);
-
-        Task<User> EditUser(Store store);
-
-        Task<User> DeleteUser(int id);
+        IEnumerable<User> GetUsers();
     }
 }

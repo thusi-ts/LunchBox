@@ -84,7 +84,6 @@ namespace LunchBox.Shared
                     City = "Viborg", 
                     ContactPersonEmail = "email",
                     ContactPersonName = "name",
-                    CreatedTime = DateTime.Now,
                     Cvr = "12133",
                     Description = "description",
                     Email = "email",

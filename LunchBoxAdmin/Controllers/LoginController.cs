@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
+/* session Auth class. dont uses */
 namespace LunchBoxAdmin.Controllers
 {
     public class LoginController : Controller

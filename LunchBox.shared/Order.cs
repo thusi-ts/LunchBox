@@ -16,9 +16,9 @@ namespace LunchBox.Shared
 
         public OrderMethodType OrderMethod { get; set; }
 
-        public User User { get; set; }
+        public User IdentityUser { get; set; }
 
-        public int? UserId { get; set; } = 0;
+        public string? UserId { get; set; }
 
         public String UserOrderNumber { get; set; }
 
@@ -58,7 +58,7 @@ namespace LunchBox.Shared
             builder.Property(p => p.OrderMethod).HasConversion<string>();
             builder.Property(p => p.Comments).HasColumnType("nvarchar(max)");
 
-            builder.HasOne(p => p.User).WithMany(p => p.Orders)
+            builder.HasOne(p => p.IdentityUser).WithMany(p => p.Orders)
             .HasForeignKey(p => p.UserId).OnDelete(DeleteBehavior.Restrict).IsRequired(false);
             builder.HasOne(p => p.Store).WithMany(p => p.Orders)
             .HasForeignKey(p => p.StoreId).OnDelete(DeleteBehavior.Restrict).IsRequired(false);

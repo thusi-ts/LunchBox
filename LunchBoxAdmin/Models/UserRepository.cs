@@ -1,5 +1,7 @@
 ﻿using LunchBox.Shared;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,36 +12,17 @@ namespace LunchBoxAdmin.Models
     public class UserRepository : IUserRepository
     {
 
-        private readonly LbDbContext appDBContext;
+        private readonly UserManager<User> userManager;
 
-        public UserRepository(LbDbContext appDBContext)
+        public UserRepository(UserManager<User> userManager)
         {
-            this.appDBContext = appDBContext;
+            this.userManager = userManager;
         }
 
-        public Task<User> AddUser(Store store)
+        public IEnumerable<User> GetUsers()
         {
-            throw new NotImplementedException();
-        }
-
-        public Task<User> DeleteUser(int id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<User> EditUser(Store store)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<User> GetUser(int id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public async Task<IEnumerable<User>> GetUsers()
-        {
-            return await appDBContext.Users.ToListAsync();
+            var users = userManager.Users;
+            return users;
         }
     }
 }
