@@ -1,9 +1,9 @@
 # Sheetcheet
-In Package Manager Console Defalt project to be selected "LunchBox.Shared" when you migrate this
+In Package Manager Console You have to select "LunchBox.Shared" as default project when you migrate this
 
-add-migration NAME FOR MIGRATION
+Only 2 steps:
+add-migration "Init text"
+update-database
 
 If you want to verify sql before update databse.
 dotnet ef migrations script --output migrate.sql
-
-update-database

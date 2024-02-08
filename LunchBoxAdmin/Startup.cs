@@ -35,7 +35,9 @@ namespace LunchBoxAdmin
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddSession();
+            //services.AddSession();
+            // Register IConfiguration in dependency injection container
+            services.AddSingleton<IConfiguration>(Configuration);
 
             services.AddDbContext<LbDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
             services.AddControllersWithViews();
@@ -45,14 +47,24 @@ namespace LunchBoxAdmin
                 .AddDefaultTokenProviders();
 
             services.AddScoped<IStoreRepository, StoreRepository>();
-            services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<IProductExtraItemsRepository, ProductExtraItemsRepository>();
             services.AddScoped<IProductRepository, ProductRepository>();
 
             services.ConfigureApplicationCookie(config =>
             {
-                /* config.LoginPath =  "login"; Don't need "Account/login" is default */
                 config.AccessDeniedPath = new PathString("/Account/AccessDenied");
+            });
+            /* define some Claims */
+            services.AddAuthorization(options =>
+            {
+                options.AddPolicy("SuperAdminRolePolicy", builder => builder.RequireRole("Super Administrator"));
+                options.AddPolicy("CanAccessAdmin", builder => builder.RequireAssertion(
+                                                                context => context.User.IsInRole("Super Administrator")
+                                                                        || context.User.IsInRole("Visitor"))
+                );
+                options.AddPolicy("VisitorDeniedPolicy", builder => builder.RequireAssertion(
+                                                                context => !context.User.IsInRole("Visitor"))
+                );
             });
         }
 
@@ -68,7 +80,7 @@ namespace LunchBoxAdmin
                 app.UseExceptionHandler("/Error"); // 500 Internal Server Error. Global Exceptions
                 app.UseStatusCodePagesWithReExecute("/Error/{0}");  // 404 error. Middelware to 404 error, etc the page not found. Uses only in Production ENVIRONMENT
             }
-             app.UseSession();
+             //app.UseSession();
              //app.UseMiddleware<AuthenticationMiddleware>(); // previus session authentication
 
             app.UseStaticFiles();

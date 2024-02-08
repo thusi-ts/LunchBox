@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace LunchBox.Shared.Migrations
 {
     /// <inheritdoc />
-    public partial class AddingIdentity : Migration
+    public partial class Init : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -136,19 +136,16 @@ namespace LunchBox.Shared.Migrations
                     Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     Discriminator = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     FullName = table.Column<string>(name: "Full Name", type: "nvarchar(50)", maxLength: 50, nullable: true),
-                    Phone = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: true),
                     Street = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: true),
                     City = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: true),
                     ZipCode = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: true),
                     Active = table.Column<int>(type: "int", nullable: true),
-                    Role = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Newsletter = table.Column<int>(type: "int", nullable: true),
                     CreatedTime = table.Column<DateTime>(type: "datetime2", nullable: true),
                     EnteredTime = table.Column<DateTime>(type: "datetime2", nullable: true),
                     LastModifiedTime = table.Column<DateTime>(type: "datetime2", nullable: true),
                     LocationId = table.Column<int>(type: "int", nullable: true),
                     PrimaryStoreIds = table.Column<string>(type: "nvarchar(75)", maxLength: 75, nullable: true),
-                    Token = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: true),
                     UserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
                     NormalizedUserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
                     Email = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
@@ -643,9 +640,30 @@ namespace LunchBox.Shared.Migrations
                 });
 
             migrationBuilder.InsertData(
+                table: "AspNetRoles",
+                columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
+                values: new object[,]
+                {
+                    { "013f650c-fcb4-457a-83e4-91ad9f155d3f", null, "Customer", "CUSTOMER" },
+                    { "510ad68f-794f-4b3d-abe6-fa2f0d2bb97a", null, "Company administrator", "COMPANY ADMINISTRATOR" },
+                    { "8faafb10-c6b3-4915-9e06-0ac1c4dfe9d1", null, "Super Administrator", "SUPER ADMINISTRATOR" },
+                    { "93bf584b-5748-487a-a5db-ff74b3ab5345", null, "Administrator", "ADMINISTRATOR" },
+                    { "bc354d7a-d00c-4985-9f06-a49f888190e0", null, "Visitor", "VISITOR" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "AspNetUsers",
+                columns: new[] { "Id", "AccessFailedCount", "Active", "City", "ConcurrencyStamp", "CreatedTime", "Discriminator", "Email", "EmailConfirmed", "EnteredTime", "Full Name", "LastModifiedTime", "LocationId", "LockoutEnabled", "LockoutEnd", "Newsletter", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "PrimaryStoreIds", "SecurityStamp", "Street", "TwoFactorEnabled", "UserName", "ZipCode" },
+                values: new object[,]
+                {
+                    { "26f39c07-736b-456f-a7c2-fd13c0d5d307", 0, 1, null, "253f655c-7209-412b-ac01-155fa461db82", new DateTime(2024, 2, 8, 15, 2, 47, 763, DateTimeKind.Local).AddTicks(4362), "User", "visitor@hotmail.com", false, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, true, null, 0, "VISITOR@HOTMAIL.COM", "VISITOR@HOTMAIL.COM", "AQAAAAIAAYagAAAAEP9JlIH+eYb8tF7E+mj/G2nTXTMOpLSuSE6pftdmQh8V7Oyr+oq/TZ12eAZqMGWoHA==", null, false, null, "ef4fff78-04c8-4075-8190-944c3ec8a93a", null, false, "visitor@hotmail.com", null },
+                    { "b0ad6440-65d1-4566-86a5-56cae68f501a", 0, 1, null, "9cf2f076-da41-4de7-93d7-d4b60ed24679", new DateTime(2024, 2, 8, 15, 2, 47, 657, DateTimeKind.Local).AddTicks(8702), "User", "admin@hotmail.com", false, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, true, null, 0, "ADMIN@HOTMAIL.COM", "ADMIN@HOTMAIL.COM", "AQAAAAIAAYagAAAAEPnHqsXKdGBYQBC34Ra1t4/M8Ngh3RbOuoQWOJwaQBuL2suSovtNFDp6FHfveLTFCw==", null, false, null, "9b000965-d874-4a7c-b975-d3ac7a8bd24c", null, false, "admin@hotmail.com", null }
+                });
+
+            migrationBuilder.InsertData(
                 table: "Locations",
                 columns: new[] { "Id", "Active", "ActiveOffMes", "City", "ContactPersonEmail", "ContactPersonName", "CreatedTime", "Cvr", "Description", "Email", "Location name", "Logo", "Map", "Phone", "Picture", "Street", "ZipCode" },
-                values: new object[] { 1, 1, "", "Viborg", "email", "name", new DateTime(2024, 1, 18, 19, 15, 25, 716, DateTimeKind.Local).AddTicks(1111), "12133", "description", "email", "Midtbyen gymnasium", null, null, "23465656", null, "", "code" });
+                values: new object[] { 1, 1, "", "Viborg", "email", "name", new DateTime(2024, 2, 8, 15, 2, 47, 605, DateTimeKind.Local).AddTicks(8000), "12133", "description", "email", "Midtbyen gymnasium", null, null, "23465656", null, "", "code" });
 
             migrationBuilder.InsertData(
                 table: "ProductCategorys",
@@ -666,6 +684,15 @@ namespace LunchBox.Shared.Migrations
                     { 2, "Karry", "Ingen dressing", null, null, null, null, null, null, null, null, null, "Creme fraiche", null, "Chili", "Hvidløg", "Thousand Island", "Mexikansk", "Grøn pesto", "BBQ sauce", "Senneps dild", 0m, 0m, 0m, 0m, 0m, 0m, 0m, 0m, 0m, 0m, 0m, 0m, 0m, 0m, 0m, 0m, 0m, 0m, 0m, 0m, "saurce", "Dressing", null },
                     { 3, "Ananas", "Cheddar ost", null, null, null, null, null, null, null, null, null, "Bacon", null, "Jalapenios", "Kylling", "Ost", "Rejer", "Rødløg", "Tun", "Tzatziki", 5.00m, 5.00m, 0m, 0m, 0m, 0m, 0m, 0m, 0m, 0m, 0m, 5.00m, 0m, 5.00m, 5.00m, 5.00m, 5.00m, 5.00m, 5.00m, 5.00m, "pep", "Ekstra fyld", null },
                     { 4, "Dåsesodavand", null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, 10.00m, 0m, 0m, 0m, 0m, 0m, 0m, 0m, 0m, 0m, 0m, 0m, 0m, 0m, 0m, 0m, 0m, 0m, 0m, 0m, "menu_drinks", "Menutilbud", null }
+                });
+
+            migrationBuilder.InsertData(
+                table: "AspNetUserRoles",
+                columns: new[] { "RoleId", "UserId" },
+                values: new object[,]
+                {
+                    { "bc354d7a-d00c-4985-9f06-a49f888190e0", "26f39c07-736b-456f-a7c2-fd13c0d5d307" },
+                    { "8faafb10-c6b3-4915-9e06-0ac1c4dfe9d1", "b0ad6440-65d1-4566-86a5-56cae68f501a" }
                 });
 
             migrationBuilder.InsertData(

@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace LunchBox.Shared.Migrations
 {
     [DbContext(typeof(LbDbContext))]
-    [Migration("20240118181525_AddingIdentity")]
-    partial class AddingIdentity
+    [Migration("20240208140248_Init")]
+    partial class Init
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -179,7 +179,7 @@ namespace LunchBox.Shared.Migrations
                             City = "Viborg",
                             ContactPersonEmail = "email",
                             ContactPersonName = "name",
-                            CreatedTime = new DateTime(2024, 1, 18, 19, 15, 25, 716, DateTimeKind.Local).AddTicks(1111),
+                            CreatedTime = new DateTime(2024, 2, 8, 15, 2, 47, 605, DateTimeKind.Local).AddTicks(8000),
                             Cvr = "12133",
                             Description = "description",
                             Email = "email",
@@ -1152,6 +1152,38 @@ namespace LunchBox.Shared.Migrations
                         .HasFilter("[NormalizedName] IS NOT NULL");
 
                     b.ToTable("AspNetRoles", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = "8faafb10-c6b3-4915-9e06-0ac1c4dfe9d1",
+                            Name = "Super Administrator",
+                            NormalizedName = "SUPER ADMINISTRATOR"
+                        },
+                        new
+                        {
+                            Id = "93bf584b-5748-487a-a5db-ff74b3ab5345",
+                            Name = "Administrator",
+                            NormalizedName = "ADMINISTRATOR"
+                        },
+                        new
+                        {
+                            Id = "510ad68f-794f-4b3d-abe6-fa2f0d2bb97a",
+                            Name = "Company administrator",
+                            NormalizedName = "COMPANY ADMINISTRATOR"
+                        },
+                        new
+                        {
+                            Id = "013f650c-fcb4-457a-83e4-91ad9f155d3f",
+                            Name = "Customer",
+                            NormalizedName = "CUSTOMER"
+                        },
+                        new
+                        {
+                            Id = "bc354d7a-d00c-4985-9f06-a49f888190e0",
+                            Name = "Visitor",
+                            NormalizedName = "VISITOR"
+                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -1312,6 +1344,18 @@ namespace LunchBox.Shared.Migrations
                     b.HasIndex("RoleId");
 
                     b.ToTable("AspNetUserRoles", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            UserId = "b0ad6440-65d1-4566-86a5-56cae68f501a",
+                            RoleId = "8faafb10-c6b3-4915-9e06-0ac1c4dfe9d1"
+                        },
+                        new
+                        {
+                            UserId = "26f39c07-736b-456f-a7c2-fd13c0d5d307",
+                            RoleId = "bc354d7a-d00c-4985-9f06-a49f888190e0"
+                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
@@ -1351,7 +1395,6 @@ namespace LunchBox.Shared.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Fullname")
-                        .IsRequired()
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)")
                         .HasColumnName("Full Name");
@@ -1365,24 +1408,13 @@ namespace LunchBox.Shared.Migrations
                     b.Property<int>("Newsletter")
                         .HasColumnType("int");
 
-                    b.Property<string>("Phone")
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
-
                     b.Property<string>("PrimaryStoreIds")
                         .HasMaxLength(75)
                         .HasColumnType("nvarchar(75)");
 
-                    b.Property<string>("Role")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("Street")
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
-
-                    b.Property<string>("Token")
-                        .HasMaxLength(500)
-                        .HasColumnType("nvarchar(500)");
 
                     b.Property<string>("ZipCode")
                         .HasMaxLength(100)
@@ -1391,6 +1423,50 @@ namespace LunchBox.Shared.Migrations
                     b.HasIndex("LocationId");
 
                     b.HasDiscriminator().HasValue("User");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = "b0ad6440-65d1-4566-86a5-56cae68f501a",
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "9cf2f076-da41-4de7-93d7-d4b60ed24679",
+                            Email = "admin@hotmail.com",
+                            EmailConfirmed = false,
+                            LockoutEnabled = true,
+                            NormalizedEmail = "ADMIN@HOTMAIL.COM",
+                            NormalizedUserName = "ADMIN@HOTMAIL.COM",
+                            PasswordHash = "AQAAAAIAAYagAAAAEPnHqsXKdGBYQBC34Ra1t4/M8Ngh3RbOuoQWOJwaQBuL2suSovtNFDp6FHfveLTFCw==",
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "9b000965-d874-4a7c-b975-d3ac7a8bd24c",
+                            TwoFactorEnabled = false,
+                            UserName = "admin@hotmail.com",
+                            Active = 1,
+                            CreatedTime = new DateTime(2024, 2, 8, 15, 2, 47, 657, DateTimeKind.Local).AddTicks(8702),
+                            EnteredTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            LastModifiedTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Newsletter = 0
+                        },
+                        new
+                        {
+                            Id = "26f39c07-736b-456f-a7c2-fd13c0d5d307",
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "253f655c-7209-412b-ac01-155fa461db82",
+                            Email = "visitor@hotmail.com",
+                            EmailConfirmed = false,
+                            LockoutEnabled = true,
+                            NormalizedEmail = "VISITOR@HOTMAIL.COM",
+                            NormalizedUserName = "VISITOR@HOTMAIL.COM",
+                            PasswordHash = "AQAAAAIAAYagAAAAEP9JlIH+eYb8tF7E+mj/G2nTXTMOpLSuSE6pftdmQh8V7Oyr+oq/TZ12eAZqMGWoHA==",
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "ef4fff78-04c8-4075-8190-944c3ec8a93a",
+                            TwoFactorEnabled = false,
+                            UserName = "visitor@hotmail.com",
+                            Active = 1,
+                            CreatedTime = new DateTime(2024, 2, 8, 15, 2, 47, 763, DateTimeKind.Local).AddTicks(4362),
+                            EnteredTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            LastModifiedTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Newsletter = 0
+                        });
                 });
 
             modelBuilder.Entity("LunchBox.Shared.CartTemp", b =>

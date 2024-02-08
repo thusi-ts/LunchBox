@@ -1,5 +1,6 @@
 ﻿using EmployeeManagement.Models;
 using LunchBox.Shared;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
@@ -12,14 +13,21 @@ using System.Text;
 using System.Threading.Tasks;
 
 
+// add-migration text
+// update - database
+
+
 namespace LunchBox.Shared
 {
     public class LbDbContext : IdentityDbContext
     {
-        public LbDbContext(DbContextOptions<LbDbContext> options)
+        private readonly IConfiguration _configuration;
+
+        public LbDbContext(DbContextOptions<LbDbContext> options, IConfiguration configuration)
             : base(options)
-        { 
-        
+        {
+            //_configuration = configuration ?? throw new ArgumentNullException(nameof(configuration));
+            _configuration = configuration;
         }
         public DbSet<Store> Stores { get; set; }
         public DbSet<Location> Locations { get; set; }
@@ -33,8 +41,6 @@ namespace LunchBox.Shared
         public DbSet<StoresPaymentDetail> StoresPaymentDetails { get; set; }
         public DbSet<CartTemp> TempCarts { get; set; }
         public DbSet<CartTempExtraItem> TempCartExtraItems { get; set; }
-        //public DbSet<User> Users { get; set; }
-
 
         /// <summary>
         /// ApplyConfigurationsFromAssembly Applies configuration from all IEntityTypeConfiguration<TEntity> /> instances that are defined in provided assembly.
@@ -45,7 +51,7 @@ namespace LunchBox.Shared
         {
             base.OnModelCreating(modelBuilder); // call the base class OnModelCreating() to fix the identity imigration
             modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
-            modelBuilder.SeedUser();
+            modelBuilder.SeedSettings(_configuration);
         }
     }
 
@@ -65,7 +71,7 @@ namespace LunchBox.Shared
                 //.UseLoggerFactory(LoggerFactory.Create(builder => builder.AddConsole())) if you want to log it
                 .UseSqlServer(configuration["ConnectionStrings:DefaultConnection"]);
 
-            return new LbDbContext(optionsBuilder.Options);
+            return new LbDbContext(optionsBuilder.Options, null);
         }
     }
 }

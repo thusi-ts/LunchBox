@@ -1,5 +1,7 @@
-﻿using LunchBoxAdmin.Models;
+﻿using LunchBox.Shared;
+using LunchBoxAdmin.Models;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -11,18 +13,18 @@ namespace LunchBoxAdmin.Controllers
     [Authorize]
     public class UserController : Controller
     {
-        private readonly IUserRepository userReposotory;
+        private readonly UserManager<User> userManager;
 
-        public UserController(IUserRepository userReposotory)
+        public UserController(UserManager<User> userManager)
         {
-            this.userReposotory = userReposotory;
+            this.userManager = userManager;
         }
 
         public IActionResult Index()
         {
-            var model = userReposotory.GetUsers();
-            
-            return View(model);
+            var users = userManager.Users;
+
+            return View(users);
         }
     }
 }
