@@ -12,6 +12,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using LunchBox.Shared;
+using Microsoft.IdentityModel.Tokens;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using System.Text;
+using Microsoft.AspNetCore.Identity;
 
 namespace LunchBoxAPI
 {
@@ -22,15 +26,15 @@ namespace LunchBoxAPI
             Configuration = configuration;
         }
 
-        // Start MVC
-        // lav api kun der er nødvendig
-
         public IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
         // ConfigureServices is used to configure Dependency Injection. These kind of things aren't directly associated with a http request
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddDbContext<LbDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+            services.AddIdentity<User, IdentityRole>().AddEntityFrameworkStores<LbDbContext>();
+
             //Enable CORS // only domain request allowed
             services.AddCors(c =>
             {
@@ -38,10 +42,26 @@ namespace LunchBoxAPI
             });
 
             services.AddControllers();
-
-            services.AddDbContext<LbDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
-
             
+            
+            services.AddAuthentication(options => {
+                options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+                options.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
+            }).AddJwtBearer(options =>
+            {
+                options.RequireHttpsMetadata = false;
+                options.SaveToken = true;
+                options.TokenValidationParameters = new TokenValidationParameters()
+                {
+                    ValidateIssuer = true,
+                    ValidateAudience = true,
+                    ValidAudience = Configuration["Jwt:Audience"],
+                    ValidIssuer = Configuration["Jwt:Issuer"],
+                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration["Jwt:Key"]))
+                };
+            });
+
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "LunchBoxAPI", Version = "v1" });
@@ -61,12 +81,11 @@ namespace LunchBoxAPI
                 app.UseSwagger();
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "LunchBoxAPI v1"));
             }
-
+            app.UseHttpsRedirection();
             app.UseRouting();
-
-            //app.UseAuthorization();
-
-            // setup routing
+            app.UseAuthentication();
+            app.UseAuthorization();
+            
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();

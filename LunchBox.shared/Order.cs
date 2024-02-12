@@ -18,7 +18,7 @@ namespace LunchBox.Shared
 
         public User IdentityUser { get; set; }
 
-        public string? UserId { get; set; }
+        public string UserId { get; set; }
 
         public String UserOrderNumber { get; set; }
 

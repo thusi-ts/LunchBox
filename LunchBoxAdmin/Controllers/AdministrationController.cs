@@ -10,7 +10,7 @@ using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
 
-namespace LunchBox.Admin.Controllers
+namespace LunchBoxAdmin.Controllers
 {
     [Authorize(Policy = "CanAccessAdmin")]
     public class AdministrationController : Controller

@@ -71,7 +71,7 @@ namespace LunchBoxAdmin.Controllers
 
         [HttpGet]
         [AllowAnonymous]
-        public async Task<IActionResult> Login(string returnUrl)
+        public IActionResult Login(string returnUrl)
         {
             LoginViewModel model = new LoginViewModel
             {
@@ -108,7 +108,7 @@ namespace LunchBoxAdmin.Controllers
 
         [HttpGet]
         [AllowAnonymous]
-        public async Task<IActionResult> ForgotPassword()
+        public IActionResult ForgotPassword()
         {
             return View();
         }
