@@ -1,0 +1,107 @@
+:host {
+    display: block;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+  }
+  
+  .slides {
+    height: 100%;
+    display: block;
+    position: relative;
+    animation: fadeIn 5s;
+  }
+  
+  .slide {
+    height: 100%;
+    display: block;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    position: relative;
+  }
+  
+  .text{
+    position: absolute;
+    bottom: 4px;
+    right: 4px;
+    width: 150px;
+    height: 50px;
+    background-color: black;
+    opacity: 0.5;
+    padding: 4px;
+  }
+  
+  .title{
+    display: block;
+    font-weight: bold;
+    font-size: 12px;
+    color: white;
+  }
+  .desc{
+    font-size: 10px;
+    color: white;
+  }
+  
+  
+  .next {
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23fff' viewBox='0 0 8 8'%3E%3Cpath d='M2.75 0l-1.5 1.5 2.5 2.5-2.5 2.5 1.5 1.5 4-4-4-4z'/%3E%3C/svg%3E");
+    position: absolute;
+    top: 0px;
+    bottom: 0px;
+    right: 10px;
+    margin: auto;
+    background-size: 30px 30px;
+    background-repeat: no-repeat;
+    width: 30px;
+    height: 30px;
+    padding: 4px;
+    background-position: center;
+    opacity: 0.5;
+  }
+  
+  .prev {
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23fff' viewBox='0 0 8 8'%3E%3Cpath d='M5.25 0l-4 4 4 4 1.5-1.5-2.5-2.5 2.5-2.5-1.5-1.5z'/%3E%3C/svg%3E");
+    position: absolute;
+    top: 0px;
+    bottom: 0px;
+    margin: auto;
+    left: 10px;
+    background-size: 30px 30px;
+    background-repeat: no-repeat;
+    width: 30px;
+    height: 30px;
+    padding: 4px;
+    background-position: center;
+    opacity: 0.5;
+  }
+  
+  .prev:hover, .next:hover {
+    opacity: 1;
+  }
+  
+  .indicators{
+    position: absolute;
+    bottom: 5px;
+    margin: auto;
+    left: 0px;
+    right: 0px;
+    text-align: center;
+    }
+  
+  .indicator{
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: white;
+    display: inline-block;
+    cursor: pointer;
+    margin: 0px 5px;
+  }
+  
+  .active{
+    background-color: black;
+  }
+  
+  
+  

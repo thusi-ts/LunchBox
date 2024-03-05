@@ -1,0 +1,19 @@
+<div class="slides">
+    <div class="slide" [ngStyle]="{'background-image': 'url(' + slides[currentSlide].url + ')'}">
+      @if(showTitle && slides[currentSlide].title){
+        <div class="text">
+          <span class="title">{{slides[currentSlide].title}}</span>
+          <span class="desc">{{slides[currentSlide].description}}</span>
+        </div>
+      }
+    </div>
+    @if(indicatorVisible){
+      <div class="indicators">
+        @for(slide of slides; track $index; ){
+          <div class="indicator" (click)="jumpto($index)" [ngClass]="{active: $index == currentSlide}" ></div>
+        }
+      </div>
+    }
+    <a class="next" (click)="next()"></a>
+    <a class="prev" (click)="prev()"></a>
+  </div>
