@@ -1,0 +1,31 @@
+ .mat-mdc-tab-group {
+    width: 100%;
+  }
+
+  .mat-tab-group {
+    margin-bottom: 48px;
+  }
+
+  .mat-mdc-tab-header{
+    margin-bottom: 20px;
+    height: 100%;
+  }
+
+  .about-us img{
+    width: 100%;
+  }
+
+  .contact{
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .contact .item{
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: auto;
+  }
+
+  .contact .item.address{
+    margin-left: 10px;
+  }

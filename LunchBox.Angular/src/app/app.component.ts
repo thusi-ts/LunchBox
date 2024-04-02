@@ -13,9 +13,8 @@ import { DefaultComponent } from './core/layouts/default.component';
 
 export class AppComponent implements OnInit {
 
-  device:boolean = false;
   lunchbox:any = {
-    device: false,
+    mobileDevice: false,
   }
   currentBreakpoint:string = '(max-width: 700px)';
   
@@ -23,7 +22,7 @@ export class AppComponent implements OnInit {
 
   readonly breakpoint$ = this.breakpointObserver
     .observe([this.currentBreakpoint])
-    .pipe( tap(value => this.lunchbox.device = value.matches), // tab the output
+    .pipe( tap(value => this.lunchbox.mobileDevice = value.matches), // tab the output
     distinctUntilChanged());
 
   ngOnInit():void{

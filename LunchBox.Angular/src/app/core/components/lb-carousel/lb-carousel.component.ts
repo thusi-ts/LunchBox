@@ -1,28 +1,23 @@
 import { NgStyle, NgClass } from '@angular/common';
-import { Component, Input, OnInit } from '@angular/core';
-import {FlexLayoutServerModule} from '@angular/flex-layout/server';
-import { interval, timeout } from 'rxjs';
+import { Component, Input, OnInit, NgZone} from '@angular/core';
+import { interval } from 'rxjs';
 
 @Component({
   selector: 'lb-carousel',
-  imports: [FlexLayoutServerModule, NgStyle, NgClass],
+  imports: [ NgStyle, NgClass],
   standalone: true,
   templateUrl: './lb-carousel.component.html',
   styleUrls: ['./lb-carousel.component.css']
 })
 export class LbCarouselComponent implements OnInit {
 
-  constructor() { }
+  constructor(private ngZone: NgZone) { }
 
   currentSlide = 0;
   @Input() slides: any[] = [];
-  @Input() autoPlay: boolean = true;
+  @Input() autoPlay:boolean = false;
   @Input() indicatorVisible:boolean = false;
   @Input() showTitle:boolean = false;
-
-  ngOnInit() { 
-    this.autoplay();
-  }
 
   next(){
     this.currentSlide++;
@@ -36,14 +31,18 @@ export class LbCarouselComponent implements OnInit {
 
   jumpto(index:number){
     this.currentSlide = index;
-  } 
+  }  
 
-  autoplay(){
-    if(this.autoPlay){
-      const lbinterval = interval(4000);
-      lbinterval.subscribe(val => {
-        this.next()
-      });
+  autoRun(): void{ 
+    const lbinterval$ = interval(4000);
+    lbinterval$.subscribe(val => {
+      this.next();
+    });
+  }
+
+  ngOnInit(): void { 
+    if (this.autoPlay) {
+      this.autoRun();
     }
   }
 }

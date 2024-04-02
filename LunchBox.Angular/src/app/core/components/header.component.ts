@@ -14,7 +14,24 @@ import { FlexLayoutModule } from '@angular/flex-layout';
       </div>
     `,
   styles: [`
-    
+    .header{
+    height: 124px;
+    background-color: #005984;
+    margin-bottom: 2px;
+  }
+  
+  .header .logo img{
+    height: 75px;
+    border: 0;
+    width: 290px;
+    margin: 0 0 0 8px;
+  }
+  
+  .header .user-name{
+    margin: 0 16px 8px 0;
+    color: #ffffff;
+    font-weight: bold;
+  }
   `]
 })
 export class HeaderComponent {

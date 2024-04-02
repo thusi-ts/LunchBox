@@ -1,4 +1,5 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit} from '@angular/core';
+import { CommonModule } from '@angular/common';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import { RouterOutlet } from '@angular/router';
 import { HeaderComponent } from '../components/header.component';
@@ -7,17 +8,20 @@ import { MenuComponent } from '../components/menu.component';
 @Component({
   selector: 'app-mobile',
   standalone: true,
-  imports: [HeaderComponent, MenuComponent, RouterOutlet, MatToolbarModule],
+  imports: [CommonModule, HeaderComponent, MenuComponent, RouterOutlet, MatToolbarModule],
   template: `
-    <mat-toolbar class="container app-default mobile" *ngIf="data.device">
+    <div class="mobile-layout">
       <app-header></app-header>
       <router-outlet #routerOutlet></router-outlet>
       <app-menu></app-menu>
-    </mat-toolbar>
+    </div>
     `,
   styles: [`
   `],
 })
-export class MobileComponent { 
+export class MobileComponent implements OnInit {
   @Input() data: any;
+
+  ngOnInit(): void {
+  }
 }

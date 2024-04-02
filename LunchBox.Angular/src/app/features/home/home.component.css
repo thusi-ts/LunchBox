@@ -1,0 +1,44 @@
+  .lb-carousel{
+    height: 300px;
+    margin-bottom: 15px;
+  }
+  
+  .company-thumb {
+    width: 100px;
+    height: 100px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-right: 6px solid #005984;
+  }
+  
+  .company-title {
+    font-size: 16px;
+    color: #333;
+    margin: 0 !important;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    font-weight: bold;
+  }
+  
+  .company-content {
+    margin-left: 12px;
+  }
+  
+  .company-content .any-desc {
+    font-size: 12px;
+    height: 33px;
+    text-overflow: ellipsis;
+    font-weight: normal;
+    margin-bottom: 10px;
+    color: black;
+  }
+  
+  .company-content .address {
+    font-size: 14px;
+    font-weight: normal;
+    color: black;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
