@@ -1,1 +1,0 @@
-The completed sample is in the *<.NET version>-completed* folder. The *MvcMovie<.NET version>* sample is used for documentation and is difficult to use.

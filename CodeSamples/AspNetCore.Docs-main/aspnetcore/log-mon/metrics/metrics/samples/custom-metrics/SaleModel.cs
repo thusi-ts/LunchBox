@@ -1,1 +1,0 @@
-public record SaleModel(string ProductName, int QuantitySold);
