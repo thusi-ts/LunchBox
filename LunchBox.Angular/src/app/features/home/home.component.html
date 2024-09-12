@@ -1,23 +1,11 @@
-<hr/>
 <div class="content" fxLayoutAlign="center stretch">
   <div class="main" fxFlex="100" fxFlex.gt-sm="940px" fxLayout="column" fxLayoutAlign="space-between stretch"> <!-- set 940px to small screen -->
 
     <div fxLayoutAlign="space-between center" class="lb-carousel">
-      <lb-carousel [slides] = "slides" [autoPlay] = "false" [indicatorVisible] = "true" [showTitle] = "true"></lb-carousel>
+      <lb-carousel [slides] = "slides" [autoPlay] = "true" [indicatorVisible] = "true" [showTitle] = "true"></lb-carousel>
     </div>
 
     <div fxLayoutAlign="space-between center" class="main-header">Leverandør</div>
-    <div fxLayout="row" fxLayoutAlign="start start">
-      <div fxLayoutAlign="start start" class=""><a routerLink="/"><img src="https://www.lunchbox.dk/assets/images/company/kc.png"></a></div>
-      <div fxLayoutAlign="start start" class="">
-        <div class="company-content">
-          <h4 class="company-title">
-            <a routerLink="/">Kylling &amp; Co Viborg, Gravene</a>
-          </h4>
-          <div class="address">Gravene 4</div>
-          <div class="opentime">Åbnings tid: 10:30 - 19:00</div>
-        </div>
-      </div>
-    </div>
+    <store-list></store-list>
   </div>
 </div>

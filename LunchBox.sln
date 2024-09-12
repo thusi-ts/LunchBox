@@ -1,13 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.31727.386
+# Visual Studio Version 17
+VisualStudioVersion = 17.7.34031.279
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LunchBox.API", "LunchBoxAPI\LunchBox.API.csproj", "{68CB0B19-499F-4A3E-BEC2-FA2D108C8F49}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LunchBox.API", "LunchBoxAPI\LunchBox.API.csproj", "{68CB0B19-499F-4A3E-BEC2-FA2D108C8F49}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LunchBox.Admin", "LunchBoxAdmin\LunchBox.Admin.csproj", "{F3F92120-0B72-4700-AD1F-442F1CFDE01E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LunchBox.Admin", "LunchBoxAdmin\LunchBox.Admin.csproj", "{F3F92120-0B72-4700-AD1F-442F1CFDE01E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LunchBox.Shared", "LunchBox.shared\LunchBox.Shared.csproj", "{417899BC-0723-4024-A523-543C96D8263E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LunchBox.Shared", "LunchBox.shared\LunchBox.Shared.csproj", "{417899BC-0723-4024-A523-543C96D8263E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

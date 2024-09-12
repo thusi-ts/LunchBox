@@ -16,6 +16,7 @@ using Microsoft.IdentityModel.Tokens;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using System.Text;
 using Microsoft.AspNetCore.Identity;
+using LunchBoxAdmin.Models;
 
 namespace LunchBoxAPI
 {
@@ -42,8 +43,10 @@ namespace LunchBoxAPI
             });
 
             services.AddControllers();
-            
-            
+
+            services.AddScoped<IStoreRepository, StoreRepository>();
+
+
             services.AddAuthentication(options => {
                 options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
                 options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;

@@ -36,7 +36,7 @@ namespace LunchBoxAPI.Controllers
                 if (user != null)
                 {
                     var token = GenerateJwtTokenAsync(user);
-                    return Ok(new LoginResponse { Token = token, Username = user.UserName });
+                    return Ok(new LoginResponse { Token = token, Username = user.UserName, Id = user.Id });
                 }
             }
             return BadRequest("Invalid credentials");

@@ -15,6 +15,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\LunchBox.shared\LunchBox.Shared.csproj" />
+    <ProjectReference Include="..\LunchBoxAdmin\LunchBox.Admin.csproj" />
   </ItemGroup>
 
 </Project>

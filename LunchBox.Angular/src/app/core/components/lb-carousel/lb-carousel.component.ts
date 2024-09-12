@@ -11,7 +11,8 @@ import { interval } from 'rxjs';
 })
 export class LbCarouselComponent implements OnInit {
 
-  constructor(private ngZone: NgZone) { }
+  constructor(private ngZone: NgZone) { 
+  }
 
   currentSlide = 0;
   @Input() slides: any[] = [];
@@ -34,15 +35,17 @@ export class LbCarouselComponent implements OnInit {
   }  
 
   autoRun(): void{ 
-    const lbinterval$ = interval(4000);
-    lbinterval$.subscribe(val => {
+    const lbinterval$ = interval(6000);
+    lbinterval$.subscribe(val => { 
       this.next();
     });
   }
 
   ngOnInit(): void { 
-    if (this.autoPlay) {
-      this.autoRun();
-    }
+      if (this.autoPlay) { 
+        setTimeout(() => { 
+          this.autoRun();
+        }, 1000 );
+      }
   }
 }

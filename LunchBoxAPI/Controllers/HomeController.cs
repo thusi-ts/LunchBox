@@ -14,10 +14,10 @@ namespace LunchBoxAPI.Controllers
         public IActionResult Index()
         {
             var users = new List<User>() 
-                            { 
-                                new User { UserName = "Thusi", City = "Struer" }, 
-                                new User { UserName = "Thomas", City = "Herning" } 
-                            };
+                { 
+                    new User { UserName = "Thusi", City = "Struer" }, 
+                    new User { UserName = "Thomas", City = "Herning" } 
+                };
 
             return Ok(users);
         }

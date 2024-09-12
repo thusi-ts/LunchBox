@@ -1,7 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
 /* Global reset */
 html, body, span, label {
-    color: #333;
     font-size: 14px;
     font-weight: normal;
     text-shadow: none;
@@ -10,7 +9,7 @@ html, body, span, label {
     padding: 0;
     border: 0;
   }
-  
+
   a{
     cursor: pointer;
     display: block;
@@ -29,7 +28,6 @@ html, body, span, label {
     height: 44px;
     color: #ffffff;
     padding: 8px;
-    font-weight: bold;
     margin-bottom: 4px;
   }
 
@@ -56,6 +54,10 @@ html, body, span, label {
     flex-direction: column;
   }
 
+  .mobile-layout .main-wrapper{
+    margin-bottom: 0px !important;
+  }
+
   .mobile-layout app-menu{
     position: fixed;
     bottom: 0;
@@ -75,7 +77,6 @@ html, body, span, label {
   }
 
   .mobile-layout .logo{
-    margin: 0 auto;
     margin-top: 10px;
   }
 

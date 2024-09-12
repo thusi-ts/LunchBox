@@ -2,8 +2,8 @@ import { Component, Input, OnInit} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import { RouterOutlet } from '@angular/router';
-import { HeaderComponent } from '../components/header.component';
-import { MenuComponent } from '../components/menu.component';
+import { HeaderComponent } from '@core/components/header.component';
+import { MenuComponent } from '@core/components/menu.component';
 
 @Component({
   selector: 'app-mobile',
