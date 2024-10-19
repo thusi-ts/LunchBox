@@ -13,7 +13,7 @@ namespace LunchBox.Shared
     {
         public const string SuperAdministrator = "Super Administrator";
         public const string Administrator = "Administrator";
-        public const string CompanyAdministrator = "Company administrator";
+        public const string CompanyAdministrator = "Company administrator"; 
         public const string Customer = "Customer";
         public const string Visitor = "Visitor";
 
