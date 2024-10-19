@@ -11,7 +11,7 @@ namespace LunchBox.Shared
 
     public class RolesStore
     {
-        public const string SuperAdministrator = "Super Administrator"; //
+        public const string SuperAdministrator = "Super Administrator"; // t
         public const string Administrator = "Administrator";
         public const string CompanyAdministrator = "Company administrator"; 
         public const string Customer = "Customer";
